@@ -61,6 +61,7 @@ body { background: var(--cream); color: var(--ink); font-family: 'DM Mono', mono
 .lang-select-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
 .lang-toggle { padding: 6px 14px; background: var(--admin-surface); border: 1px solid var(--admin-border); color: rgba(255,255,255,0.4); font-family: 'DM Mono', monospace; font-size: 11px; cursor: pointer; transition: all 0.15s; }
 .lang-toggle.selected { background: var(--accent); color: var(--black); border-color: var(--accent); }
+.lang-toggle.locked { cursor: default; opacity: 0.7; }
 .save-row { display: flex; gap: 10px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--admin-border); flex-wrap: wrap; }
 .btn-save { flex: 1; background: var(--accent); color: var(--black); border: none; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px; cursor: pointer; min-width: 100px; }
 .btn-save:hover { opacity: 0.9; }
@@ -70,6 +71,8 @@ body { background: var(--cream); color: var(--ink); font-family: 'DM Mono', mono
 .saving-spinner { font-size: 11px; color: var(--muted); text-align: center; padding: 8px 0; height: 28px; }
 .staff-preview { font-size: 11px; color: rgba(255,255,255,0.3); font-style: italic; margin-top: 4px; padding: 4px 8px; background: rgba(255,255,255,0.03); border-left: 1px solid var(--admin-border); }
 
+.lang-sep { color: rgba(255,255,255,0.15); font-size: 11px; }
+
 /* ══ ARTIST VIEW ══ */
 #artist-view { max-width: 430px; margin: 0 auto; padding-bottom: 40px; min-height: 100vh; }
 #artist-view.active { display: block; }
@@ -78,7 +81,9 @@ body { background: var(--cream); color: var(--ink); font-family: 'DM Mono', mono
 .lang-btns { display: flex; align-items: center; gap: 6px; }
 .lang-btn { background: transparent; color: rgba(255,255,255,0.35); border: 1px solid rgba(255,255,255,0.12); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; padding: 5px 10px; cursor: pointer; transition: all 0.15s; }
 .lang-btn.active { background: var(--accent); color: var(--black); border-color: var(--accent); }
-.lang-sep { color: rgba(255,255,255,0.15); font-size: 11px; }
+.admin-back-btn { background: transparent; color: rgba(255,255,255,0.35); border: 1px solid rgba(255,255,255,0.12); font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 5px 10px; cursor: pointer; transition: all 0.15s; display: none; }
+.admin-back-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
+.admin-back-btn.visible { display: block; }
 .hero { background: var(--black); padding: 28px 20px 24px; border-bottom: 3px solid var(--accent); }
 .hero-eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
 .artist-name { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 52px; line-height: 0.92; letter-spacing: -2px; color: var(--white); margin-bottom: 24px; }
@@ -213,41 +218,96 @@ footer { padding: 24px 20px; text-align: center; }
       <div class="form-divider">Performance</div>
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label">Set time</label>
-          <input class="form-input" id="f-settime" type="text" placeholder="Sat · 11:30 PM">
+          <label class="form-label">Set day</label>
+          <select class="form-select" id="f-setday">
+            <option value="">Day</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+            <option>Saturday</option>
+            <option>Sunday</option>
+          </select>
         </div>
         <div class="form-group">
-          <label class="form-label">Stage</label>
-          <select class="form-select" id="f-stage">
-            <option value="">Select stage</option>
-            <option>The Barn</option>
-            <option>The Inn</option>
-            <option>The Inn (Outside)</option>
-            <option>Lakeside / Open Air</option>
-            <option>Hammock Grove</option>
-            <option>Lakeside Amphitheater</option>
-            <option>Catapult Field</option>
+          <label class="form-label">Set time</label>
+          <select class="form-select" id="f-settime">
+            <option value="">Time</option>
+            <option>12:00 PM</option><option>12:30 PM</option>
+            <option>1:00 PM</option><option>1:30 PM</option>
+            <option>2:00 PM</option><option>2:30 PM</option>
+            <option>3:00 PM</option><option>3:30 PM</option>
+            <option>4:00 PM</option><option>4:30 PM</option>
+            <option>5:00 PM</option><option>5:30 PM</option>
+            <option>6:00 PM</option><option>6:30 PM</option>
+            <option>7:00 PM</option><option>7:30 PM</option>
+            <option>8:00 PM</option><option>8:30 PM</option>
+            <option>9:00 PM</option><option>9:30 PM</option>
+            <option>10:00 PM</option><option>10:30 PM</option>
+            <option>11:00 PM</option><option>11:30 PM</option>
+            <option>12:00 AM</option><option>12:30 AM</option>
+            <option>1:00 AM</option><option>1:30 AM</option>
+            <option>2:00 AM</option><option>2:30 AM</option>
+            <option>3:00 AM</option><option>3:30 AM</option>
+            <option>4:00 AM</option><option>4:30 AM</option>
+            <option>5:00 AM</option>
           </select>
         </div>
       </div>
+      <div class="form-group">
+        <label class="form-label">Stage</label>
+        <select class="form-select" id="f-stage">
+          <option value="">Select stage</option>
+          <option>The Barn</option>
+          <option>The Inn</option>
+          <option>The Inn (Outside)</option>
+          <option>Lakeside / Open Air</option>
+          <option>Hammock Grove</option>
+          <option>Lakeside Amphitheater</option>
+          <option>Catapult Field</option>
+        </select>
+      </div>
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label">Sound check time</label>
-          <input class="form-input" id="f-checktime" type="text" placeholder="Sat · 7:00 PM">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Sound check stage</label>
-          <select class="form-select" id="f-checkstage">
-            <option value="">Same as set</option>
-            <option>The Barn</option>
-            <option>The Inn</option>
-            <option>The Inn (Outside)</option>
-            <option>Lakeside / Open Air</option>
-            <option>Hammock Grove</option>
-            <option>Lakeside Amphitheater</option>
-            <option>Catapult Field</option>
+          <label class="form-label">Sound check day</label>
+          <select class="form-select" id="f-checkday">
+            <option value="">Day</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+            <option>Saturday</option>
+            <option>Sunday</option>
           </select>
         </div>
+        <div class="form-group">
+          <label class="form-label">Sound check time</label>
+          <select class="form-select" id="f-checktime">
+            <option value="">Time</option>
+            <option>10:00 AM</option><option>10:30 AM</option>
+            <option>11:00 AM</option><option>11:30 AM</option>
+            <option>12:00 PM</option><option>12:30 PM</option>
+            <option>1:00 PM</option><option>1:30 PM</option>
+            <option>2:00 PM</option><option>2:30 PM</option>
+            <option>3:00 PM</option><option>3:30 PM</option>
+            <option>4:00 PM</option><option>4:30 PM</option>
+            <option>5:00 PM</option><option>5:30 PM</option>
+            <option>6:00 PM</option><option>6:30 PM</option>
+            <option>7:00 PM</option><option>7:30 PM</option>
+            <option>8:00 PM</option><option>8:30 PM</option>
+            <option>9:00 PM</option><option>9:30 PM</option>
+            <option>10:00 PM</option><option>10:30 PM</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Sound check stage</label>
+        <select class="form-select" id="f-checkstage">
+          <option value="">Same as set stage</option>
+          <option>The Barn</option>
+          <option>The Inn</option>
+          <option>The Inn (Outside)</option>
+          <option>Lakeside / Open Air</option>
+          <option>Hammock Grove</option>
+          <option>Lakeside Amphitheater</option>
+          <option>Catapult Field</option>
+        </select>
       </div>
 
       <div class="form-divider">Staff</div>
@@ -275,41 +335,116 @@ footer { padding: 24px 20px; text-align: center; }
       </div>
       <div class="form-group">
         <label class="form-label">Stage manager (tech)</label>
-        <input class="form-input" id="f-stage-name" type="text" placeholder="Name">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Stage manager phone</label>
-        <input class="form-input" id="f-stage-phone" type="text" placeholder="+1 (000) 000-0000">
+        <select class="form-select" id="f-stagemgr" onchange="previewStaff()">
+          <option value="">Select stage manager</option>
+          <option value="felix">Felix Drummond · +1 (973) 555-0441</option>
+          <option value="nina">Nina Castellanos · +1 (908) 555-0389</option>
+          <option value="jerome">Jerome Batts · +1 (201) 555-0512</option>
+        </select>
+        <div class="staff-preview" id="stagemgr-preview"></div>
       </div>
 
       <div class="form-divider">Travel</div>
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label">Arrival day / date</label>
-          <input class="form-input" id="f-arr-day" type="text" placeholder="Fri · Jun 13">
+          <label class="form-label">Arrival day</label>
+          <select class="form-select" id="f-arr-day">
+            <option value="">Day</option>
+            <option>Wednesday · Jun 11</option>
+            <option>Thursday · Jun 12</option>
+            <option>Friday · Jun 13</option>
+            <option>Saturday · Jun 14</option>
+            <option>Sunday · Jun 15</option>
+          </select>
         </div>
         <div class="form-group">
           <label class="form-label">Arrival time</label>
-          <input class="form-input" id="f-arr-time" type="text" placeholder="4:00 PM">
+          <select class="form-select" id="f-arr-time">
+            <option value="">Time</option>
+            <option>6:00 AM</option><option>6:30 AM</option>
+            <option>7:00 AM</option><option>7:30 AM</option>
+            <option>8:00 AM</option><option>8:30 AM</option>
+            <option>9:00 AM</option><option>9:30 AM</option>
+            <option>10:00 AM</option><option>10:30 AM</option>
+            <option>11:00 AM</option><option>11:30 AM</option>
+            <option>12:00 PM</option><option>12:30 PM</option>
+            <option>1:00 PM</option><option>1:30 PM</option>
+            <option>2:00 PM</option><option>2:30 PM</option>
+            <option>3:00 PM</option><option>3:30 PM</option>
+            <option>4:00 PM</option><option>4:30 PM</option>
+            <option>5:00 PM</option><option>5:30 PM</option>
+            <option>6:00 PM</option><option>6:30 PM</option>
+            <option>7:00 PM</option><option>7:30 PM</option>
+            <option>8:00 PM</option><option>8:30 PM</option>
+            <option>9:00 PM</option><option>9:30 PM</option>
+            <option>10:00 PM</option><option>10:30 PM</option>
+            <option>11:00 PM</option><option>11:30 PM</option>
+            <option>12:00 AM</option>
+          </select>
         </div>
       </div>
       <div class="form-group">
         <label class="form-label">Arrival transport</label>
-        <input class="form-input" id="f-arr-transport" type="text" placeholder="Car pickup from Newark EWR">
+        <select class="form-select" id="f-arr-transport">
+          <option value="">Select transport</option>
+          <option>Car pickup from Newark EWR</option>
+          <option>Car pickup from JFK</option>
+          <option>Car pickup from LaGuardia (LGA)</option>
+          <option>Car pickup from Penn Station NYC</option>
+          <option>Car pickup from hotel</option>
+          <option>Self-driving / own car</option>
+          <option>Bus drop-off at camp</option>
+          <option>Train to Newton NJ — pickup arranged</option>
+        </select>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label">Departure day / date</label>
-          <input class="form-input" id="f-dep-day" type="text" placeholder="Sun · Jun 15">
+          <label class="form-label">Departure day</label>
+          <select class="form-select" id="f-dep-day">
+            <option value="">Day</option>
+            <option>Friday · Jun 13</option>
+            <option>Saturday · Jun 14</option>
+            <option>Sunday · Jun 15</option>
+            <option>Monday · Jun 16</option>
+          </select>
         </div>
         <div class="form-group">
           <label class="form-label">Departure time</label>
-          <input class="form-input" id="f-dep-time" type="text" placeholder="10:00 AM">
+          <select class="form-select" id="f-dep-time">
+            <option value="">Time</option>
+            <option>6:00 AM</option><option>6:30 AM</option>
+            <option>7:00 AM</option><option>7:30 AM</option>
+            <option>8:00 AM</option><option>8:30 AM</option>
+            <option>9:00 AM</option><option>9:30 AM</option>
+            <option>10:00 AM</option><option>10:30 AM</option>
+            <option>11:00 AM</option><option>11:30 AM</option>
+            <option>12:00 PM</option><option>12:30 PM</option>
+            <option>1:00 PM</option><option>1:30 PM</option>
+            <option>2:00 PM</option><option>2:30 PM</option>
+            <option>3:00 PM</option><option>3:30 PM</option>
+            <option>4:00 PM</option><option>4:30 PM</option>
+            <option>5:00 PM</option><option>5:30 PM</option>
+            <option>6:00 PM</option><option>6:30 PM</option>
+            <option>7:00 PM</option><option>7:30 PM</option>
+            <option>8:00 PM</option><option>8:30 PM</option>
+            <option>9:00 PM</option><option>9:30 PM</option>
+            <option>10:00 PM</option>
+          </select>
         </div>
       </div>
       <div class="form-group">
         <label class="form-label">Departure transport</label>
-        <input class="form-input" id="f-dep-transport" type="text" placeholder="Car to Newark EWR">
+        <select class="form-select" id="f-dep-transport">
+          <option value="">Select transport</option>
+          <option>Car to Newark EWR</option>
+          <option>Car to JFK</option>
+          <option>Car to LaGuardia (LGA)</option>
+          <option>Car to Penn Station NYC</option>
+          <option>Car to hotel</option>
+          <option>Self-driving / own car</option>
+          <option>Bus from camp</option>
+          <option>Train from Newton NJ — dropoff arranged</option>
+        </select>
       </div>
       <div class="form-group">
         <label class="form-label">Meal tokens</label>
@@ -332,15 +467,21 @@ footer { padding: 24px 20px; text-align: center; }
 
       <div class="form-divider">Language</div>
       <div class="form-group">
-        <label class="form-label">Show language options to artist</label>
+        <label class="form-label">Available languages (EN always included)</label>
         <div class="lang-select-row">
-          <button class="lang-toggle selected" data-lang="en" onclick="toggleLang(this)">EN</button>
+          <button class="lang-toggle selected locked" data-lang="en">EN</button>
           <button class="lang-toggle" data-lang="pt" onclick="toggleLang(this)">PT</button>
           <button class="lang-toggle" data-lang="ja" onclick="toggleLang(this)">JA</button>
           <button class="lang-toggle" data-lang="es" onclick="toggleLang(this)">ES</button>
           <button class="lang-toggle" data-lang="fr" onclick="toggleLang(this)">FR</button>
           <button class="lang-toggle" data-lang="de" onclick="toggleLang(this)">DE</button>
         </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Default language (artist lands here first)</label>
+        <select class="form-select" id="f-defaultlang">
+          <option value="en">EN — English</option>
+        </select>
       </div>
 
       <div class="form-group">
@@ -362,7 +503,10 @@ footer { padding: 24px 20px; text-align: center; }
 <div id="artist-view" class="view">
   <header class="site-header">
     <div class="logo">Dripping</div>
-    <div class="lang-btns" id="lang-btns"></div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button class="admin-back-btn" id="admin-back-btn" onclick="backToAdmin()">← Admin</button>
+      <div class="lang-btns" id="lang-btns"></div>
+    </div>
   </header>
   <div class="hero">
     <div class="hero-eyebrow" data-i18n="eyebrow">Artist / Crew Sheet · 2026</div>
@@ -503,7 +647,11 @@ const DRIVERS = {
   nia:     { name: 'Nia Blackwell',  phone: '+1 (201) 555-0317' },
 };
 
-// ── ARTISTS ──
+const STAGE_MANAGERS = {
+  felix:  { name: 'Felix Drummond',    phone: '+1 (973) 555-0441' },
+  nina:   { name: 'Nina Castellanos',  phone: '+1 (908) 555-0389' },
+  jerome: { name: 'Jerome Batts',      phone: '+1 (201) 555-0512' },
+};
 const ARTISTS = [
   {name:'Ash Fure',slug:'ash-fure'},{name:'Ayanna Heaven',slug:'ayanna-heaven'},
   {name:'Badsista',slug:'badsista'},{name:'Black Decelerant',slug:'black-decelerant'},
@@ -607,14 +755,15 @@ function openArtist(slug, name) {
   document.getElementById('edit-panel').classList.add('active');
   document.getElementById('edit-name').textContent = name;
   const d = getData(slug) || {};
+  document.getElementById('f-setday').value = d.setday || '';
   document.getElementById('f-settime').value = d.settime || '';
   document.getElementById('f-stage').value = d.stage || '';
+  document.getElementById('f-checkday').value = d.checkday || '';
   document.getElementById('f-checktime').value = d.checktime || '';
   document.getElementById('f-checkstage').value = d.checkstage || '';
   document.getElementById('f-innkeeper').value = d.innkeeper || '';
   document.getElementById('f-driver').value = d.driver || '';
-  document.getElementById('f-stage-name').value = d.stageName || '';
-  document.getElementById('f-stage-phone').value = d.stagePhone || '';
+  document.getElementById('f-stagemgr').value = d.stagemgr || '';
   document.getElementById('f-arr-day').value = d.arrDay || '';
   document.getElementById('f-arr-time').value = d.arrTime || '';
   document.getElementById('f-arr-transport').value = d.arrTransport || '';
@@ -628,6 +777,7 @@ function openArtist(slug, name) {
   lodgingChange();
   activeLangs = d.langs || ['en'];
   document.querySelectorAll('.lang-toggle').forEach(b => b.classList.toggle('selected', activeLangs.includes(b.dataset.lang)));
+  updateDefaultLangDropdown(d.defaultLang || 'en');
   document.getElementById('save-confirm').textContent = '';
   previewStaff();
 }
@@ -635,10 +785,10 @@ function openArtist(slug, name) {
 function previewStaff() {
   const ik = document.getElementById('f-innkeeper').value;
   const dr = document.getElementById('f-driver').value;
-  const ikPrev = document.getElementById('innkeeper-preview');
-  const drPrev = document.getElementById('driver-preview');
-  ikPrev.textContent = ik && INNKEEPERS[ik] ? `${INNKEEPERS[ik].name} · ${INNKEEPERS[ik].phone}` : '';
-  drPrev.textContent = dr && DRIVERS[dr] ? `${DRIVERS[dr].name} · ${DRIVERS[dr].phone}` : '';
+  const sm = document.getElementById('f-stagemgr').value;
+  document.getElementById('innkeeper-preview').textContent = ik && INNKEEPERS[ik] ? `${INNKEEPERS[ik].name} · ${INNKEEPERS[ik].phone}` : '';
+  document.getElementById('driver-preview').textContent = dr && DRIVERS[dr] ? `${DRIVERS[dr].name} · ${DRIVERS[dr].phone}` : '';
+  document.getElementById('stagemgr-preview').textContent = sm && STAGE_MANAGERS[sm] ? `${STAGE_MANAGERS[sm].name} · ${STAGE_MANAGERS[sm].phone}` : '';
 }
 
 function lodgingChange() {
@@ -652,19 +802,28 @@ function toggleLang(btn) {
   btn.classList.toggle('selected');
   activeLangs = Array.from(document.querySelectorAll('.lang-toggle.selected')).map(b => b.dataset.lang);
   if (!activeLangs.includes('en')) activeLangs.unshift('en');
+  const currentDefault = document.getElementById('f-defaultlang').value;
+  updateDefaultLangDropdown(activeLangs.includes(currentDefault) ? currentDefault : 'en');
+}
+
+function updateDefaultLangDropdown(selected) {
+  const langNames = { en:'EN — English', pt:'PT — Portuguese', ja:'JA — Japanese', es:'ES — Spanish', fr:'FR — French', de:'DE — German' };
+  const sel = document.getElementById('f-defaultlang');
+  sel.innerHTML = activeLangs.map(l => `<option value="${l}" ${l===selected?'selected':''}>${langNames[l]||l.toUpperCase()}</option>`).join('');
 }
 
 function saveArtist() {
   const d = {
     name: document.getElementById('edit-name').textContent,
+    setday: document.getElementById('f-setday').value,
     settime: document.getElementById('f-settime').value,
     stage: document.getElementById('f-stage').value,
+    checkday: document.getElementById('f-checkday').value,
     checktime: document.getElementById('f-checktime').value,
     checkstage: document.getElementById('f-checkstage').value,
     innkeeper: document.getElementById('f-innkeeper').value,
     driver: document.getElementById('f-driver').value,
-    stageName: document.getElementById('f-stage-name').value,
-    stagePhone: document.getElementById('f-stage-phone').value,
+    stagemgr: document.getElementById('f-stagemgr').value,
     arrDay: document.getElementById('f-arr-day').value,
     arrTime: document.getElementById('f-arr-time').value,
     arrTransport: document.getElementById('f-arr-transport').value,
@@ -676,6 +835,7 @@ function saveArtist() {
     cabin: document.getElementById('f-cabin').value,
     notes: document.getElementById('f-notes').value,
     langs: activeLangs,
+    defaultLang: document.getElementById('f-defaultlang').value,
   };
   saveData(currentArtistSlug, d);
   const c = document.getElementById('save-confirm');
@@ -686,9 +846,17 @@ function saveArtist() {
 
 function previewArtist() {
   saveArtist();
-  renderArtistView(currentArtistSlug, 'en');
+  const d = getData(currentArtistSlug);
+  renderArtistView(currentArtistSlug, d.defaultLang || 'en');
   document.getElementById('admin-view').classList.remove('active');
   document.getElementById('artist-view').classList.add('active');
+  document.getElementById('admin-back-btn').classList.add('visible');
+}
+
+function backToAdmin() {
+  document.getElementById('artist-view').classList.remove('active');
+  document.getElementById('admin-back-btn').classList.remove('visible');
+  document.getElementById('admin-view').classList.add('active');
 }
 
 function printArtist() {
@@ -715,16 +883,19 @@ function renderArtistView(slug, lang) {
 
   const stage = d.stage || '';
   const checkStage = d.checkstage || stage;
-  document.getElementById('av-settime').textContent = [d.settime, stage].filter(Boolean).join(' · ');
-  document.getElementById('av-checktime').textContent = [d.checktime, checkStage].filter(Boolean).join(' · ');
+  const setStr = [d.setday, d.settime, stage].filter(Boolean).join(' · ');
+  const checkStr = [d.checkday, d.checktime, checkStage].filter(Boolean).join(' · ');
+  document.getElementById('av-settime').textContent = setStr;
+  document.getElementById('av-checktime').textContent = checkStr;
 
   // Contacts from staff roster
   const ik = d.innkeeper && INNKEEPERS[d.innkeeper];
   const dr = d.driver && DRIVERS[d.driver];
+  const sm = d.stagemgr && STAGE_MANAGERS[d.stagemgr];
   let contactsHtml = '';
-  if (ik) contactsHtml += contactCard(t.contacts.includes('contact')?'Artist care · innkeeper':'Artist care · innkeeper', ik.name, ik.phone, t.callBtn||'Call ↗');
+  if (ik) contactsHtml += contactCard('Artist care · innkeeper', ik.name, ik.phone, t.callBtn||'Call ↗');
   if (dr) contactsHtml += contactCard('Driver', dr.name, dr.phone, t.callBtn||'Call ↗');
-  if (d.stageName) contactsHtml += contactCard('Stage manager (tech)', d.stageName, d.stagePhone, t.callBtn||'Call ↗');
+  if (sm) contactsHtml += contactCard('Stage manager (tech)', sm.name, sm.phone, t.callBtn||'Call ↗');
   document.getElementById('av-contacts').innerHTML = contactsHtml;
 
   // Travel
@@ -775,15 +946,16 @@ function renderPrintView(slug) {
   if (!d) return;
   const ik = d.innkeeper && INNKEEPERS[d.innkeeper];
   const dr = d.driver && DRIVERS[d.driver];
+  const sm = d.stagemgr && STAGE_MANAGERS[d.stagemgr];
   document.getElementById('pv-name').textContent = d.name;
   const stage = d.stage || '';
   const checkStage = d.checkstage || stage;
-  document.getElementById('pv-settime').textContent = [d.settime, stage].filter(Boolean).join(' · ');
-  document.getElementById('pv-checktime').textContent = [d.checktime, checkStage].filter(Boolean).join(' · ');
+  document.getElementById('pv-settime').textContent = [d.setday, d.settime, stage].filter(Boolean).join(' · ');
+  document.getElementById('pv-checktime').textContent = [d.checkday, d.checktime, checkStage].filter(Boolean).join(' · ');
   let c = '';
   if (ik) c += `<div class="p-row"><span class="p-key">Artist care</span><span class="p-val">${ik.name}<span class="p-sub">${ik.phone} · WA</span></span></div>`;
   if (dr) c += `<div class="p-row"><span class="p-key">Driver</span><span class="p-val">${dr.name}<span class="p-sub">${dr.phone}</span></span></div>`;
-  if (d.stageName) c += `<div class="p-row"><span class="p-key">Stage mgr</span><span class="p-val">${d.stageName}<span class="p-sub">${d.stagePhone}</span></span></div>`;
+  if (sm) c += `<div class="p-row"><span class="p-key">Stage mgr</span><span class="p-val">${sm.name}<span class="p-sub">${sm.phone}</span></span></div>`;
   document.getElementById('pv-contacts').innerHTML = c;
   let tv = '';
   if (d.arrDay) tv += `<div class="p-row"><span class="p-key">Arrival</span><span class="p-val">${d.arrDay} · ${d.arrTime}<span class="p-sub">${d.arrTransport}</span></span></div>`;
@@ -799,6 +971,36 @@ function renderPrintView(slug) {
   document.getElementById('pv-footer').textContent = ik ? `Questions: ${ik.name} · ${ik.phone}` : 'drippingmusicandarts@gmail.com';
 }
 
+// ── PRE-SEED: DJ OJO ──
+(function seedDjOjo() {
+  const slug = 'dj-ojo';
+  const d = {
+    name: 'DJ ojo',
+    setday: 'Saturday',
+    settime: '1:00 AM',
+    stage: 'The Inn',
+    checkday: 'Saturday',
+    checktime: '6:00 PM',
+    checkstage: 'The Inn',
+    innkeeper: 'maya',
+    driver: 'carlos',
+    stagemgr: 'nina',
+    arrDay: 'Friday · Jun 13',
+    arrTime: '5:00 PM',
+    arrTransport: 'Car pickup from Newark EWR',
+    depDay: 'Sunday · Jun 15',
+    depTime: '12:00 PM',
+    depTransport: 'Car to Newark EWR',
+    tokens: '6',
+    lodging: 'hotel',
+    cabin: '',
+    notes: 'Traveling from Brazil. Portuguese speaker. Vegetarian.',
+    langs: ['pt', 'en'],
+    defaultLang: 'pt',
+  };
+  localStorage.setItem('dripping26_' + slug, JSON.stringify(d));
+})();
+
 // ── INIT ──
 loadAll();
 
@@ -809,12 +1011,13 @@ const adminParam = urlParams.get('admin');
 if (slugParam && !adminParam) {
   const d = getData(slugParam);
   if (d) {
-    renderArtistView(slugParam, 'en');
+    renderArtistView(slugParam, d.defaultLang || 'en');
     document.getElementById('admin-view').classList.remove('active');
     document.getElementById('artist-view').classList.add('active');
+  } else {
+    renderArtistList();
   }
 } else {
-  // Admin mode
   renderArtistList();
 }
 </script>
