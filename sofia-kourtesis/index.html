@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dripping — Sofia Kourtesis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F0EBE1;
+  --white: #FAF7F2;
+  --black: #2C2520;
+  --ink: #3A322C;
+  --muted: #8C847D;
+  --soft: #D9D2C8;
+  --accent: #C8FF00;
+  --accent-dark: #8FB200;
+  --rule: rgba(0,0,0,0.08);
+  --card: #FFFFFF;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 430px;
+  margin: 0 auto;
+  padding-bottom: 72px;
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: var(--black);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.header-pill {
+  background: var(--accent);
+  color: var(--black);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  font-family: 'DM Mono', monospace;
+}
+
+.lang-btn {
+  background: transparent;
+  color: rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.15);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.lang-btn.active {
+  background: var(--accent);
+  color: var(--black);
+  border-color: var(--accent);
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--black);
+  padding: 28px 20px 24px;
+  border-bottom: 3px solid var(--accent);
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.artist-name {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 52px;
+  line-height: 0.92;
+  letter-spacing: -2px;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+.set-block {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.set-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.set-icon {
+  width: 28px;
+  height: 28px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.set-info { flex: 1; }
+
+.set-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 1px;
+}
+
+.set-value {
+  font-size: 13px;
+  color: var(--white);
+  font-weight: 400;
+}
+
+.hero-note {
+  margin-top: 14px;
+  font-size: 11px;
+  color: var(--accent);
+  font-style: italic;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ── SECTION WRAPPER ── */
+.section {
+  padding: 24px 20px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.sec-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.sec-icon {
+  width: 26px;
+  height: 26px;
+  background: var(--black);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.sec-title {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* ── CARDS ── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  padding: 14px 16px;
+  margin-bottom: 8px;
+}
+.card:last-child { margin-bottom: 0; }
+
+/* ── CONTACTS ── */
+.contact-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.contact-card:last-child { margin-bottom: 0; }
+
+.contact-left { flex: 1; }
+.c-role { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+.c-name { font-size: 15px; color: var(--ink); margin-bottom: 2px; font-family: 'DM Sans', sans-serif; font-weight: 400; }
+.c-phone { font-size: 12px; color: var(--muted); font-style: italic; }
+
+.call-btn {
+  background: var(--black);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 11px;
+  padding: 8px 14px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── NOTICE ── */
+.notice {
+  background: var(--black);
+  color: var(--white);
+  padding: 14px 16px;
+  font-size: 12px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ── TRAVEL ROWS ── */
+.travel-item {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  padding: 14px 16px;
+  margin-bottom: 8px;
+}
+.travel-item:last-child { margin-bottom: 0; }
+.t-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+.t-main { font-size: 15px; color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 400; margin-bottom: 2px; }
+.t-sub { font-size: 12px; color: var(--muted); font-style: italic; }
+
+.wb-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.6;
+}
+.wb-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: #FFD700;
+  border: 1px solid rgba(0,0,0,0.15);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* ── ADDRESSES ── */
+.address-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+}
+.address-card:last-child { margin-bottom: 0; }
+.addr-type { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.addr-name { font-size: 15px; color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 400; margin-bottom: 2px; }
+.addr-street { font-size: 12px; color: var(--muted); font-style: italic; line-height: 1.5; }
+.map-btn {
+  background: var(--black);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 11px;
+  padding: 8px 12px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── SHUTTLE ── */
+.shuttle-tabs {
+  display: flex;
+  margin-bottom: 16px;
+  border: 1px solid var(--rule);
+  background: var(--white);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  text-align: center;
+  border-right: 1px solid var(--rule);
+  transition: background 0.15s, color 0.15s;
+}
+.tab-btn:last-child { border-right: none; }
+.tab-btn.active {
+  background: var(--black);
+  color: var(--accent);
+}
+
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+.shuttle-day {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  padding: 14px 16px;
+  margin-bottom: 8px;
+}
+.shuttle-day:last-child { margin-bottom: 0; }
+
+.sh-day-name {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 500;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.time-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.time-chip {
+  background: var(--cream);
+  border: 1px solid var(--soft);
+  font-size: 12px;
+  padding: 4px 10px;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+
+.time-chip.highlight {
+  background: var(--black);
+  color: var(--accent);
+  border-color: var(--black);
+}
+
+.sh-note {
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.shuttle-footer {
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--muted);
+  font-style: italic;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+}
+
+/* ── FOOD ── */
+.food-day-block {
+  margin-bottom: 16px;
+}
+.food-day-block:last-child { margin-bottom: 0; }
+
+.food-day-label {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.food-item {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-top: none;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+.food-item:first-of-type { border-top: 1px solid var(--rule); }
+.f-name { flex: 1; color: var(--ink); }
+.f-meal {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 8px;
+}
+.f-hours { color: var(--muted); font-style: italic; font-size: 12px; white-space: nowrap; }
+
+.food-note {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 24px 20px;
+  text-align: center;
+}
+.f-logo { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); margin-bottom: 6px; }
+.f-sub { font-size: 11px; color: var(--muted); font-style: italic; }
+.f-sub a { color: var(--muted); }
+
+/* ── PRINT BUTTON ── */
+.print-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border-top: 1px solid var(--rule);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: center;
+  z-index: 20;
+}
+
+.print-btn {
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 12px 32px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 390px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+/* ── PRINT STYLES ── */
+@media print {
+  body { max-width: 100%; padding-bottom: 0; font-size: 11px; }
+  .site-header { position: static; background: var(--black) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .hero { background: var(--black) !important; border-bottom: 2px solid #000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .print-bar { display: none; }
+  .shuttle-tabs { display: none; }
+  .tab-pane { display: block !important; margin-bottom: 12px; }
+  .tab-pane::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+  .section { break-inside: avoid; }
+  .shuttle-day { break-inside: avoid; }
+  * { animation: none !important; }
+  a { text-decoration: none; }
+  .call-btn, .map-btn { display: none; }
+  .contact-card { padding: 8px 0; border: none; border-bottom: 1px solid var(--rule); background: none; }
+  .address-card { border: none; border-bottom: 1px solid var(--rule); background: none; padding: 8px 0; }
+  .travel-item { border: none; border-bottom: 1px solid var(--rule); background: none; padding: 8px 0; }
+  .food-item { border: none; border-bottom: 1px solid var(--rule); background: none; padding: 6px 0; }
+  .shuttle-day { border: none; border-bottom: 1px solid var(--rule); background: none; padding: 8px 0; }
+  .food-note { border: none; background: none; }
+  .notice { border-left: 2px solid #000; background: #eee !important; color: #000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .time-chip { border: 1px solid #ccc; background: none !important; padding: 2px 6px; font-size: 10px; }
+  .time-chip.highlight { background: #000 !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .set-block { border: 1px solid rgba(255,255,255,0.3); }
+}
+
+/* ── ANIMATIONS ── */
+@keyframes up { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+.hero { animation: up 0.35s ease both; }
+.section:nth-child(1) { animation: up 0.35s 0.05s ease both; }
+.section:nth-child(2) { animation: up 0.35s 0.10s ease both; }
+.section:nth-child(3) { animation: up 0.35s 0.15s ease both; }
+.section:nth-child(4) { animation: up 0.35s 0.20s ease both; }
+.section:nth-child(5) { animation: up 0.35s 0.25s ease both; }
+.section:nth-child(6) { animation: up 0.35s 0.30s ease both; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo">Dripping</div>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+    <span style="color:rgba(255,255,255,0.2);font-size:11px;">|</span>
+    <button class="lang-btn" id="btn-pt" onclick="setLang('pt')">PT</button>
+    <span style="color:rgba(255,255,255,0.2);font-size:11px;">|</span>
+    <button class="lang-btn" id="btn-ja" onclick="setLang('ja')">JA</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow" data-i18n="eyebrow">Artist / Crew Sheet · 2026</div>
+  <div class="artist-name">Sofia<br>Kourtesis</div>
+  <div class="set-block">
+    <div class="set-row">
+      <div class="set-icon">🎵</div>
+      <div class="set-info">
+        <div class="set-label" data-i18n="setTime">Set time</div>
+        <div class="set-value">Saturday · 11:30 PM · The Inn</div>
+      </div>
+    </div>
+    <div class="set-row">
+      <div class="set-icon">🔊</div>
+      <div class="set-info">
+        <div class="set-label" data-i18n="soundCheck">Sound check</div>
+        <div class="set-value">Saturday · 7:00 PM · The Inn</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-note" data-i18n="stageNote">⚠ Please be at stage 20 minutes before your set.</div>
+</div>
+
+<!-- CONTACTS -->
+<div class="section">
+  <div class="sec-header">
+    <div class="sec-icon">📞</div>
+    <div class="sec-title" data-i18n="contacts">Your contacts</div>
+  </div>
+  <div class="contact-card">
+    <div class="contact-left">
+      <div class="c-role" data-i18n="roleArtistCare">Artist care · innkeeper</div>
+      <div class="c-name">Leo Castillo</div>
+      <div class="c-phone" data-i18n="whatsappPref">WhatsApp preferred</div>
+    </div>
+    <a class="call-btn" href="tel:+12015550182" data-i18n="call">Call ↗</a>
+  </div>
+  <div class="contact-card">
+    <div class="contact-left">
+      <div class="c-role" data-i18n="roleDriver">Driver</div>
+      <div class="c-name">Marcus T.</div>
+      <div class="c-phone">+1 (201) 555-0147</div>
+    </div>
+    <a class="call-btn" href="tel:+12015550147" data-i18n="call">Call ↗</a>
+  </div>
+  <div class="contact-card">
+    <div class="contact-left">
+      <div class="c-role" data-i18n="roleStageMgr">Stage manager (tech)</div>
+      <div class="c-name">Dani Rivera</div>
+      <div class="c-phone">+1 (908) 555-0263</div>
+    </div>
+    <a class="call-btn" href="tel:+19085550263" data-i18n="call">Call ↗</a>
+  </div>
+</div>
+
+<!-- TRAVEL -->
+<div class="section">
+  <div class="sec-header">
+    <div class="sec-icon">✈</div>
+    <div class="sec-title" data-i18n="travel">Travel</div>
+  </div>
+  <div class="notice" data-i18n="checkInNotice">Check in at <strong>The Inn</strong> first — pick up hotel keys, wristbands & orientation. Do not go to the hotel first.</div>
+  <div class="travel-item">
+    <div class="t-label" data-i18n="arrival">Arrival</div>
+    <div class="t-main">Friday · Jun 13 · 4:00 PM</div>
+    <div class="t-sub" data-i18n="arrivalSub">Car pickup from Newark EWR</div>
+  </div>
+  <div class="travel-item">
+    <div class="t-label" data-i18n="parking">Parking</div>
+    <div class="t-main" data-i18n="parkingMain">Staff lot</div>
+    <div class="t-sub" data-i18n="parkingSub">Outside The Inn</div>
+  </div>
+  <div class="travel-item">
+    <div class="t-label" data-i18n="departure">Departure</div>
+    <div class="t-main">Sunday · Jun 15 · 10:00 AM</div>
+    <div class="t-sub" data-i18n="departureSub">Car to Newark EWR</div>
+  </div>
+  <div class="wb-row">
+    <div class="wb-dot"></div>
+    <div data-i18n="wristband">Yellow wristband = free drinks all weekend. Your meal tokens are valid at all food vendors.</div>
+  </div>
+</div>
+
+<!-- ADDRESSES -->
+<div class="section">
+  <div class="sec-header">
+    <div class="sec-icon">📍</div>
+    <div class="sec-title" data-i18n="addresses">Addresses</div>
+  </div>
+  <div class="address-card">
+    <div>
+      <div class="addr-type" data-i18n="venue">Venue</div>
+      <div class="addr-name">Camp Sacajawea</div>
+      <div class="addr-street">251 White Lake Road<br>Sparta, NJ 07871</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com?q=251+White+Lake+Road+Sparta+NJ+07871" target="_blank" data-i18n="maps">Maps ↗</a>
+  </div>
+  <div class="address-card">
+    <div>
+      <div class="addr-type" data-i18n="hotel">Hotel</div>
+      <div class="addr-name">Econo Lodge</div>
+      <div class="addr-street">448 US-206<br>Newton, NJ 07860</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com?q=448+US-206+Newton+NJ+07860" target="_blank" data-i18n="maps">Maps ↗</a>
+  </div>
+</div>
+
+<!-- SHUTTLE -->
+<div class="section">
+  <div class="sec-header">
+    <div class="sec-icon">🚌</div>
+    <div class="sec-title" data-i18n="shuttle">Shuttle schedule</div>
+  </div>
+
+  <div class="shuttle-tabs">
+    <button class="tab-btn active" onclick="switchTab('camp')" data-i18n="shuttleCampBtn">Camp → Hotel</button>
+    <button class="tab-btn" onclick="switchTab('hotel')" data-i18n="shuttleHotelBtn">Hotel → Camp</button>
+  </div>
+
+  <!-- FROM CAMP -->
+  <div class="tab-pane active" id="tab-camp" data-label="Shuttle: Camp → Hotel">
+    <div class="shuttle-day">
+      <div class="sh-day-name">Thursday</div>
+      <div class="time-chips">
+        <span class="time-chip">4:15 pm</span>
+        <span class="time-chip">5:15 pm</span>
+        <span class="time-chip">6:15 pm</span>
+        <span class="time-chip">7:15 pm</span>
+        <span class="time-chip">11:15 pm</span>
+        <span class="time-chip">12:15 am</span>
+      </div>
+    </div>
+    <div class="shuttle-day">
+      <div class="sh-day-name">Friday – Saturday</div>
+      <div class="time-chips">
+        <span class="time-chip">10:15 am</span>
+        <span class="time-chip">11:15 am</span>
+        <span class="time-chip">12:15 pm</span>
+        <span class="time-chip">1:15 pm</span>
+        <span class="time-chip">2:15 pm</span>
+        <span class="time-chip">3:15 pm</span>
+        <span class="time-chip">4:15 pm</span>
+        <span class="time-chip">5:15 pm</span>
+        <span class="time-chip">6:15 pm</span>
+        <span class="time-chip">7:15 pm</span>
+        <span class="time-chip">8:15 pm</span>
+        <span class="time-chip">9:15 pm</span>
+        <span class="time-chip">10:15 pm</span>
+        <span class="time-chip">11:15 pm</span>
+        <span class="time-chip">12:15 am</span>
+        <span class="time-chip">1:15 am</span>
+        <span class="time-chip">2:15 am</span>
+        <span class="time-chip">3:15 am</span>
+        <span class="time-chip highlight">4:15 am</span>
+        <span class="time-chip highlight">7:00 am ✦ final</span>
+      </div>
+      <div class="sh-note">✦ Final shuttle after the dawn concert</div>
+    </div>
+    <div class="shuttle-day">
+      <div class="sh-day-name">Saturday – Sunday</div>
+      <div class="time-chips">
+        <span class="time-chip">10:15 am</span>
+        <span class="time-chip">11:15 am</span>
+        <span class="time-chip">12:15 pm</span>
+        <span class="time-chip">1:15 pm</span>
+        <span class="time-chip">2:15 pm</span>
+        <span class="time-chip">3:15 pm</span>
+        <span class="time-chip">4:15 pm</span>
+        <span class="time-chip">5:15 pm</span>
+        <span class="time-chip">6:15 pm</span>
+        <span class="time-chip">7:15 pm</span>
+        <span class="time-chip">8:15 pm</span>
+        <span class="time-chip">9:15 pm</span>
+        <span class="time-chip">10:15 pm</span>
+        <span class="time-chip">11:15 pm</span>
+        <span class="time-chip">12:15 am</span>
+        <span class="time-chip">1:15 am</span>
+        <span class="time-chip">2:15 am</span>
+        <span class="time-chip">3:15 am</span>
+        <span class="time-chip">4:15 am</span>
+        <span class="time-chip">5:15 am</span>
+        <span class="time-chip">6:15 am</span>
+        <span class="time-chip">7:15 am</span>
+        <span class="time-chip">8:15 am</span>
+        <span class="time-chip">9:15 am</span>
+        <span class="time-chip highlight">10:15 am ✦ last</span>
+      </div>
+      <div class="sh-note">✦ Last shuttle — hotel checkout at 11am</div>
+    </div>
+  </div>
+
+  <!-- FROM HOTEL -->
+  <div class="tab-pane" id="tab-hotel" data-label="Shuttle: Hotel → Camp">
+    <div class="shuttle-day">
+      <div class="sh-day-name">Thursday</div>
+      <div class="time-chips">
+        <span class="time-chip">4:45 pm</span>
+        <span class="time-chip">5:45 pm</span>
+        <span class="time-chip">6:45 pm</span>
+        <span class="time-chip">7:45 pm</span>
+        <span class="time-chip">11:45 pm</span>
+        <span class="time-chip">12:45 am</span>
+      </div>
+    </div>
+    <div class="shuttle-day">
+      <div class="sh-day-name">Friday – Saturday</div>
+      <div class="time-chips">
+        <span class="time-chip">10:45 am</span>
+        <span class="time-chip">11:45 am</span>
+        <span class="time-chip">12:45 pm</span>
+        <span class="time-chip">1:45 pm</span>
+        <span class="time-chip">2:45 pm</span>
+        <span class="time-chip">3:45 pm</span>
+        <span class="time-chip">4:45 pm</span>
+        <span class="time-chip">5:45 pm</span>
+        <span class="time-chip">6:45 pm</span>
+        <span class="time-chip">7:45 pm</span>
+        <span class="time-chip">8:45 pm</span>
+        <span class="time-chip">9:45 pm</span>
+        <span class="time-chip">10:45 pm</span>
+        <span class="time-chip">11:45 pm</span>
+        <span class="time-chip">12:45 am</span>
+        <span class="time-chip">1:45 am</span>
+        <span class="time-chip">2:45 am</span>
+        <span class="time-chip">3:45 am</span>
+        <span class="time-chip highlight">4:45 am ✦ last</span>
+      </div>
+    </div>
+    <div class="shuttle-day">
+      <div class="sh-day-name">Saturday – Sunday</div>
+      <div class="time-chips">
+        <span class="time-chip">10:45 am</span>
+        <span class="time-chip">11:45 am</span>
+        <span class="time-chip">12:45 pm</span>
+        <span class="time-chip">1:45 pm</span>
+        <span class="time-chip">2:45 pm</span>
+        <span class="time-chip">3:45 pm</span>
+        <span class="time-chip">4:45 pm</span>
+        <span class="time-chip">5:45 pm</span>
+        <span class="time-chip">6:45 pm</span>
+        <span class="time-chip">7:45 pm</span>
+        <span class="time-chip">8:45 pm</span>
+        <span class="time-chip">9:45 pm</span>
+        <span class="time-chip">10:45 pm</span>
+        <span class="time-chip">11:45 pm</span>
+        <span class="time-chip">12:45 am</span>
+        <span class="time-chip">1:45 am</span>
+        <span class="time-chip">2:45 am</span>
+        <span class="time-chip">3:45 am</span>
+        <span class="time-chip">4:45 am</span>
+        <span class="time-chip">5:45 am</span>
+        <span class="time-chip">6:45 am</span>
+        <span class="time-chip">7:45 am</span>
+        <span class="time-chip">8:45 am</span>
+        <span class="time-chip">9:45 am</span>
+        <span class="time-chip highlight">10:45 am ✦ last</span>
+      </div>
+      <div class="sh-note">✦ Last shuttle — hotel checkout at 11am</div>
+    </div>
+  </div>
+
+  <div class="shuttle-footer" data-i18n="shuttleNote">Departs from staff parking lot outside The Inn.</div>
+</div>
+
+<!-- FOOD -->
+<div class="section">
+  <div class="sec-header">
+    <div class="sec-icon">🍽</div>
+    <div class="sec-title" data-i18n="food">Food — dining tent unless noted</div>
+  </div>
+
+  <div class="food-day-block">
+    <div class="food-day-label" data-i18n="thursday">Thursday</div>
+    <div class="food-item"><span class="f-name">BéBép</span><span class="f-meal" data-i18n="dinner">Dinner</span><span class="f-hours">6 – 10 pm</span></div>
+  </div>
+
+  <div class="food-day-block">
+    <div class="food-day-label" data-i18n="friday">Friday</div>
+    <div class="food-item"><span class="f-name">109 Montrose</span><span class="f-meal" data-i18n="coffee">Coffee</span><span class="f-hours">Morning – late</span></div>
+    <div class="food-item"><span class="f-name">Dila</span><span class="f-meal" data-i18n="breakfast">Breakfast</span><span class="f-hours">9 am – 1 pm</span></div>
+    <div class="food-item"><span class="f-name">Kowloon Baby</span><span class="f-meal" data-i18n="lunch">Lunch</span><span class="f-hours">12 – 4 pm</span></div>
+    <div class="food-item"><span class="f-name">Taqueria Ramirez</span><span class="f-meal" data-i18n="dinner">Dinner</span><span class="f-hours">6 – 10 pm</span></div>
+    <div class="food-item"><span class="f-name">Dila</span><span class="f-meal" data-i18n="dinner">Dinner</span><span class="f-hours">6 – 10 pm</span></div>
+    <div class="food-item"><span class="f-name">Bar — Vegan Onigiri</span><span class="f-meal"></span><span class="f-hours" data-i18n="barHours">Bar hours</span></div>
+  </div>
+
+  <div class="food-day-block">
+    <div class="food-day-label" data-i18n="saturday">Saturday</div>
+    <div class="food-item"><span class="f-name">109 Montrose</span><span class="f-meal" data-i18n="coffee">Coffee</span><span class="f-hours">Morning – late</span></div>
+    <div class="food-item"><span class="f-name">Kowloon Baby</span><span class="f-meal" data-i18n="breakfast">Breakfast</span><span class="f-hours">9 am – 1 pm</span></div>
+    <div class="food-item"><span class="f-name">Kowloon Baby</span><span class="f-meal" data-i18n="lunch">Lunch</span><span class="f-hours">12 – 4 pm</span></div>
+    <div class="food-item"><span class="f-name">Wadadli Jerk ↙ lakeside</span><span class="f-meal" data-i18n="lunch">Lunch</span><span class="f-hours">12 – sold out</span></div>
+    <div class="food-item"><span class="f-name">Taqueria Ramirez</span><span class="f-meal" data-i18n="dinner">Dinner</span><span class="f-hours">6 – 10 pm</span></div>
+    <div class="food-item"><span class="f-name">Dila</span><span class="f-meal" data-i18n="dinner">Dinner</span><span class="f-hours">6 – 10 pm</span></div>
+  </div>
+
+  <div class="food-day-block">
+    <div class="food-day-label" data-i18n="sunday">Sunday</div>
+    <div class="food-item"><span class="f-name">Dila</span><span class="f-meal" data-i18n="breakfast">Breakfast</span><span class="f-hours">9 am – 1 pm</span></div>
+    <div class="food-item"><span class="f-name">109 Montrose</span><span class="f-meal" data-i18n="coffee">Coffee</span><span class="f-hours">Morning</span></div>
+    <div class="food-item"><span class="f-name" data-i18n="bagels">Bagels & fruit at The Inn</span><span class="f-meal"></span><span class="f-hours" data-i18n="morning">Morning</span></div>
+  </div>
+
+  <div class="food-note" data-i18n="foodNote">Snacks, tea & coffee available all weekend backstage at The Inn.</div>
+</div>
+
+<div class="print-bar">
+  <a class="print-btn" href="artist-info-print.html" target="_blank" data-i18n="printBtn">⬇ Print artist sheet</a>
+</div>
+
+<footer>
+  <div class="f-logo">Dripping</div>
+  <div class="f-sub" data-i18n="footerContact">Questions? <a href="tel:+12015550182">WhatsApp Leo · +1 (201) 555-0182</a></div>
+</footer>
+
+<script>
+const translations = {
+  en: {
+    eyebrow: 'Artist / Crew Sheet · 2026',
+    setTime: 'Set time',
+    soundCheck: 'Sound check',
+    stageNote: '⚠ Please be at stage 20 minutes before your set.',
+    contacts: 'Your contacts',
+    roleArtistCare: 'Artist care · innkeeper',
+    roleDriver: 'Driver',
+    roleStageMgr: 'Stage manager (tech)',
+    whatsappPref: 'WhatsApp preferred',
+    call: 'Call ↗',
+    travel: 'Travel',
+    checkInNotice: 'Check in at <strong>The Inn</strong> first — pick up hotel keys, wristbands & orientation. Do not go to the hotel first.',
+    arrival: 'Arrival',
+    arrivalSub: 'Car pickup from Newark EWR',
+    parking: 'Parking',
+    parkingMain: 'Staff lot',
+    parkingSub: 'Outside The Inn',
+    departure: 'Departure',
+    departureSub: 'Car to Newark EWR',
+    wristband: 'Yellow wristband = free drinks all weekend. Your meal tokens are valid at all food vendors.',
+    addresses: 'Addresses',
+    venue: 'Venue',
+    hotel: 'Hotel',
+    maps: 'Maps ↗',
+    shuttle: 'Shuttle schedule',
+    shuttleCampBtn: 'Camp → Hotel',
+    shuttleHotelBtn: 'Hotel → Camp',
+    shuttleNote: 'Departs from staff parking lot outside The Inn.',
+    food: 'Food — dining tent unless noted',
+    thursday: 'Thursday',
+    friday: 'Friday',
+    saturday: 'Saturday',
+    sunday: 'Sunday',
+    breakfast: 'Breakfast',
+    lunch: 'Lunch',
+    dinner: 'Dinner',
+    coffee: 'Coffee',
+    barHours: 'Bar hours',
+    morning: 'Morning',
+    bagels: 'Bagels & fruit at The Inn',
+    foodNote: 'Snacks, tea & coffee available all weekend backstage at The Inn.',
+    printBtn: '⬇ Print artist sheet',
+    footerContact: 'Questions? <a href="tel:+12015550182">WhatsApp Leo · +1 (201) 555-0182</a>',
+  },
+  pt: {
+    eyebrow: 'Ficha do Artista / Equipe · 2026',
+    setTime: 'Horário do set',
+    soundCheck: 'Passagem de som',
+    stageNote: '⚠ Por favor, esteja no palco 20 minutos antes do seu set.',
+    contacts: 'Seus contatos',
+    roleArtistCare: 'Cuidado com artistas · hospedeiro',
+    roleDriver: 'Motorista',
+    roleStageMgr: 'Gerente de palco (técnico)',
+    whatsappPref: 'WhatsApp preferido',
+    call: 'Ligar ↗',
+    travel: 'Viagem',
+    checkInNotice: 'Faça check-in no <strong>The Inn</strong> primeiro — pegue as chaves do hotel, pulseiras e orientações. Não vá ao hotel primeiro.',
+    arrival: 'Chegada',
+    arrivalSub: 'Transfer do aeroporto Newark EWR',
+    parking: 'Estacionamento',
+    parkingMain: 'Área da equipe',
+    parkingSub: 'Em frente ao The Inn',
+    departure: 'Partida',
+    departureSub: 'Transfer para o aeroporto Newark EWR',
+    wristband: 'Pulseira amarela = bebidas grátis o fim de semana todo. Suas fichas de refeição são válidas em todos os vendedores.',
+    addresses: 'Endereços',
+    venue: 'Local',
+    hotel: 'Hotel',
+    maps: 'Mapa ↗',
+    shuttle: 'Horários do transfer',
+    shuttleCampBtn: 'Camp → Hotel',
+    shuttleHotelBtn: 'Hotel → Camp',
+    shuttleNote: 'Parte do estacionamento da equipe em frente ao The Inn.',
+    food: 'Alimentação — tenda de refeições salvo indicação',
+    thursday: 'Quinta-feira',
+    friday: 'Sexta-feira',
+    saturday: 'Sábado',
+    sunday: 'Domingo',
+    breakfast: 'Café da manhã',
+    lunch: 'Almoço',
+    dinner: 'Jantar',
+    coffee: 'Café',
+    barHours: 'Horário do bar',
+    morning: 'Manhã',
+    bagels: 'Bagels e frutas no The Inn',
+    foodNote: 'Lanches, chá e café disponíveis o fim de semana todo nos bastidores do The Inn.',
+    printBtn: '⬇ Imprimir ficha do artista',
+    footerContact: 'Dúvidas? <a href="tel:+12015550182">WhatsApp Leo · +1 (201) 555-0182</a>',
+  },
+  ja: {
+    eyebrow: 'アーティスト / クルーシート · 2026',
+    setTime: 'セット時間',
+    soundCheck: 'サウンドチェック',
+    stageNote: '⚠ セット開始の20分前にはステージにいてください。',
+    contacts: '担当スタッフ',
+    roleArtistCare: 'アーティストケア · インキーパー',
+    roleDriver: 'ドライバー',
+    roleStageMgr: 'ステージマネージャー（技術）',
+    whatsappPref: 'WhatsApp 推奨',
+    call: '電話 ↗',
+    travel: '移動',
+    checkInNotice: 'まず <strong>The Inn</strong> でチェックイン — ホテルの鍵・リストバンド・オリエンテーションを受け取ってください。ホテルに直接行かないでください。',
+    arrival: '到着',
+    arrivalSub: 'ニューアーク空港（EWR）より送迎',
+    parking: '駐車場',
+    parkingMain: 'スタッフ用駐車場',
+    parkingSub: 'The Inn 前',
+    departure: '出発',
+    departureSub: 'ニューアーク空港（EWR）まで送迎',
+    wristband: '黄色のリストバンドで週末中のお飲み物が無料です。食事チケットは全フードベンダーでご利用いただけます。',
+    addresses: '住所',
+    venue: '会場',
+    hotel: 'ホテル',
+    maps: '地図 ↗',
+    shuttle: 'シャトルスケジュール',
+    shuttleCampBtn: 'キャンプ → ホテル',
+    shuttleHotelBtn: 'ホテル → キャンプ',
+    shuttleNote: 'The Inn 前のスタッフ駐車場より出発。',
+    food: '食事 — 特記なき限り食事テントにて',
+    thursday: '木曜日',
+    friday: '金曜日',
+    saturday: '土曜日',
+    sunday: '日曜日',
+    breakfast: '朝食',
+    lunch: '昼食',
+    dinner: '夕食',
+    coffee: 'コーヒー',
+    barHours: 'バー営業時間',
+    morning: '朝',
+    bagels: 'ベーグル＆フルーツ（The Inn にて）',
+    foodNote: 'スナック・お茶・コーヒーは週末中ずっと The Inn のバックステージでご用意しています。',
+    printBtn: '⬇ アーティストシートを印刷',
+    footerContact: 'ご質問は <a href="tel:+12015550182">WhatsApp Leo · +1 (201) 555-0182</a>',
+  }
+};
+
+function setLang(lang) {
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + lang).classList.add('active');
+  document.documentElement.lang = lang;
+}
+
+function switchTab(dir) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + dir).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>
