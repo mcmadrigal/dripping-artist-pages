@@ -37,15 +37,20 @@ body { background: var(--cream); color: var(--ink); font-family: 'DM Mono', mono
 .admin-body { padding: 24px 20px; max-width: 480px; margin: 0 auto; }
 .admin-section-title { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--admin-border); display: flex; justify-content: space-between; align-items: center; }
 .artist-list { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
+.last-updated-bar { display: flex; flex-direction: column; gap: 3px; margin-bottom: 14px; padding: 10px 14px; background: var(--admin-surface); border: 1px solid var(--admin-border); font-size: 10px; color: rgba(255,255,255,0.3); }
+.last-updated-bar span { display: block; }
+.last-updated-bar strong { color: rgba(255,255,255,0.5); }
 .artist-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: var(--admin-surface); border: 1px solid var(--admin-border); cursor: pointer; gap: 12px; transition: border-color 0.15s; }
 .artist-row:hover { border-color: rgba(200,255,0,0.3); }
 .artist-row.has-data { border-left: 2px solid var(--accent); }
-.ar-name { font-size: 13px; color: var(--white); flex: 1; }
-.ar-status { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
-.ar-status.done { color: var(--accent); }
-.ar-status.partial { color: #FFD700; }
-.ar-status.empty { color: rgba(255,255,255,0.2); }
-.ar-chevron { color: rgba(255,255,255,0.2); font-size: 14px; }
+.ar-left { flex: 1; min-width: 0; }
+.ar-name { font-size: 13px; color: var(--white); display: block; margin-bottom: 3px; }
+.ar-link { font-size: 10px; color: rgba(200,255,0,0.4); font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+.ar-pills { display: flex; gap: 3px; flex-shrink: 0; }
+.ar-pill { font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 6px; border: 1px solid; }
+.ar-pill.ok { color: var(--accent); border-color: rgba(200,255,0,0.3); }
+.ar-pill.miss { color: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.06); }
+.ar-chevron { color: rgba(255,255,255,0.2); font-size: 14px; margin-left: 4px; }
 .edit-panel { display: none; }
 .edit-panel.active { display: block; }
 .back-btn { display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); cursor: pointer; margin-bottom: 20px; background: none; border: none; padding: 0; }
@@ -79,26 +84,6 @@ body { background: var(--cream); color: var(--ink); font-family: 'DM Mono', mono
 .rain-banner { background: rgba(200,255,0,0.08); border: 1px solid rgba(200,255,0,0.3); padding: 10px 14px; margin-bottom: 16px; font-size: 11px; color: var(--accent); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .rain-toggle-btn { background: var(--accent); color: var(--black); border: none; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; cursor: pointer; white-space: nowrap; }
 .rain-toggle-btn.active { background: #ff4444; color: white; }
-
-/* ══ MASTER OVERVIEW ══ */
-#overview-panel { display: none; }
-#overview-panel.active { display: block; }
-.overview-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 20px; }
-.stat-card { background: var(--admin-surface); border: 1px solid var(--admin-border); padding: 12px 14px; text-align: center; }
-.stat-num { font-family: 'DM Sans', sans-serif; font-size: 28px; font-weight: 300; line-height: 1; margin-bottom: 4px; }
-.stat-num.green { color: var(--accent); }
-.stat-num.yellow { color: #FFD700; }
-.stat-num.dim { color: rgba(255,255,255,0.2); }
-.stat-label { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
-.overview-list { display: flex; flex-direction: column; gap: 2px; }
-.ov-row { display: flex; align-items: center; padding: 10px 14px; background: var(--admin-surface); border: 1px solid var(--admin-border); gap: 10px; }
-.ov-row.complete { border-left: 2px solid var(--accent); }
-.ov-row.partial { border-left: 2px solid #FFD700; }
-.ov-name { font-size: 12px; color: var(--white); flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.ov-pills { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
-.ov-pill { font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 6px; border: 1px solid; }
-.ov-pill.ok { color: var(--accent); border-color: rgba(200,255,0,0.3); }
-.ov-pill.miss { color: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.08); }
 
 /* ══ ARTIST VIEW ══ */
 #artist-view { max-width: 430px; margin: 0 auto; padding-bottom: 40px; min-height: 100vh; }
@@ -230,10 +215,6 @@ footer { padding: 24px 20px; text-align: center; }
 <div id="admin-view" class="view active">
   <div class="admin-header">
     <div class="admin-logo">Dripping</div>
-    <div class="admin-nav">
-      <button class="admin-nav-btn active" id="nav-artists" onclick="showAdminPanel('artists')">Artists</button>
-      <button class="admin-nav-btn" id="nav-overview" onclick="showAdminPanel('overview')">Overview</button>
-    </div>
     <div class="admin-badge">Admin</div>
   </div>
   <div class="admin-body">
@@ -243,18 +224,15 @@ footer { padding: 24px 20px; text-align: center; }
       <div class="admin-section-title">
         <span>2026 Artists</span>
       </div>
+      <div class="last-updated-bar" id="last-updated-bar">
+        <span id="lu-raph"></span>
+        <span id="lu-deploy"></span>
+      </div>
       <div class="rain-banner" id="rain-banner">
         <span id="rain-status-text">☁ Rain plan: <strong>OFF</strong></span>
         <button class="rain-toggle-btn" id="rain-toggle-btn" onclick="toggleRainPlan()">Activate</button>
       </div>
       <div class="artist-list" id="artist-list"></div>
-    </div>
-
-    <!-- OVERVIEW PANEL -->
-    <div id="overview-panel">
-      <div class="admin-section-title">Status Overview</div>
-      <div class="overview-stats" id="overview-stats"></div>
-      <div class="overview-list" id="overview-list"></div>
     </div>
 
     <!-- EDIT PANEL -->
@@ -698,7 +676,8 @@ const PHOTOGRAPHERS = {
 const RAIN_STAGES = ['Lakeside', 'The Outside Inn', 'Hammock Grove'];
 const ARTISTS = [
   {name:'Ash Fure',slug:'ash-fure'},{name:'Ayanna Heaven',slug:'ayanna-heaven'},
-  {name:'Badsista',slug:'badsista'},{name:'Black Decelerant',slug:'black-decelerant'},
+  {name:'Badsista',slug:'badsista'},{name:'Bendik Giske',slug:'bendik-giske'},
+  {name:'Black Decelerant',slug:'black-decelerant'},
   {name:'Breadwoman',slug:'breadwoman'},{name:'Buttechno / Pavel Milyakov',slug:'pavel-milyakov'},
   {name:'C. Lavender',slug:'c-lavender'},{name:'Choke Hole',slug:'choke-hole'},
   {name:'DJ Bobby Beethoven',slug:'dj-bobby-beethoven'},{name:'DJ Manny',slug:'dj-manny'},
@@ -719,9 +698,6 @@ const ARTISTS = [
   {name:'Toki Fuko',slug:'toki-fuko'},{name:'Zi!',slug:'zi'},
   {name:'Sonic Mobile: Upsammy',slug:'sonic-mobile-upsammy'},
   {name:'Workshop: Alex Tatarsky',slug:'workshop-alex-tatarsky'},
-  {name:'Sound | One-Source Productions',slug:'sound-one-source'},
-  {name:'Lighting Design | GUMGUM Studio',slug:'gumgum-studio'},
-  {name:'Lighting Design | Waldo Walle',slug:'waldo-walle'},
 ];
 
 // ── TRANSLATIONS ──
@@ -773,62 +749,18 @@ async function loadAll() {
   } catch (e) {}
 }
 
-// ── ADMIN NAVIGATION ──
-function showAdminPanel(panel) {
-  document.getElementById('nav-artists').classList.toggle('active', panel === 'artists');
-  document.getElementById('nav-overview').classList.toggle('active', panel === 'overview');
-  document.getElementById('list-panel').style.display = panel === 'artists' ? 'block' : 'none';
-  document.getElementById('edit-panel').classList.remove('active');
-  const ov = document.getElementById('overview-panel');
-  ov.classList.toggle('active', panel === 'overview');
-  if (panel === 'overview') renderOverview();
-}
-
-// ── OVERVIEW ──
+// ── COMPLETENESS ──
 function getCompleteness(d) {
   if (!d) return { score: 0, fields: {} };
   const fields = {
     set: !!(d.setday && d.settime && d.stage),
     check: !!(d.checkday && d.checktime),
-    staff: !!(d.innkeeper),
+    staff: !!(d.stagemgr),
     travel: !!(d.arrDay && d.depDay),
     lodging: !!(d.lodging),
   };
   const score = Object.values(fields).filter(Boolean).length;
   return { score, fields };
-}
-
-function renderOverview() {
-  const total = ARTISTS.length;
-  let complete = 0, partial = 0, empty = 0;
-  ARTISTS.forEach(a => {
-    const { score } = getCompleteness(artistData[a.slug]);
-    if (score === 5) complete++;
-    else if (score > 0) partial++;
-    else empty++;
-  });
-
-  document.getElementById('overview-stats').innerHTML = `
-    <div class="stat-card"><div class="stat-num green">${complete}</div><div class="stat-label">Ready</div></div>
-    <div class="stat-card"><div class="stat-num yellow">${partial}</div><div class="stat-label">Partial</div></div>
-    <div class="stat-card"><div class="stat-num dim">${empty}</div><div class="stat-label">Empty</div></div>
-  `;
-
-  document.getElementById('overview-list').innerHTML = ARTISTS.map(a => {
-    const { score, fields } = getCompleteness(artistData[a.slug]);
-    const cls = score === 5 ? 'complete' : score > 0 ? 'partial' : '';
-    const pill = (label, ok) => `<span class="ov-pill ${ok ? 'ok' : 'miss'}">${label}</span>`;
-    return `<div class="ov-row ${cls}">
-      <span class="ov-name">${a.name}</span>
-      <div class="ov-pills">
-        ${pill('Set', fields.set)}
-        ${pill('Check', fields.check)}
-        ${pill('Staff', fields.staff)}
-        ${pill('Travel', fields.travel)}
-        ${pill('Lodging', fields.lodging)}
-      </div>
-    </div>`;
-  }).join('');
 }
 
 // ── RAIN PLAN ──
@@ -853,28 +785,57 @@ function updateRainBanner() {
 }
 
 // ── ADMIN: ARTIST LIST ──
+const DEPLOY_TIME = new Date().toLocaleString('en-US', {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+
 function renderArtistList() {
   const list = document.getElementById('artist-list');
+  const pill = (label, ok) => `<span class="ar-pill ${ok ? 'ok' : 'miss'}">${label}</span>`;
   list.innerHTML = ARTISTS.map(a => {
     const d = artistData[a.slug];
-    const { score } = getCompleteness(d);
-    const statusCls = score === 5 ? 'done' : score > 0 ? 'partial' : 'empty';
-    const statusTxt = score === 5 ? '✓ ready' : score > 0 ? '◑ partial' : '—';
-    return `<div class="artist-row ${score > 0 ? 'has-data' : ''}" onclick="openArtist('${a.slug}','${a.name.replace(/'/g,"\\'")}')">
-      <span class="ar-name">${a.name}</span>
-      <span class="ar-status ${statusCls}">${statusTxt}</span>
+    const { fields } = getCompleteness(d);
+    const hasAny = d && (d.setday || d.arrDay || d.stagemgr);
+    const artistUrl = `${window.location.origin}/?artist=${a.slug}`;
+    return `<div class="artist-row ${hasAny ? 'has-data' : ''}" onclick="openArtist('${a.slug}','${a.name.replace(/'/g,"\\'")}')">
+      <div class="ar-left">
+        <span class="ar-name">${a.name}</span>
+        <span class="ar-link">${artistUrl}</span>
+      </div>
+      <div class="ar-pills">
+        ${pill('Set', fields.set)}
+        ${pill('Check', fields.check)}
+        ${pill('Staff', fields.staff)}
+        ${pill('Travel', fields.travel)}
+        ${pill('Lodging', fields.lodging)}
+      </div>
       <span class="ar-chevron">›</span>
     </div>`;
   }).join('');
   updateRainBanner();
+  updateLastUpdated();
+}
+
+function updateLastUpdated() {
+  const luBar = document.getElementById('last-updated-bar');
+  const raphEl = document.getElementById('lu-raph');
+  const deployEl = document.getElementById('lu-deploy');
+  if (!luBar) return;
+  // Get most recent save timestamp across all artists
+  let lastSave = null;
+  ARTISTS.forEach(a => {
+    const d = artistData[a.slug];
+    if (d && d._savedAt) {
+      if (!lastSave || d._savedAt > lastSave) lastSave = d._savedAt;
+    }
+  });
+  raphEl.innerHTML = lastSave
+    ? `<strong>Last input by Raph:</strong> ${new Date(lastSave).toLocaleString('en-US', {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}`
+    : `<strong>Last input by Raph:</strong> No saves yet`;
+  deployEl.innerHTML = `<strong>Last deployed by M.C.:</strong> ${DEPLOY_TIME}`;
 }
 
 function showList() {
   document.getElementById('list-panel').style.display = 'block';
   document.getElementById('edit-panel').classList.remove('active');
-  document.getElementById('nav-artists').classList.add('active');
-  document.getElementById('nav-overview').classList.remove('active');
-  document.getElementById('overview-panel').classList.remove('active');
 }
 
 async function openArtist(slug, name) {
@@ -889,7 +850,6 @@ async function openArtist(slug, name) {
   document.getElementById('f-checkday').value = d.checkday || '';
   document.getElementById('f-checktime').value = d.checktime || '';
   document.getElementById('f-checkstage').value = d.checkstage || '';
-  document.getElementById('f-innkeeper').value = d.innkeeper || '';
   document.getElementById('f-driver').value = d.driver || '';
   document.getElementById('f-stagemgr').value = d.stagemgr || '';
   document.getElementById('f-photographer').value = d.photographer || '';
@@ -982,6 +942,7 @@ async function saveArtist() {
     notes: document.getElementById('f-notes').value,
     langs: activeLangs,
     defaultLang: document.getElementById('f-defaultlang').value,
+    _savedAt: new Date().toISOString(),
   };
   await saveData(currentArtistSlug, d);
   btn.disabled = false;
@@ -1130,6 +1091,20 @@ function renderPrintView(slug) {
 // ── INIT ──
 async function init() {
   await loadAll();
+
+  // Seed Bendik if not already in DB
+  if (!artistData['bendik-giske']) {
+    await saveData('bendik-giske', {
+      name: 'Bendik Giske', setday: 'Friday', settime: '7:30 PM', stage: 'Hammock Grove',
+      checkday: 'Friday', checktime: '5:30 PM', checkstage: 'Hammock Grove',
+      rainStage: 'The Barn', rainNote: 'Rain plan: moved to The Barn',
+      arrDay: '', arrTime: '', arrTransport: '',
+      depDay: '', depTime: '', depTransport: '',
+      tokens: '', lodging: 'hotel', langs: ['en'], defaultLang: 'en',
+      notes: 'Norwegian artist. No travel form submitted yet.',
+    });
+  }
+
   renderArtistList();
 
   const urlParams = new URLSearchParams(window.location.search);
