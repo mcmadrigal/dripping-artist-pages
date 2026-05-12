@@ -51,8 +51,8 @@ body { background: var(--cream); color: var(--ink); font-family: 'DM Mono', mono
 .ar-pill.ok { color: var(--accent); border-color: rgba(200,255,0,0.3); }
 .ar-pill.miss { color: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.06); }
 .ar-chevron { color: rgba(255,255,255,0.2); font-size: 14px; margin-left: 4px; }
-.edit-panel { display: none; }
-.edit-panel.active { display: block; }
+.edit-panel { display: none !important; }
+.edit-panel.open { display: block !important; }
 .back-btn { display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); cursor: pointer; margin-bottom: 20px; background: none; border: none; padding: 0; }
 .back-btn:hover { color: var(--white); }
 .edit-artist-name { font-family: 'DM Sans', sans-serif; font-size: 36px; font-weight: 300; letter-spacing: -1px; color: var(--white); margin-bottom: 24px; line-height: 1; }
@@ -78,7 +78,12 @@ body { background: var(--cream); color: var(--ink); font-family: 'DM Mono', mono
 .btn-save:disabled { opacity: 0.5; cursor: not-allowed; }
 .btn-print { background: transparent; color: var(--white); border: 1px solid var(--admin-border); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 18px; cursor: pointer; }
 .btn-view { background: transparent; color: var(--accent); border: 1px solid rgba(200,255,0,0.3); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 18px; cursor: pointer; }
-.save-confirm { font-size: 11px; color: var(--accent); text-align: center; padding: 8px 0; height: 28px; }
+.artist-share-link { margin-bottom: 20px; }
+.artist-share-link a { font-size: 11px; color: rgba(200,255,0,0.6); font-style: italic; word-break: break-all; text-decoration: none; }
+.artist-share-link a:hover { color: var(--accent); }
+.copy-link-btn { margin-left: 8px; background: transparent; border: 1px solid var(--admin-border); color: rgba(255,255,255,0.3); font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; padding: 3px 8px; cursor: pointer; vertical-align: middle; }
+.copy-link-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
+.copy-link-btn.copied { color: var(--accent); border-color: rgba(200,255,0,0.3); }
 .staff-preview { font-size: 11px; color: rgba(255,255,255,0.3); font-style: italic; margin-top: 4px; padding: 4px 8px; background: rgba(255,255,255,0.03); border-left: 1px solid var(--admin-border); }
 .lang-sep { color: rgba(255,255,255,0.15); font-size: 11px; }
 .rain-banner { background: rgba(200,255,0,0.08); border: 1px solid rgba(200,255,0,0.3); padding: 10px 14px; margin-bottom: 16px; font-size: 11px; color: var(--accent); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
@@ -217,28 +222,28 @@ footer { padding: 24px 20px; text-align: center; }
     <div class="admin-logo">Dripping</div>
     <div class="admin-badge">Admin</div>
   </div>
-  <div class="admin-body">
 
-    <!-- LIST PANEL -->
-    <div id="list-panel">
-      <div class="admin-section-title">
-        <span>2026 Artists</span>
-      </div>
-      <div class="last-updated-bar" id="last-updated-bar">
-        <span id="lu-raph"></span>
-        <span id="lu-deploy"></span>
-      </div>
-      <div class="rain-banner" id="rain-banner">
-        <span id="rain-status-text">☁ Rain plan: <strong>OFF</strong></span>
-        <button class="rain-toggle-btn" id="rain-toggle-btn" onclick="toggleRainPlan()">Activate</button>
-      </div>
-      <div class="artist-list" id="artist-list"></div>
+  <!-- LIST PANEL - shown by default -->
+  <div id="list-panel" class="admin-body">
+    <div class="admin-section-title">
+      <span>2026 Artists</span>
     </div>
+    <div class="last-updated-bar" id="last-updated-bar">
+      <span id="lu-raph"></span>
+      <span id="lu-deploy"></span>
+    </div>
+    <div class="rain-banner" id="rain-banner">
+      <span id="rain-status-text">☁ Rain plan: <strong>OFF</strong></span>
+      <button class="rain-toggle-btn" id="rain-toggle-btn" onclick="toggleRainPlan()">Activate</button>
+    </div>
+    <div class="artist-list" id="artist-list"></div>
+  </div>
 
-    <!-- EDIT PANEL -->
-    <div id="edit-panel" class="edit-panel">
+  <!-- EDIT PANEL - hidden by default, shown when artist clicked -->
+  <div id="edit-panel" class="admin-body" style="display:none">
       <button class="back-btn" onclick="showList()">← All artists</button>
       <div class="edit-artist-name" id="edit-name"></div>
+      <div class="artist-share-link" id="artist-share-link"></div>
 
       <div class="form-divider">Performance</div>
       <div class="form-row">
@@ -504,7 +509,6 @@ footer { padding: 24px 20px; text-align: center; }
         <button class="btn-print" onclick="printArtist()">⬇ Print</button>
         <button class="btn-view" onclick="previewArtist()">View ↗</button>
       </div>
-    </div>
   </div>
 </div>
 
@@ -702,7 +706,7 @@ const ARTISTS = [
 
 // ── TRANSLATIONS ──
 const T = {
-  en:{eyebrow:'Artist / Crew Sheet · 2026',setTime:'Set time',soundCheck:'Sound check',stageNote:'⚠ Please be at stage 20 minutes before your set.',contacts:'Your contacts',travel:'Travel',addresses:'Addresses',checkInNotice:'Check in at <strong>The Inn</strong> first — hotel keys, wristbands & orientation. Do not go to the hotel first.',arrival:'Arrival',parking:'Parking',parkingMain:'Staff lot',parkingSub:'Outside The Inn',departure:'Departure',wristband:'Yellow wristband = free drinks all weekend. Your meal tokens are valid at all food vendors.',venue:'Venue',hotel:'Hotel',lodging:'Lodging',cabin:'Cabin',maps:'Maps ↗',shuttle:'Shuttle schedule',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Departs from staff parking lot outside The Inn.',thursday:'Thursday',friday:'Friday',saturday:'Saturday',sunday:'Sunday',friSat:'Friday – Saturday',satSun:'Saturday – Sunday',breakfast:'Breakfast',lunch:'Lunch',dinner:'Dinner',coffee:'Coffee',barHours:'Bar hours',morning:'Morning',bagels:'Bagels & fruit at The Inn',food:'Food — dining tent unless noted',foodNote:'Snacks, tea & coffee available all weekend backstage at The Inn.',dawnNote:'✦ Final shuttle after dawn concert',lastShuttle:'✦ Last shuttle — hotel checkout at 11am',callBtn:'Call ↗',notStaying:'Not staying locally',rainAlert:'☁ Rain plan active — stage changed'},
+  en:{eyebrow:'2026 Artist',setTime:'Set time',soundCheck:'Sound check',stageNote:'⚠ Please be at stage 20 minutes before your set.',contacts:'Your contacts',travel:'Travel',addresses:'Addresses',checkInNotice:'Check in at <strong>The Inn</strong> first — hotel keys, wristbands & orientation. Do not go to the hotel first.',arrival:'Arrival',parking:'Parking',parkingMain:'Staff lot',parkingSub:'Outside The Inn',departure:'Departure',wristband:'Yellow wristband = free drinks all weekend. Your meal tokens are valid at all food vendors.',venue:'Venue',hotel:'Hotel',lodging:'Lodging',cabin:'Cabin',maps:'Maps ↗',shuttle:'Shuttle schedule',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Departs from staff parking lot outside The Inn.',thursday:'Thursday',friday:'Friday',saturday:'Saturday',sunday:'Sunday',friSat:'Friday – Saturday',satSun:'Saturday – Sunday',breakfast:'Breakfast',lunch:'Lunch',dinner:'Dinner',coffee:'Coffee',barHours:'Bar hours',morning:'Morning',bagels:'Bagels & fruit at The Inn',food:'Food — dining tent unless noted',foodNote:'Snacks, tea & coffee available all weekend backstage at The Inn.',dawnNote:'✦ Final shuttle after dawn concert',lastShuttle:'✦ Last shuttle — hotel checkout at 11am',callBtn:'Call ↗',notStaying:'Not staying locally',rainAlert:'☁ Rain plan active — stage changed'},
   pt:{eyebrow:'Ficha do Artista / Equipe · 2026',setTime:'Horário do set',soundCheck:'Passagem de som',stageNote:'⚠ Por favor, esteja no palco 20 minutos antes do seu set.',contacts:'Seus contatos',travel:'Viagem',addresses:'Endereços',checkInNotice:'Faça check-in no <strong>The Inn</strong> primeiro — chaves do hotel, pulseiras e orientações. Não vá ao hotel primeiro.',arrival:'Chegada',parking:'Estacionamento',parkingMain:'Área da equipe',parkingSub:'Em frente ao The Inn',departure:'Partida',wristband:'Pulseira amarela = bebidas grátis o fim de semana todo. Fichas de refeição válidas em todos os vendedores.',venue:'Local',hotel:'Hotel',lodging:'Hospedagem',cabin:'Cabana',maps:'Mapa ↗',shuttle:'Horários do transfer',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Parte do estacionamento da equipe em frente ao The Inn.',thursday:'Quinta-feira',friday:'Sexta-feira',saturday:'Sábado',sunday:'Domingo',friSat:'Sexta – Sábado',satSun:'Sábado – Domingo',breakfast:'Café da manhã',lunch:'Almoço',dinner:'Jantar',coffee:'Café',barHours:'Horário do bar',morning:'Manhã',bagels:'Bagels e frutas no The Inn',food:'Alimentação — tenda de refeições salvo indicação',foodNote:'Lanches, chá e café disponíveis nos bastidores do The Inn durante todo o fim de semana.',dawnNote:'✦ Último transfer após o concerto ao amanhecer',lastShuttle:'✦ Último transfer — checkout do hotel às 11h',callBtn:'Ligar ↗',notStaying:'Sem hospedagem local',rainAlert:'☁ Plano de chuva ativo — palco alterado'},
   ja:{eyebrow:'アーティスト / クルーシート · 2026',setTime:'セット時間',soundCheck:'サウンドチェック',stageNote:'⚠ セット開始の20分前にはステージにいてください。',contacts:'担当スタッフ',travel:'移動',addresses:'住所',checkInNotice:'まず <strong>The Inn</strong> でチェックイン — ホテルの鍵・リストバンド・オリエンテーションを受け取ってください。ホテルに直接行かないでください。',arrival:'到着',parking:'駐車場',parkingMain:'スタッフ用駐車場',parkingSub:'The Inn 前',departure:'出発',wristband:'黄色のリストバンドで週末中のお飲み物が無料です。食事チケットは全フードベンダーでご利用いただけます。',venue:'会場',hotel:'ホテル',lodging:'宿泊',cabin:'キャビン',maps:'地図 ↗',shuttle:'シャトルスケジュール',shuttleCampBtn:'キャンプ → ホテル',shuttleHotelBtn:'ホテル → キャンプ',shuttleNote:'The Inn 前のスタッフ駐車場より出発。',thursday:'木曜日',friday:'金曜日',saturday:'土曜日',sunday:'日曜日',friSat:'金曜日 – 土曜日',satSun:'土曜日 – 日曜日',breakfast:'朝食',lunch:'昼食',dinner:'夕食',coffee:'コーヒー',barHours:'バー営業時間',morning:'朝',bagels:'ベーグル＆フルーツ（The Inn にて）',food:'食事 — 特記なき限り食事テントにて',foodNote:'スナック・お茶・コーヒーは週末中ずっと The Inn のバックステージでご用意しています。',dawnNote:'✦ 夜明けコンサート後の最終シャトル',lastShuttle:'✦ 最終シャトル — ホテルチェックアウトは11時',callBtn:'電話 ↗',notStaying:'現地宿泊なし',rainAlert:'☁ 雨天プラン発動 — ステージ変更'},
   es:{eyebrow:'Ficha Artista / Equipo · 2026',setTime:'Hora del set',soundCheck:'Prueba de sonido',stageNote:'⚠ Por favor, esté en el escenario 20 minutos antes de su set.',contacts:'Tus contactos',travel:'Viaje',addresses:'Direcciones',checkInNotice:'Regístrate primero en <strong>The Inn</strong> — llaves del hotel, pulseras y orientación. No vayas directamente al hotel.',arrival:'Llegada',parking:'Estacionamiento',parkingMain:'Estacionamiento del personal',parkingSub:'Frente al The Inn',departure:'Salida',wristband:'Pulsera amarilla = bebidas gratis todo el fin de semana. Tus fichas de comida son válidas en todos los vendedores.',venue:'Lugar',hotel:'Hotel',lodging:'Alojamiento',cabin:'Cabaña',maps:'Mapa ↗',shuttle:'Horario del shuttle',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Sale desde el estacionamiento del personal frente a The Inn.',thursday:'Jueves',friday:'Viernes',saturday:'Sábado',sunday:'Domingo',friSat:'Viernes – Sábado',satSun:'Sábado – Domingo',breakfast:'Desayuno',lunch:'Almuerzo',dinner:'Cena',coffee:'Café',barHours:'Horario del bar',morning:'Mañana',bagels:'Bagels y fruta en The Inn',food:'Comida — carpa de comedor salvo indicación',foodNote:'Snacks, té y café disponibles todo el fin de semana en el backstage de The Inn.',dawnNote:'✦ Último shuttle tras el concierto del amanecer',lastShuttle:'✦ Último shuttle — checkout del hotel a las 11am',callBtn:'Llamar ↗',notStaying:'Sin alojamiento local',rainAlert:'☁ Plan de lluvia activo — escenario cambiado'},
@@ -831,14 +835,16 @@ function updateLastUpdated() {
 
 function showList() {
   document.getElementById('list-panel').style.display = 'block';
-  document.getElementById('edit-panel').classList.remove('active');
+  document.getElementById('edit-panel').style.display = 'none';
 }
 
 async function openArtist(slug, name) {
   currentArtistSlug = slug;
   document.getElementById('list-panel').style.display = 'none';
-  document.getElementById('edit-panel').classList.add('active');
+  document.getElementById('edit-panel').style.display = 'block';
   document.getElementById('edit-name').textContent = name;
+  const shareUrl = `https://dripping2026-artist-pages.vercel.app/?artist=${slug}`;
+  document.getElementById('artist-share-link').innerHTML = `<a href="${shareUrl}" target="_blank">${shareUrl}</a><button class="copy-link-btn" onclick="copyLink('${shareUrl}', this)">Copy</button>`;
   const d = await loadData(slug) || {};
   document.getElementById('f-setday').value = d.setday || '';
   document.getElementById('f-settime').value = d.settime || '';
@@ -867,6 +873,14 @@ async function openArtist(slug, name) {
   updateDefaultLangDropdown(d.defaultLang || 'en');
   document.getElementById('save-confirm').textContent = '';
   previewStaff();
+}
+
+function copyLink(url, btn) {
+  navigator.clipboard.writeText(url).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
 }
 
 function stageChange() {
