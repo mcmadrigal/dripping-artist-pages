@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -794,12 +795,8 @@ function renderArtistList() {
     const d = artistData[a.slug];
     const { fields } = getCompleteness(d);
     const hasAny = d && (d.setday || d.arrDay || d.stagemgr);
-    const artistUrl = `${window.location.origin}/?artist=${a.slug}`;
     return `<div class="artist-row ${hasAny ? 'has-data' : ''}" onclick="openArtist('${a.slug}','${a.name.replace(/'/g,"\\'")}')">
-      <div class="ar-left">
-        <span class="ar-name">${a.name}</span>
-        <span class="ar-link">${artistUrl}</span>
-      </div>
+      <span class="ar-name">${a.name}</span>
       <div class="ar-pills">
         ${pill('Set', fields.set)}
         ${pill('Check', fields.check)}
@@ -1090,11 +1087,14 @@ function renderPrintView(slug) {
 
 // ── INIT ──
 async function init() {
+  // Render list immediately with whatever we have, then reload
+  renderArtistList();
+
   await loadAll();
 
-  // Seed Bendik if not already in DB
+  // Seed Bendik in background if not already in DB
   if (!artistData['bendik-giske']) {
-    await saveData('bendik-giske', {
+    saveData('bendik-giske', {
       name: 'Bendik Giske', setday: 'Friday', settime: '7:30 PM', stage: 'Hammock Grove',
       checkday: 'Friday', checktime: '5:30 PM', checkstage: 'Hammock Grove',
       rainStage: 'The Barn', rainNote: 'Rain plan: moved to The Barn',
@@ -1102,7 +1102,7 @@ async function init() {
       depDay: '', depTime: '', depTransport: '',
       tokens: '', lodging: 'hotel', langs: ['en'], defaultLang: 'en',
       notes: 'Norwegian artist. No travel form submitted yet.',
-    });
+    }); // no await — runs in background
   }
 
   renderArtistList();
