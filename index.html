@@ -36,7 +36,8 @@ body { background: var(--cream); color: var(--ink); font-family: 'DM Mono', mono
 .admin-nav { display: flex; gap: 6px; }
 .admin-nav-btn { background: transparent; color: rgba(255,255,255,0.4); border: 1px solid var(--admin-border); font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; cursor: pointer; transition: all 0.15s; }
 .admin-nav-btn.active { background: var(--accent); color: var(--black); border-color: var(--accent); }
-.admin-body { padding: 24px 20px; max-width: 480px; margin: 0 auto; width: 100%; overflow: hidden; }
+.admin-body { padding: 24px 20px; max-width: 480px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+.admin-body * { max-width: 100%; box-sizing: border-box; }
 .admin-section-title { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--admin-border); display: flex; justify-content: space-between; align-items: center; }
 .artist-list { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
 .last-updated-bar { display: flex; flex-direction: column; gap: 3px; margin-bottom: 14px; padding: 10px 14px; background: var(--admin-surface); border: 1px solid var(--admin-border); font-size: 10px; color: rgba(255,255,255,0.3); }
@@ -365,6 +366,8 @@ footer { padding: 24px 20px; text-align: center; }
         </select>
         <div class="staff-preview" id="photographer-preview"></div>
       </div>
+      <div class="form-group">
+        <label class="form-label">Stage manager (tech)</label>
         <select class="form-select" id="f-stagemgr" onchange="previewStaff()">
           <option value="">Select stage manager</option>
           <option value="alex">Alex Rapp · +1 (347) 496-1740</option>
