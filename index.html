@@ -364,15 +364,25 @@ footer { padding: 24px 20px; text-align: center; }
         <div class="staff-preview" id="driver-preview"></div>
       </div>
       <div class="form-group">
-        <label class="form-label">Stage manager (tech)</label>
+        <label class="form-label">Photographer</label>
+        <select class="form-select" id="f-photographer" onchange="previewStaff()">
+          <option value="">No photographer assigned</option>
+          <option value="guario">Guario · +1 (781) 632-3066</option>
+          <option value="nikki">Nikki · +1 (305) 283-3960</option>
+          <option value="mar">Mar · +1 (707) 953-1847</option>
+          <option value="sam">Sam · +1 (347) 416-3197</option>
+          <option value="deirdre">Deirdre · +1 (917) 500-6418</option>
+        </select>
+        <div class="staff-preview" id="photographer-preview"></div>
+      </div>
         <select class="form-select" id="f-stagemgr" onchange="previewStaff()">
           <option value="">Select stage manager</option>
-          <option value="alex">Alex Rapp</option>
-          <option value="jade">Jade</option>
-          <option value="michael">Michael King</option>
-          <option value="ramses">Ramses</option>
-          <option value="rey">Rey</option>
-          <option value="sphente">Sphente</option>
+          <option value="alex">Alex Rapp · +1 (347) 496-1740</option>
+          <option value="jade">Jade · +1 (617) 784-0765</option>
+          <option value="michael">Michael King · +1 (718) 213-8467</option>
+          <option value="ramses">Ramses · +1 (646) 243-0556</option>
+          <option value="rey">Rey · +1 (917) 287-4235</option>
+          <option value="sphente">Sphente · +1 (773) 370-7260</option>
         </select>
         <div class="staff-preview" id="stagemgr-preview"></div>
       </div>
@@ -559,7 +569,6 @@ footer { padding: 24px 20px; text-align: center; }
     <div class="sec-header"><div class="sec-icon">✈</div><div class="sec-title" data-i18n="travel">Travel</div></div>
     <div class="notice" data-i18n="checkInNotice">Check in at <strong>The Inn</strong> first — hotel keys, wristbands & orientation. Do not go to the hotel first.</div>
     <div id="av-travel"></div>
-    <div class="wb-row"><div class="wb-dot"></div><div data-i18n="wristband">Yellow wristband = free drinks all weekend. Your meal tokens are valid at all food vendors.</div></div>
   </div>
   <div class="section">
     <div class="sec-header"><div class="sec-icon">📍</div><div class="sec-title" data-i18n="addresses">Addresses</div></div>
@@ -593,10 +602,33 @@ footer { padding: 24px 20px; text-align: center; }
   </div>
   <div class="section">
     <div class="sec-header"><div class="sec-icon">🍽</div><div class="sec-title" data-i18n="food">Food — dining tent unless noted</div></div>
-    <div class="food-day-block"><div class="food-day-label" data-i18n="thursday">Thursday</div><div class="food-item"><span class="f-name">BéBép</span><span class="f-meal" data-i18n="dinner">Dinner</span><span class="f-hours">6 – 10 pm</span></div></div>
-    <div class="food-day-block"><div class="food-day-label" data-i18n="friday">Friday</div><div class="food-item"><span class="f-name">109 Montrose</span><span class="f-meal" data-i18n="coffee">Coffee</span><span class="f-hours">Morning – late</span></div><div class="food-item"><span class="f-name">Dila</span><span class="f-meal" data-i18n="breakfast">Breakfast</span><span class="f-hours">9 am – 1 pm</span></div><div class="food-item"><span class="f-name">Kowloon Baby</span><span class="f-meal" data-i18n="lunch">Lunch</span><span class="f-hours">12 – 4 pm</span></div><div class="food-item"><span class="f-name">Taqueria Ramirez</span><span class="f-meal" data-i18n="dinner">Dinner</span><span class="f-hours">6 – 10 pm</span></div><div class="food-item"><span class="f-name">Dila</span><span class="f-meal" data-i18n="dinner">Dinner</span><span class="f-hours">6 – 10 pm</span></div><div class="food-item"><span class="f-name">Bar — Vegan Onigiri</span><span class="f-meal"></span><span class="f-hours" data-i18n="barHours">Bar hours</span></div></div>
-    <div class="food-day-block"><div class="food-day-label" data-i18n="saturday">Saturday</div><div class="food-item"><span class="f-name">109 Montrose</span><span class="f-meal" data-i18n="coffee">Coffee</span><span class="f-hours">Morning – late</span></div><div class="food-item"><span class="f-name">Kowloon Baby</span><span class="f-meal" data-i18n="breakfast">Breakfast</span><span class="f-hours">9 am – 1 pm</span></div><div class="food-item"><span class="f-name">Kowloon Baby</span><span class="f-meal" data-i18n="lunch">Lunch</span><span class="f-hours">12 – 4 pm</span></div><div class="food-item"><span class="f-name">Wadadli Jerk (lakeside)</span><span class="f-meal" data-i18n="lunch">Lunch</span><span class="f-hours">12 – sold out</span></div><div class="food-item"><span class="f-name">Taqueria Ramirez</span><span class="f-meal" data-i18n="dinner">Dinner</span><span class="f-hours">6 – 10 pm</span></div><div class="food-item"><span class="f-name">Dila</span><span class="f-meal" data-i18n="dinner">Dinner</span><span class="f-hours">6 – 10 pm</span></div></div>
-    <div class="food-day-block"><div class="food-day-label" data-i18n="sunday">Sunday</div><div class="food-item"><span class="f-name">Dila</span><span class="f-meal" data-i18n="breakfast">Breakfast</span><span class="f-hours">9 am – 1 pm</span></div><div class="food-item"><span class="f-name">109 Montrose</span><span class="f-meal" data-i18n="coffee">Coffee</span><span class="f-hours">Morning</span></div><div class="food-item"><span class="f-name" data-i18n="bagels">Bagels & fruit at The Inn</span><span class="f-meal"></span><span class="f-hours" data-i18n="morning">Morning</span></div></div>
+    <div class="wb-row"><div class="wb-dot"></div><div data-i18n="wristband">Yellow wristband = free drinks all weekend. Your meal tokens are valid at all food vendors.</div></div>
+    <div class="food-day-block" style="margin-top:14px"><div class="food-day-label" data-i18n="thursday">Thursday</div><div class="food-item"><span class="f-name">BéBép — Welcome dinner <span style="font-size:10px;color:var(--muted)">(V/VG/GF options)</span></span><span class="f-meal" data-i18n="dinner">Dinner</span><span class="f-hours">6 – 10 pm</span></div></div>
+    <div class="food-day-block"><div class="food-day-label" data-i18n="friday">Friday</div>
+      <div class="food-item"><span class="f-name">109 Montrose <span style="font-size:10px;color:var(--muted)">(V/VG/GF options)</span></span><span class="f-meal" data-i18n="coffee">Coffee</span><span class="f-hours">Morning – late</span></div>
+      <div class="food-item"><span class="f-name">Dila <span style="font-size:10px;color:var(--muted)">(V/GF options)</span></span><span class="f-meal" data-i18n="breakfast">Breakfast</span><span class="f-hours">9 am – 1 pm</span></div>
+      <div class="food-item"><span class="f-name">Wadadli Jerk — Lakeside <span style="font-size:10px;color:var(--muted)">(V/GF options)</span></span><span class="f-meal" data-i18n="lunch">Lunch</span><span class="f-hours">1 – 6 pm</span></div>
+      <div class="food-item"><span class="f-name">Taqueria Ramirez <span style="font-size:10px;color:var(--muted)">(V/VG/GF options)</span></span><span class="f-meal" data-i18n="lunch">Lunch</span><span class="f-hours">1 – 6 pm</span></div>
+      <div class="food-item"><span class="f-name">Dila <span style="font-size:10px;color:var(--muted)">(V/GF options)</span></span><span class="f-meal" data-i18n="dinner">Dinner</span><span class="f-hours">6 – 10 pm</span></div>
+      <div class="food-item"><span class="f-name">Hen House <span style="font-size:10px;color:var(--muted)">(V/GF options)</span></span><span class="f-meal" data-i18n="dinner">Dinner</span><span class="f-hours">6 – 10 pm</span></div>
+      <div class="food-item"><span class="f-name">Offbrand Goods <span style="font-size:10px;color:var(--muted)">(V/VG options)</span></span><span class="f-meal">Late Night</span><span class="f-hours"></span></div>
+      <div class="food-item"><span class="f-name">Bar — Vegan Onigiri <span style="font-size:10px;color:var(--muted)">(VG/GF)</span></span><span class="f-meal"></span><span class="f-hours" data-i18n="barHours">Bar hours</span></div>
+    </div>
+    <div class="food-day-block"><div class="food-day-label" data-i18n="saturday">Saturday</div>
+      <div class="food-item"><span class="f-name">109 Montrose <span style="font-size:10px;color:var(--muted)">(V/VG/GF options)</span></span><span class="f-meal" data-i18n="coffee">Coffee</span><span class="f-hours">Morning – late</span></div>
+      <div class="food-item"><span class="f-name">Taqueria Ramirez <span style="font-size:10px;color:var(--muted)">(V/VG/GF options)</span></span><span class="f-meal" data-i18n="breakfast">Breakfast</span><span class="f-hours">9 am – 1 pm</span></div>
+      <div class="food-item"><span class="f-name">Wadadli Jerk — Open Air <span style="font-size:10px;color:var(--muted)">(V/GF options)</span></span><span class="f-meal" data-i18n="lunch">Lunch</span><span class="f-hours">1 pm – sold out</span></div>
+      <div class="food-item"><span class="f-name">Taqueria Ramirez <span style="font-size:10px;color:var(--muted)">(V/VG/GF options)</span></span><span class="f-meal" data-i18n="lunch">Lunch</span><span class="f-hours">1 – 6 pm</span></div>
+      <div class="food-item"><span class="f-name">Dila <span style="font-size:10px;color:var(--muted)">(V/GF options)</span></span><span class="f-meal" data-i18n="dinner">Dinner</span><span class="f-hours">6 – 10 pm</span></div>
+      <div class="food-item"><span class="f-name">Hen House <span style="font-size:10px;color:var(--muted)">(V/GF options)</span></span><span class="f-meal" data-i18n="dinner">Dinner</span><span class="f-hours">6 – 10 pm</span></div>
+      <div class="food-item"><span class="f-name">Offbrand Goods <span style="font-size:10px;color:var(--muted)">(V/VG options)</span></span><span class="f-meal">Late Night</span><span class="f-hours"></span></div>
+      <div class="food-item"><span class="f-name">Bar — Vegan Onigiri <span style="font-size:10px;color:var(--muted)">(VG/GF)</span></span><span class="f-meal"></span><span class="f-hours" data-i18n="barHours">Bar hours</span></div>
+    </div>
+    <div class="food-day-block"><div class="food-day-label" data-i18n="sunday">Sunday</div>
+      <div class="food-item"><span class="f-name">109 Montrose <span style="font-size:10px;color:var(--muted)">(V/VG/GF options)</span></span><span class="f-meal" data-i18n="coffee">Coffee</span><span class="f-hours">Morning</span></div>
+      <div class="food-item"><span class="f-name">Dila <span style="font-size:10px;color:var(--muted)">(V/GF options)</span></span><span class="f-meal" data-i18n="breakfast">Breakfast</span><span class="f-hours">9 am – 1 pm</span></div>
+      <div class="food-item"><span class="f-name" data-i18n="bagels">Bagels & fruit at The Inn</span><span class="f-meal"></span><span class="f-hours" data-i18n="morning">Morning</span></div>
+    </div>
     <div class="food-note" data-i18n="foodNote">Snacks, tea & coffee available all weekend backstage at The Inn.</div>
   </div>
   <footer>
@@ -655,6 +687,13 @@ const STAGE_MANAGERS = {
   ramses:  { name: 'Ramses',        phone: '+1 (646) 243-0556' },
   rey:     { name: 'Rey',           phone: '+1 (917) 287-4235' },
   sphente: { name: 'Sphente',       phone: '+1 (773) 370-7260' },
+};
+const PHOTOGRAPHERS = {
+  guario:  { name: 'Guario',   phone: '+1 (781) 632-3066' },
+  nikki:   { name: 'Nikki',    phone: '+1 (305) 283-3960' },
+  mar:     { name: 'Mar',      phone: '+1 (707) 953-1847' },
+  sam:     { name: 'Sam',      phone: '+1 (347) 416-3197' },
+  deirdre: { name: 'Deirdre',  phone: '+1 (917) 500-6418' },
 };
 const RAIN_STAGES = ['Lakeside', 'The Outside Inn', 'Hammock Grove'];
 const ARTISTS = [
@@ -853,6 +892,7 @@ async function openArtist(slug, name) {
   document.getElementById('f-innkeeper').value = d.innkeeper || '';
   document.getElementById('f-driver').value = d.driver || '';
   document.getElementById('f-stagemgr').value = d.stagemgr || '';
+  document.getElementById('f-photographer').value = d.photographer || '';
   document.getElementById('f-arr-day').value = d.arrDay || '';
   document.getElementById('f-arr-time').value = d.arrTime || '';
   document.getElementById('f-arr-transport').value = d.arrTransport || '';
@@ -881,12 +921,12 @@ function stageChange() {
 }
 
 function previewStaff() {
-  const ik = document.getElementById('f-innkeeper').value;
   const dr = document.getElementById('f-driver').value;
   const sm = document.getElementById('f-stagemgr').value;
-  document.getElementById('innkeeper-preview').textContent = ik && INNKEEPERS[ik] ? `${INNKEEPERS[ik].name} · ${INNKEEPER_PHONE} · WhatsApp` : '';
+  const ph = document.getElementById('f-photographer').value;
   document.getElementById('driver-preview').textContent = dr && DRIVERS[dr] ? `${DRIVERS[dr].name} · ${DRIVERS[dr].phone}` : '';
   document.getElementById('stagemgr-preview').textContent = sm && STAGE_MANAGERS[sm] ? `${STAGE_MANAGERS[sm].name} · ${STAGE_MANAGERS[sm].phone}` : '';
+  document.getElementById('photographer-preview').textContent = ph && PHOTOGRAPHERS[ph] ? `${PHOTOGRAPHERS[ph].name} · ${PHOTOGRAPHERS[ph].phone}` : '';
 }
 
 function lodgingChange() {
@@ -929,6 +969,7 @@ async function saveArtist() {
     innkeeper: document.getElementById('f-innkeeper').value,
     driver: document.getElementById('f-driver').value,
     stagemgr: document.getElementById('f-stagemgr').value,
+    photographer: document.getElementById('f-photographer').value,
     arrDay: document.getElementById('f-arr-day').value,
     arrTime: document.getElementById('f-arr-time').value,
     arrTransport: document.getElementById('f-arr-transport').value,
@@ -1007,15 +1048,19 @@ function renderArtistView(slug, lang) {
   const ik = { name: 'Artist Care', phone: INNKEEPER_PHONE };
   const dr = d.driver && DRIVERS[d.driver];
   const sm = d.stagemgr && STAGE_MANAGERS[d.stagemgr];
+  const ph = d.photographer && PHOTOGRAPHERS[d.photographer];
   let contactsHtml = '';
   contactsHtml += contactCard('Artist care · innkeeper', ik.name, INNKEEPER_PHONE, t.callBtn||'Call ↗', 'WhatsApp preferred');
   if (dr) contactsHtml += contactCard('Driver', dr.name, dr.phone, t.callBtn||'Call ↗');
   if (sm) contactsHtml += contactCard('Stage manager (tech)', sm.name, sm.phone, t.callBtn||'Call ↗');
+  if (ph) contactsHtml += contactCard('Photographer', ph.name, ph.phone, t.callBtn||'Call ↗');
   document.getElementById('av-contacts').innerHTML = contactsHtml;
 
   let travelHtml = '';
   if (d.arrDay) travelHtml += `<div class="travel-item"><div class="t-label">${t.arrival}</div><div class="t-main">${d.arrDay} · ${d.arrTime}</div><div class="t-sub">${d.arrTransport}</div></div>`;
-  travelHtml += `<div class="travel-item"><div class="t-label">${t.parking}</div><div class="t-main">${t.parkingMain||'Staff lot'}</div><div class="t-sub">${t.parkingSub||'Outside The Inn'}</div></div>`;
+  // Only show parking if self-driving
+  const isSelfDriving = d.arrTransport && d.arrTransport.toLowerCase().includes('self-driving');
+  if (isSelfDriving) travelHtml += `<div class="travel-item"><div class="t-label">${t.parking||'Parking'}</div><div class="t-main">Main Parking Lot</div><div class="t-sub">Follow signs from camp entrance</div></div>`;
   if (d.depDay) travelHtml += `<div class="travel-item"><div class="t-label">${t.departure}</div><div class="t-main">${d.depDay} · ${d.depTime}</div><div class="t-sub">${d.depTransport}</div></div>`;
   document.getElementById('av-travel').innerHTML = travelHtml;
 
