@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,12 +64,12 @@ body { background: var(--cream); color: var(--ink); font-family: 'DM Mono', mono
 .save-row { display: flex; gap: 10px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--admin-border); flex-wrap: wrap; }
 .btn-save { flex: 1; background: var(--accent); color: var(--black); border: none; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px; cursor: pointer; min-width: 100px; }
 .btn-save:hover { opacity: 0.9; }
+.btn-save:disabled { opacity: 0.5; cursor: not-allowed; }
 .btn-print { background: transparent; color: var(--white); border: 1px solid var(--admin-border); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 18px; cursor: pointer; }
 .btn-view { background: transparent; color: var(--accent); border: 1px solid rgba(200,255,0,0.3); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 18px; cursor: pointer; }
 .save-confirm { font-size: 11px; color: var(--accent); text-align: center; padding: 8px 0; height: 28px; }
 .saving-spinner { font-size: 11px; color: var(--muted); text-align: center; padding: 8px 0; height: 28px; }
 .staff-preview { font-size: 11px; color: rgba(255,255,255,0.3); font-style: italic; margin-top: 4px; padding: 4px 8px; background: rgba(255,255,255,0.03); border-left: 1px solid var(--admin-border); }
-
 .lang-sep { color: rgba(255,255,255,0.15); font-size: 11px; }
 
 /* ══ ARTIST VIEW ══ */
@@ -221,34 +220,22 @@ footer { padding: 24px 20px; text-align: center; }
           <label class="form-label">Set day</label>
           <select class="form-select" id="f-setday">
             <option value="">Day</option>
-            <option>Thursday</option>
-            <option>Friday</option>
-            <option>Saturday</option>
-            <option>Sunday</option>
+            <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
           </select>
         </div>
         <div class="form-group">
           <label class="form-label">Set time</label>
           <select class="form-select" id="f-settime">
             <option value="">Time</option>
-            <option>12:00 PM</option><option>12:30 PM</option>
-            <option>1:00 PM</option><option>1:30 PM</option>
-            <option>2:00 PM</option><option>2:30 PM</option>
-            <option>3:00 PM</option><option>3:30 PM</option>
-            <option>4:00 PM</option><option>4:30 PM</option>
-            <option>5:00 PM</option><option>5:30 PM</option>
-            <option>6:00 PM</option><option>6:30 PM</option>
-            <option>7:00 PM</option><option>7:30 PM</option>
-            <option>8:00 PM</option><option>8:30 PM</option>
-            <option>9:00 PM</option><option>9:30 PM</option>
-            <option>10:00 PM</option><option>10:30 PM</option>
-            <option>11:00 PM</option><option>11:30 PM</option>
-            <option>12:00 AM</option><option>12:30 AM</option>
-            <option>1:00 AM</option><option>1:30 AM</option>
-            <option>2:00 AM</option><option>2:30 AM</option>
-            <option>3:00 AM</option><option>3:30 AM</option>
-            <option>4:00 AM</option><option>4:30 AM</option>
-            <option>5:00 AM</option>
+            <option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option><option>1:30 PM</option>
+            <option>2:00 PM</option><option>2:30 PM</option><option>3:00 PM</option><option>3:30 PM</option>
+            <option>4:00 PM</option><option>4:30 PM</option><option>5:00 PM</option><option>5:30 PM</option>
+            <option>6:00 PM</option><option>6:30 PM</option><option>7:00 PM</option><option>7:30 PM</option>
+            <option>8:00 PM</option><option>8:30 PM</option><option>9:00 PM</option><option>9:30 PM</option>
+            <option>10:00 PM</option><option>10:30 PM</option><option>11:00 PM</option><option>11:30 PM</option>
+            <option>12:00 AM</option><option>12:30 AM</option><option>1:00 AM</option><option>1:30 AM</option>
+            <option>2:00 AM</option><option>2:30 AM</option><option>3:00 AM</option><option>3:30 AM</option>
+            <option>4:00 AM</option><option>4:30 AM</option><option>5:00 AM</option>
           </select>
         </div>
       </div>
@@ -256,13 +243,9 @@ footer { padding: 24px 20px; text-align: center; }
         <label class="form-label">Stage</label>
         <select class="form-select" id="f-stage">
           <option value="">Select stage</option>
-          <option>The Barn</option>
-          <option>The Inn</option>
-          <option>The Inn (Outside)</option>
-          <option>Lakeside / Open Air</option>
-          <option>Hammock Grove</option>
-          <option>Lakeside Amphitheater</option>
-          <option>Catapult Field</option>
+          <option>The Barn</option><option>The Inn</option><option>The Inn (Outside)</option>
+          <option>Lakeside / Open Air</option><option>Hammock Grove</option>
+          <option>Lakeside Amphitheater</option><option>Catapult Field</option>
         </select>
       </div>
       <div class="form-row">
@@ -270,28 +253,19 @@ footer { padding: 24px 20px; text-align: center; }
           <label class="form-label">Sound check day</label>
           <select class="form-select" id="f-checkday">
             <option value="">Day</option>
-            <option>Thursday</option>
-            <option>Friday</option>
-            <option>Saturday</option>
-            <option>Sunday</option>
+            <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
           </select>
         </div>
         <div class="form-group">
           <label class="form-label">Sound check time</label>
           <select class="form-select" id="f-checktime">
             <option value="">Time</option>
-            <option>10:00 AM</option><option>10:30 AM</option>
-            <option>11:00 AM</option><option>11:30 AM</option>
-            <option>12:00 PM</option><option>12:30 PM</option>
-            <option>1:00 PM</option><option>1:30 PM</option>
-            <option>2:00 PM</option><option>2:30 PM</option>
-            <option>3:00 PM</option><option>3:30 PM</option>
-            <option>4:00 PM</option><option>4:30 PM</option>
-            <option>5:00 PM</option><option>5:30 PM</option>
-            <option>6:00 PM</option><option>6:30 PM</option>
-            <option>7:00 PM</option><option>7:30 PM</option>
-            <option>8:00 PM</option><option>8:30 PM</option>
-            <option>9:00 PM</option><option>9:30 PM</option>
+            <option>10:00 AM</option><option>10:30 AM</option><option>11:00 AM</option><option>11:30 AM</option>
+            <option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option><option>1:30 PM</option>
+            <option>2:00 PM</option><option>2:30 PM</option><option>3:00 PM</option><option>3:30 PM</option>
+            <option>4:00 PM</option><option>4:30 PM</option><option>5:00 PM</option><option>5:30 PM</option>
+            <option>6:00 PM</option><option>6:30 PM</option><option>7:00 PM</option><option>7:30 PM</option>
+            <option>8:00 PM</option><option>8:30 PM</option><option>9:00 PM</option><option>9:30 PM</option>
             <option>10:00 PM</option><option>10:30 PM</option>
           </select>
         </div>
@@ -300,13 +274,9 @@ footer { padding: 24px 20px; text-align: center; }
         <label class="form-label">Sound check stage</label>
         <select class="form-select" id="f-checkstage">
           <option value="">Same as set stage</option>
-          <option>The Barn</option>
-          <option>The Inn</option>
-          <option>The Inn (Outside)</option>
-          <option>Lakeside / Open Air</option>
-          <option>Hammock Grove</option>
-          <option>Lakeside Amphitheater</option>
-          <option>Catapult Field</option>
+          <option>The Barn</option><option>The Inn</option><option>The Inn (Outside)</option>
+          <option>Lakeside / Open Air</option><option>Hammock Grove</option>
+          <option>Lakeside Amphitheater</option><option>Catapult Field</option>
         </select>
       </div>
 
@@ -350,35 +320,23 @@ footer { padding: 24px 20px; text-align: center; }
           <label class="form-label">Arrival day</label>
           <select class="form-select" id="f-arr-day">
             <option value="">Day</option>
-            <option>Wednesday · Jun 11</option>
-            <option>Thursday · Jun 12</option>
-            <option>Friday · Jun 13</option>
-            <option>Saturday · Jun 14</option>
-            <option>Sunday · Jun 15</option>
+            <option>Wednesday · Jun 11</option><option>Thursday · Jun 12</option>
+            <option>Friday · Jun 13</option><option>Saturday · Jun 14</option><option>Sunday · Jun 15</option>
           </select>
         </div>
         <div class="form-group">
           <label class="form-label">Arrival time</label>
           <select class="form-select" id="f-arr-time">
             <option value="">Time</option>
-            <option>6:00 AM</option><option>6:30 AM</option>
-            <option>7:00 AM</option><option>7:30 AM</option>
-            <option>8:00 AM</option><option>8:30 AM</option>
-            <option>9:00 AM</option><option>9:30 AM</option>
-            <option>10:00 AM</option><option>10:30 AM</option>
-            <option>11:00 AM</option><option>11:30 AM</option>
-            <option>12:00 PM</option><option>12:30 PM</option>
-            <option>1:00 PM</option><option>1:30 PM</option>
-            <option>2:00 PM</option><option>2:30 PM</option>
-            <option>3:00 PM</option><option>3:30 PM</option>
-            <option>4:00 PM</option><option>4:30 PM</option>
-            <option>5:00 PM</option><option>5:30 PM</option>
-            <option>6:00 PM</option><option>6:30 PM</option>
-            <option>7:00 PM</option><option>7:30 PM</option>
-            <option>8:00 PM</option><option>8:30 PM</option>
-            <option>9:00 PM</option><option>9:30 PM</option>
-            <option>10:00 PM</option><option>10:30 PM</option>
-            <option>11:00 PM</option><option>11:30 PM</option>
+            <option>6:00 AM</option><option>6:30 AM</option><option>7:00 AM</option><option>7:30 AM</option>
+            <option>8:00 AM</option><option>8:30 AM</option><option>9:00 AM</option><option>9:30 AM</option>
+            <option>10:00 AM</option><option>10:30 AM</option><option>11:00 AM</option><option>11:30 AM</option>
+            <option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option><option>1:30 PM</option>
+            <option>2:00 PM</option><option>2:30 PM</option><option>3:00 PM</option><option>3:30 PM</option>
+            <option>4:00 PM</option><option>4:30 PM</option><option>5:00 PM</option><option>5:30 PM</option>
+            <option>6:00 PM</option><option>6:30 PM</option><option>7:00 PM</option><option>7:30 PM</option>
+            <option>8:00 PM</option><option>8:30 PM</option><option>9:00 PM</option><option>9:30 PM</option>
+            <option>10:00 PM</option><option>10:30 PM</option><option>11:00 PM</option><option>11:30 PM</option>
             <option>12:00 AM</option>
           </select>
         </div>
@@ -387,14 +345,10 @@ footer { padding: 24px 20px; text-align: center; }
         <label class="form-label">Arrival transport</label>
         <select class="form-select" id="f-arr-transport">
           <option value="">Select transport</option>
-          <option>Car pickup from Newark EWR</option>
-          <option>Car pickup from JFK</option>
-          <option>Car pickup from LaGuardia (LGA)</option>
-          <option>Car pickup from Penn Station NYC</option>
-          <option>Car pickup from hotel</option>
-          <option>Self-driving / own car</option>
-          <option>Bus drop-off at camp</option>
-          <option>Train to Newton NJ — pickup arranged</option>
+          <option>Car pickup from Newark EWR</option><option>Car pickup from JFK</option>
+          <option>Car pickup from LaGuardia (LGA)</option><option>Car pickup from Penn Station NYC</option>
+          <option>Car pickup from hotel</option><option>Self-driving / own car</option>
+          <option>Bus drop-off at camp</option><option>Train to Newton NJ — pickup arranged</option>
         </select>
       </div>
       <div class="form-row">
@@ -402,32 +356,22 @@ footer { padding: 24px 20px; text-align: center; }
           <label class="form-label">Departure day</label>
           <select class="form-select" id="f-dep-day">
             <option value="">Day</option>
-            <option>Friday · Jun 13</option>
-            <option>Saturday · Jun 14</option>
-            <option>Sunday · Jun 15</option>
-            <option>Monday · Jun 16</option>
+            <option>Friday · Jun 13</option><option>Saturday · Jun 14</option>
+            <option>Sunday · Jun 15</option><option>Monday · Jun 16</option>
           </select>
         </div>
         <div class="form-group">
           <label class="form-label">Departure time</label>
           <select class="form-select" id="f-dep-time">
             <option value="">Time</option>
-            <option>6:00 AM</option><option>6:30 AM</option>
-            <option>7:00 AM</option><option>7:30 AM</option>
-            <option>8:00 AM</option><option>8:30 AM</option>
-            <option>9:00 AM</option><option>9:30 AM</option>
-            <option>10:00 AM</option><option>10:30 AM</option>
-            <option>11:00 AM</option><option>11:30 AM</option>
-            <option>12:00 PM</option><option>12:30 PM</option>
-            <option>1:00 PM</option><option>1:30 PM</option>
-            <option>2:00 PM</option><option>2:30 PM</option>
-            <option>3:00 PM</option><option>3:30 PM</option>
-            <option>4:00 PM</option><option>4:30 PM</option>
-            <option>5:00 PM</option><option>5:30 PM</option>
-            <option>6:00 PM</option><option>6:30 PM</option>
-            <option>7:00 PM</option><option>7:30 PM</option>
-            <option>8:00 PM</option><option>8:30 PM</option>
-            <option>9:00 PM</option><option>9:30 PM</option>
+            <option>6:00 AM</option><option>6:30 AM</option><option>7:00 AM</option><option>7:30 AM</option>
+            <option>8:00 AM</option><option>8:30 AM</option><option>9:00 AM</option><option>9:30 AM</option>
+            <option>10:00 AM</option><option>10:30 AM</option><option>11:00 AM</option><option>11:30 AM</option>
+            <option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option><option>1:30 PM</option>
+            <option>2:00 PM</option><option>2:30 PM</option><option>3:00 PM</option><option>3:30 PM</option>
+            <option>4:00 PM</option><option>4:30 PM</option><option>5:00 PM</option><option>5:30 PM</option>
+            <option>6:00 PM</option><option>6:30 PM</option><option>7:00 PM</option><option>7:30 PM</option>
+            <option>8:00 PM</option><option>8:30 PM</option><option>9:00 PM</option><option>9:30 PM</option>
             <option>10:00 PM</option>
           </select>
         </div>
@@ -436,14 +380,10 @@ footer { padding: 24px 20px; text-align: center; }
         <label class="form-label">Departure transport</label>
         <select class="form-select" id="f-dep-transport">
           <option value="">Select transport</option>
-          <option>Car to Newark EWR</option>
-          <option>Car to JFK</option>
-          <option>Car to LaGuardia (LGA)</option>
-          <option>Car to Penn Station NYC</option>
-          <option>Car to hotel</option>
-          <option>Self-driving / own car</option>
-          <option>Bus from camp</option>
-          <option>Train from Newton NJ — dropoff arranged</option>
+          <option>Car to Newark EWR</option><option>Car to JFK</option>
+          <option>Car to LaGuardia (LGA)</option><option>Car to Penn Station NYC</option>
+          <option>Car to hotel</option><option>Self-driving / own car</option>
+          <option>Bus from camp</option><option>Train from Newton NJ — dropoff arranged</option>
         </select>
       </div>
       <div class="form-group">
@@ -491,7 +431,7 @@ footer { padding: 24px 20px; text-align: center; }
 
       <div class="save-confirm" id="save-confirm"></div>
       <div class="save-row">
-        <button class="btn-save" onclick="saveArtist()">Save & publish</button>
+        <button class="btn-save" id="btn-save" onclick="saveArtist()">Save & publish</button>
         <button class="btn-print" onclick="printArtist()">⬇ Print</button>
         <button class="btn-view" onclick="previewArtist()">View ↗</button>
       </div>
@@ -558,35 +498,14 @@ footer { padding: 24px 20px; text-align: center; }
       <button class="tab-btn" onclick="switchTab('hotel')" data-i18n="shuttleHotelBtn">Hotel → Camp</button>
     </div>
     <div class="tab-pane active" id="tab-camp">
-      <div class="shuttle-day">
-        <div class="sh-day-name" data-i18n="thursday">Thursday</div>
-        <div class="time-chips"><span class="time-chip">4:15 pm</span><span class="time-chip">5:15 pm</span><span class="time-chip">6:15 pm</span><span class="time-chip">7:15 pm</span><span class="time-chip">11:15 pm</span><span class="time-chip">12:15 am</span></div>
-      </div>
-      <div class="shuttle-day">
-        <div class="sh-day-name" data-i18n="friSat">Friday – Saturday</div>
-        <div class="time-chips"><span class="time-chip">10:15 am</span><span class="time-chip">11:15 am</span><span class="time-chip">12:15 pm</span><span class="time-chip">1:15 pm</span><span class="time-chip">2:15 pm</span><span class="time-chip">3:15 pm</span><span class="time-chip">4:15 pm</span><span class="time-chip">5:15 pm</span><span class="time-chip">6:15 pm</span><span class="time-chip">7:15 pm</span><span class="time-chip">8:15 pm</span><span class="time-chip">9:15 pm</span><span class="time-chip">10:15 pm</span><span class="time-chip">11:15 pm</span><span class="time-chip">12:15 am</span><span class="time-chip">1:15 am</span><span class="time-chip">2:15 am</span><span class="time-chip">3:15 am</span><span class="time-chip highlight">4:15 am</span><span class="time-chip highlight">7:00 am ✦</span></div>
-        <div class="sh-note" data-i18n="dawnNote">✦ Final shuttle after dawn concert</div>
-      </div>
-      <div class="shuttle-day">
-        <div class="sh-day-name" data-i18n="satSun">Saturday – Sunday</div>
-        <div class="time-chips"><span class="time-chip">10:15 am</span><span class="time-chip">11:15 am</span><span class="time-chip">12:15 pm</span><span class="time-chip">1:15 pm</span><span class="time-chip">2:15 pm</span><span class="time-chip">3:15 pm</span><span class="time-chip">4:15 pm</span><span class="time-chip">5:15 pm</span><span class="time-chip">6:15 pm</span><span class="time-chip">7:15 pm</span><span class="time-chip">8:15 pm</span><span class="time-chip">9:15 pm</span><span class="time-chip">10:15 pm</span><span class="time-chip">11:15 pm</span><span class="time-chip">12:15 am</span><span class="time-chip">1:15 am</span><span class="time-chip">2:15 am</span><span class="time-chip">3:15 am</span><span class="time-chip">4:15 am</span><span class="time-chip">5:15 am</span><span class="time-chip">6:15 am</span><span class="time-chip">7:15 am</span><span class="time-chip">8:15 am</span><span class="time-chip">9:15 am</span><span class="time-chip highlight">10:15 am ✦</span></div>
-        <div class="sh-note" data-i18n="lastShuttle">✦ Last shuttle — hotel checkout at 11am</div>
-      </div>
+      <div class="shuttle-day"><div class="sh-day-name" data-i18n="thursday">Thursday</div><div class="time-chips"><span class="time-chip">4:15 pm</span><span class="time-chip">5:15 pm</span><span class="time-chip">6:15 pm</span><span class="time-chip">7:15 pm</span><span class="time-chip">11:15 pm</span><span class="time-chip">12:15 am</span></div></div>
+      <div class="shuttle-day"><div class="sh-day-name" data-i18n="friSat">Friday – Saturday</div><div class="time-chips"><span class="time-chip">10:15 am</span><span class="time-chip">11:15 am</span><span class="time-chip">12:15 pm</span><span class="time-chip">1:15 pm</span><span class="time-chip">2:15 pm</span><span class="time-chip">3:15 pm</span><span class="time-chip">4:15 pm</span><span class="time-chip">5:15 pm</span><span class="time-chip">6:15 pm</span><span class="time-chip">7:15 pm</span><span class="time-chip">8:15 pm</span><span class="time-chip">9:15 pm</span><span class="time-chip">10:15 pm</span><span class="time-chip">11:15 pm</span><span class="time-chip">12:15 am</span><span class="time-chip">1:15 am</span><span class="time-chip">2:15 am</span><span class="time-chip">3:15 am</span><span class="time-chip highlight">4:15 am</span><span class="time-chip highlight">7:00 am ✦</span></div><div class="sh-note" data-i18n="dawnNote">✦ Final shuttle after dawn concert</div></div>
+      <div class="shuttle-day"><div class="sh-day-name" data-i18n="satSun">Saturday – Sunday</div><div class="time-chips"><span class="time-chip">10:15 am</span><span class="time-chip">11:15 am</span><span class="time-chip">12:15 pm</span><span class="time-chip">1:15 pm</span><span class="time-chip">2:15 pm</span><span class="time-chip">3:15 pm</span><span class="time-chip">4:15 pm</span><span class="time-chip">5:15 pm</span><span class="time-chip">6:15 pm</span><span class="time-chip">7:15 pm</span><span class="time-chip">8:15 pm</span><span class="time-chip">9:15 pm</span><span class="time-chip">10:15 pm</span><span class="time-chip">11:15 pm</span><span class="time-chip">12:15 am</span><span class="time-chip">1:15 am</span><span class="time-chip">2:15 am</span><span class="time-chip">3:15 am</span><span class="time-chip">4:15 am</span><span class="time-chip">5:15 am</span><span class="time-chip">6:15 am</span><span class="time-chip">7:15 am</span><span class="time-chip">8:15 am</span><span class="time-chip">9:15 am</span><span class="time-chip highlight">10:15 am ✦</span></div><div class="sh-note" data-i18n="lastShuttle">✦ Last shuttle — hotel checkout at 11am</div></div>
     </div>
     <div class="tab-pane" id="tab-hotel">
-      <div class="shuttle-day">
-        <div class="sh-day-name" data-i18n="thursday">Thursday</div>
-        <div class="time-chips"><span class="time-chip">4:45 pm</span><span class="time-chip">5:45 pm</span><span class="time-chip">6:45 pm</span><span class="time-chip">7:45 pm</span><span class="time-chip">11:45 pm</span><span class="time-chip">12:45 am</span></div>
-      </div>
-      <div class="shuttle-day">
-        <div class="sh-day-name" data-i18n="friSat">Friday – Saturday</div>
-        <div class="time-chips"><span class="time-chip">10:45 am</span><span class="time-chip">11:45 am</span><span class="time-chip">12:45 pm</span><span class="time-chip">1:45 pm</span><span class="time-chip">2:45 pm</span><span class="time-chip">3:45 pm</span><span class="time-chip">4:45 pm</span><span class="time-chip">5:45 pm</span><span class="time-chip">6:45 pm</span><span class="time-chip">7:45 pm</span><span class="time-chip">8:45 pm</span><span class="time-chip">9:45 pm</span><span class="time-chip">10:45 pm</span><span class="time-chip">11:45 pm</span><span class="time-chip">12:45 am</span><span class="time-chip">1:45 am</span><span class="time-chip">2:45 am</span><span class="time-chip">3:45 am</span><span class="time-chip highlight">4:45 am ✦</span></div>
-      </div>
-      <div class="shuttle-day">
-        <div class="sh-day-name" data-i18n="satSun">Saturday – Sunday</div>
-        <div class="time-chips"><span class="time-chip">10:45 am</span><span class="time-chip">11:45 am</span><span class="time-chip">12:45 pm</span><span class="time-chip">1:45 pm</span><span class="time-chip">2:45 pm</span><span class="time-chip">3:45 pm</span><span class="time-chip">4:45 pm</span><span class="time-chip">5:45 pm</span><span class="time-chip">6:45 pm</span><span class="time-chip">7:45 pm</span><span class="time-chip">8:45 pm</span><span class="time-chip">9:45 pm</span><span class="time-chip">10:45 pm</span><span class="time-chip">11:45 pm</span><span class="time-chip">12:45 am</span><span class="time-chip">1:45 am</span><span class="time-chip">2:45 am</span><span class="time-chip">3:45 am</span><span class="time-chip">4:45 am</span><span class="time-chip">5:45 am</span><span class="time-chip">6:45 am</span><span class="time-chip">7:45 am</span><span class="time-chip">8:45 am</span><span class="time-chip">9:45 am</span><span class="time-chip highlight">10:45 am ✦</span></div>
-        <div class="sh-note" data-i18n="lastShuttle">✦ Last shuttle — hotel checkout at 11am</div>
-      </div>
+      <div class="shuttle-day"><div class="sh-day-name" data-i18n="thursday">Thursday</div><div class="time-chips"><span class="time-chip">4:45 pm</span><span class="time-chip">5:45 pm</span><span class="time-chip">6:45 pm</span><span class="time-chip">7:45 pm</span><span class="time-chip">11:45 pm</span><span class="time-chip">12:45 am</span></div></div>
+      <div class="shuttle-day"><div class="sh-day-name" data-i18n="friSat">Friday – Saturday</div><div class="time-chips"><span class="time-chip">10:45 am</span><span class="time-chip">11:45 am</span><span class="time-chip">12:45 pm</span><span class="time-chip">1:45 pm</span><span class="time-chip">2:45 pm</span><span class="time-chip">3:45 pm</span><span class="time-chip">4:45 pm</span><span class="time-chip">5:45 pm</span><span class="time-chip">6:45 pm</span><span class="time-chip">7:45 pm</span><span class="time-chip">8:45 pm</span><span class="time-chip">9:45 pm</span><span class="time-chip">10:45 pm</span><span class="time-chip">11:45 pm</span><span class="time-chip">12:45 am</span><span class="time-chip">1:45 am</span><span class="time-chip">2:45 am</span><span class="time-chip">3:45 am</span><span class="time-chip highlight">4:45 am ✦</span></div></div>
+      <div class="shuttle-day"><div class="sh-day-name" data-i18n="satSun">Saturday – Sunday</div><div class="time-chips"><span class="time-chip">10:45 am</span><span class="time-chip">11:45 am</span><span class="time-chip">12:45 pm</span><span class="time-chip">1:45 pm</span><span class="time-chip">2:45 pm</span><span class="time-chip">3:45 pm</span><span class="time-chip">4:45 pm</span><span class="time-chip">5:45 pm</span><span class="time-chip">6:45 pm</span><span class="time-chip">7:45 pm</span><span class="time-chip">8:45 pm</span><span class="time-chip">9:45 pm</span><span class="time-chip">10:45 pm</span><span class="time-chip">11:45 pm</span><span class="time-chip">12:45 am</span><span class="time-chip">1:45 am</span><span class="time-chip">2:45 am</span><span class="time-chip">3:45 am</span><span class="time-chip">4:45 am</span><span class="time-chip">5:45 am</span><span class="time-chip">6:45 am</span><span class="time-chip">7:45 am</span><span class="time-chip">8:45 am</span><span class="time-chip">9:45 am</span><span class="time-chip highlight">10:45 am ✦</span></div><div class="sh-note" data-i18n="lastShuttle">✦ Last shuttle — hotel checkout at 11am</div></div>
     </div>
     <div class="shuttle-footer" data-i18n="shuttleNote">Departs from staff parking lot outside The Inn.</div>
   </div>
@@ -646,7 +565,6 @@ const DRIVERS = {
   tommy:   { name: 'Tommy Vega',     phone: '+1 (201) 555-0293' },
   nia:     { name: 'Nia Blackwell',  phone: '+1 (201) 555-0317' },
 };
-
 const STAGE_MANAGERS = {
   felix:  { name: 'Felix Drummond',    phone: '+1 (973) 555-0441' },
   nina:   { name: 'Nina Castellanos',  phone: '+1 (908) 555-0389' },
@@ -690,51 +608,44 @@ const T = {
   de:{eyebrow:'Künstler / Crew Sheet · 2026',setTime:'Set-Zeit',soundCheck:'Soundcheck',stageNote:'⚠ Bitte 20 Minuten vor Ihrem Set auf der Bühne sein.',contacts:'Ihre Kontakte',travel:'Reise',addresses:'Adressen',checkInNotice:'Zuerst im <strong>The Inn</strong> einchecken — Hotelschlüssel, Armbänder & Einweisung. Nicht direkt zum Hotel gehen.',arrival:'Ankunft',parking:'Parkplatz',parkingMain:'Personalparkplatz',parkingSub:'Vor dem The Inn',departure:'Abreise',wristband:'Gelbes Armband = freie Getränke das gesamte Wochenende. Essensmarken gelten bei allen Anbietern.',venue:'Veranstaltungsort',hotel:'Hotel',lodging:'Unterkunft',cabin:'Hütte',maps:'Karte ↗',shuttle:'Shuttle-Fahrplan',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Abfahrt vom Personalparkplatz vor The Inn.',thursday:'Donnerstag',friday:'Freitag',saturday:'Samstag',sunday:'Sonntag',friSat:'Freitag – Samstag',satSun:'Samstag – Sonntag',breakfast:'Frühstück',lunch:'Mittagessen',dinner:'Abendessen',coffee:'Kaffee',barHours:'Barzeit',morning:'Morgen',bagels:'Bagels & Obst im The Inn',food:'Essen — Essenszelt sofern nicht anders angegeben',foodNote:'Snacks, Tee und Kaffee sind das gesamte Wochenende backstage im The Inn verfügbar.',dawnNote:'✦ Letzter Shuttle nach dem Morgenkonzert',lastShuttle:'✦ Letzter Shuttle — Hotel-Checkout um 11 Uhr',callBtn:'Anrufen ↗',notStaying:'Keine lokale Unterkunft'},
 };
 
-// ── STORAGE via Anthropic API ──
-const MODEL = 'claude-sonnet-4-20250514';
+// ── STORAGE via API routes (Upstash Redis) ──
 let artistData = {};
 let currentArtistSlug = null;
 let currentLang = 'en';
 let activeLangs = ['en'];
 
-async function apiCall(prompt, system) {
-  const resp = await fetch('https://api.anthropic.com/v1/messages', {
+async function saveData(slug, data) {
+  artistData[slug] = data;
+  await fetch('/api/save', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      model: MODEL, max_tokens: 1000,
-      system: system || 'You are a JSON storage assistant. Always respond with valid JSON only, no markdown, no explanation.',
-      messages: [{ role: 'user', content: prompt }]
-    })
+    body: JSON.stringify({ slug, data }),
   });
-  const data = await resp.json();
-  return data.content?.[0]?.text || '';
 }
 
-// Use localStorage as the real persistence layer — works everywhere, no API key needed
-function storageKey(slug) { return 'dripping26_' + slug; }
-
-function saveData(slug, data) {
-  localStorage.setItem(storageKey(slug), JSON.stringify(data));
-  artistData[slug] = data;
-}
-
-function getData(slug) {
+async function loadData(slug) {
   if (artistData[slug]) return artistData[slug];
-  const raw = localStorage.getItem(storageKey(slug));
-  if (raw) { try { const d = JSON.parse(raw); artistData[slug] = d; return d; } catch(e){} }
+  try {
+    const res = await fetch(`/api/load?slug=${slug}`);
+    const json = await res.json();
+    if (json.data) { artistData[slug] = json.data; return json.data; }
+  } catch (e) {}
   return null;
 }
 
-function loadAll() {
-  ARTISTS.forEach(a => getData(a.slug));
+async function loadAll() {
+  try {
+    const res = await fetch('/api/load');
+    const json = await res.json();
+    if (json.data) artistData = { ...artistData, ...json.data };
+  } catch (e) {}
 }
 
 // ── ADMIN: ARTIST LIST ──
 function renderArtistList() {
   const list = document.getElementById('artist-list');
   list.innerHTML = ARTISTS.map(a => {
-    const d = getData(a.slug);
+    const d = artistData[a.slug];
     const done = d && d.settime;
     return `<div class="artist-row ${done?'has-data':''}" onclick="openArtist('${a.slug}','${a.name.replace(/'/g,"\\'")}')">
       <span class="ar-name">${a.name}</span>
@@ -749,12 +660,12 @@ function showList() {
   document.getElementById('edit-panel').classList.remove('active');
 }
 
-function openArtist(slug, name) {
+async function openArtist(slug, name) {
   currentArtistSlug = slug;
   document.getElementById('list-panel').style.display = 'none';
   document.getElementById('edit-panel').classList.add('active');
   document.getElementById('edit-name').textContent = name;
-  const d = getData(slug) || {};
+  const d = await loadData(slug) || {};
   document.getElementById('f-setday').value = d.setday || '';
   document.getElementById('f-settime').value = d.settime || '';
   document.getElementById('f-stage').value = d.stage || '';
@@ -812,7 +723,12 @@ function updateDefaultLangDropdown(selected) {
   sel.innerHTML = activeLangs.map(l => `<option value="${l}" ${l===selected?'selected':''}>${langNames[l]||l.toUpperCase()}</option>`).join('');
 }
 
-function saveArtist() {
+async function saveArtist() {
+  const btn = document.getElementById('btn-save');
+  const confirm = document.getElementById('save-confirm');
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+  confirm.textContent = '';
   const d = {
     name: document.getElementById('edit-name').textContent,
     setday: document.getElementById('f-setday').value,
@@ -837,16 +753,17 @@ function saveArtist() {
     langs: activeLangs,
     defaultLang: document.getElementById('f-defaultlang').value,
   };
-  saveData(currentArtistSlug, d);
-  const c = document.getElementById('save-confirm');
-  c.textContent = '✓ Saved & published';
-  setTimeout(() => c.textContent = '', 2500);
+  await saveData(currentArtistSlug, d);
+  btn.disabled = false;
+  btn.textContent = 'Save & publish';
+  confirm.textContent = '✓ Saved & published';
+  setTimeout(() => confirm.textContent = '', 2500);
   renderArtistList();
 }
 
-function previewArtist() {
-  saveArtist();
-  const d = getData(currentArtistSlug);
+async function previewArtist() {
+  await saveArtist();
+  const d = artistData[currentArtistSlug];
   renderArtistView(currentArtistSlug, d.defaultLang || 'en');
   document.getElementById('admin-view').classList.remove('active');
   document.getElementById('artist-view').classList.add('active');
@@ -859,15 +776,15 @@ function backToAdmin() {
   document.getElementById('admin-view').classList.add('active');
 }
 
-function printArtist() {
-  saveArtist();
+async function printArtist() {
+  await saveArtist();
   renderPrintView(currentArtistSlug);
   setTimeout(() => window.print(), 300);
 }
 
 // ── ARTIST VIEW ──
 function renderArtistView(slug, lang) {
-  const d = getData(slug);
+  const d = artistData[slug];
   if (!d) return;
   currentLang = lang;
   const t = T[lang] || T.en;
@@ -888,7 +805,6 @@ function renderArtistView(slug, lang) {
   document.getElementById('av-settime').textContent = setStr;
   document.getElementById('av-checktime').textContent = checkStr;
 
-  // Contacts from staff roster
   const ik = d.innkeeper && INNKEEPERS[d.innkeeper];
   const dr = d.driver && DRIVERS[d.driver];
   const sm = d.stagemgr && STAGE_MANAGERS[d.stagemgr];
@@ -898,14 +814,12 @@ function renderArtistView(slug, lang) {
   if (sm) contactsHtml += contactCard('Stage manager (tech)', sm.name, sm.phone, t.callBtn||'Call ↗');
   document.getElementById('av-contacts').innerHTML = contactsHtml;
 
-  // Travel
   let travelHtml = '';
   if (d.arrDay) travelHtml += `<div class="travel-item"><div class="t-label">${t.arrival}</div><div class="t-main">${d.arrDay} · ${d.arrTime}</div><div class="t-sub">${d.arrTransport}</div></div>`;
   travelHtml += `<div class="travel-item"><div class="t-label">${t.parking}</div><div class="t-main">${t.parkingMain||'Staff lot'}</div><div class="t-sub">${t.parkingSub||'Outside The Inn'}</div></div>`;
   if (d.depDay) travelHtml += `<div class="travel-item"><div class="t-label">${t.departure}</div><div class="t-main">${d.depDay} · ${d.depTime}</div><div class="t-sub">${d.depTransport}</div></div>`;
   document.getElementById('av-travel').innerHTML = travelHtml;
 
-  // Lodging
   let lodgingHtml = '';
   if (d.lodging === 'hotel') {
     lodgingHtml = `<div class="address-card"><div><div class="addr-type">${t.hotel}</div><div class="addr-name">Econo Lodge</div><div class="addr-street">448 US-206<br>Newton, NJ 07860</div></div><a class="map-btn" href="https://maps.google.com?q=448+US-206+Newton+NJ+07860" target="_blank">${t.maps||'Maps ↗'}</a></div>`;
@@ -916,11 +830,9 @@ function renderArtistView(slug, lang) {
   }
   document.getElementById('av-lodging').innerHTML = lodgingHtml;
 
-  // Footer
   const footerContact = ik ? `Questions? <a href="tel:${ik.phone}">${ik.name} · ${ik.phone}</a>` : '';
   document.getElementById('av-footer-contact').innerHTML = footerContact;
 
-  // Lang buttons
   const langs = (d.langs || ['en']).filter(l => T[l]);
   document.getElementById('lang-btns').innerHTML = langs.map((l,i) =>
     `${i>0?'<span class="lang-sep">|</span>':''}<button class="lang-btn ${l===lang?'active':''}" onclick="switchLang('${slug}','${l}')">${l.toUpperCase()}</button>`
@@ -942,7 +854,7 @@ function switchTab(dir) {
 
 // ── PRINT VIEW ──
 function renderPrintView(slug) {
-  const d = getData(slug);
+  const d = artistData[slug];
   if (!d) return;
   const ik = d.innkeeper && INNKEEPERS[d.innkeeper];
   const dr = d.driver && DRIVERS[d.driver];
@@ -971,55 +883,26 @@ function renderPrintView(slug) {
   document.getElementById('pv-footer').textContent = ik ? `Questions: ${ik.name} · ${ik.phone}` : 'drippingmusicandarts@gmail.com';
 }
 
-// ── PRE-SEED: DJ OJO ──
-(function seedDjOjo() {
-  const slug = 'dj-ojo';
-  const d = {
-    name: 'DJ ojo',
-    setday: 'Saturday',
-    settime: '1:00 AM',
-    stage: 'The Inn',
-    checkday: 'Saturday',
-    checktime: '6:00 PM',
-    checkstage: 'The Inn',
-    innkeeper: 'maya',
-    driver: 'carlos',
-    stagemgr: 'nina',
-    arrDay: 'Friday · Jun 13',
-    arrTime: '5:00 PM',
-    arrTransport: 'Car pickup from Newark EWR',
-    depDay: 'Sunday · Jun 15',
-    depTime: '12:00 PM',
-    depTransport: 'Car to Newark EWR',
-    tokens: '6',
-    lodging: 'hotel',
-    cabin: '',
-    notes: 'Traveling from Brazil. Portuguese speaker. Vegetarian.',
-    langs: ['pt', 'en'],
-    defaultLang: 'pt',
-  };
-  localStorage.setItem('dripping26_' + slug, JSON.stringify(d));
-})();
-
 // ── INIT ──
-loadAll();
-
-const urlParams = new URLSearchParams(window.location.search);
-const slugParam = urlParams.get('artist');
-const adminParam = urlParams.get('admin');
-
-if (slugParam && !adminParam) {
-  const d = getData(slugParam);
-  if (d) {
-    renderArtistView(slugParam, d.defaultLang || 'en');
-    document.getElementById('admin-view').classList.remove('active');
-    document.getElementById('artist-view').classList.add('active');
-  } else {
-    renderArtistList();
-  }
-} else {
+async function init() {
+  await loadAll();
   renderArtistList();
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const slugParam = urlParams.get('artist');
+  const adminParam = urlParams.get('admin');
+
+  if (slugParam && !adminParam) {
+    const d = await loadData(slugParam);
+    if (d) {
+      renderArtistView(slugParam, d.defaultLang || 'en');
+      document.getElementById('admin-view').classList.remove('active');
+      document.getElementById('artist-view').classList.add('active');
+    }
+  }
 }
+
+init();
 </script>
 </body>
 </html>
