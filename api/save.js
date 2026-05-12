@@ -12,13 +12,9 @@ export default async function handler(req, res) {
 
     if (!url || !token) return res.status(500).json({ error: 'Missing Upstash env vars' });
 
-    const response = await fetch(`${url}/set/dripping26_${slug}`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ value: JSON.stringify(data) }),
+    const encoded = encodeURIComponent(JSON.stringify(data));
+    const response = await fetch(`${url}/set/dripping26_${slug}/${encoded}`, {
+      headers: { Authorization: `Bearer ${token}` },
     });
 
     const result = await response.json();
