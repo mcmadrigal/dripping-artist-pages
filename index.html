@@ -28,6 +28,8 @@ body { background: var(--cream); color: var(--ink); font-family: 'DM Mono', mono
 /* ══ ADMIN ══ */
 #admin-view { min-height: 100vh; background: var(--admin-bg); color: var(--white); padding-bottom: 60px; }
 #admin-view.active { display: block; }
+#edit-view { min-height: 100vh; background: var(--admin-bg); color: var(--white); padding-bottom: 60px; display: none; }
+#edit-view.active { display: block; }
 .admin-header { background: var(--admin-surface); border-bottom: 1px solid var(--admin-border); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; }
 .admin-logo { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; color: var(--white); }
 .admin-badge { background: var(--accent); color: var(--black); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; padding: 4px 10px; }
@@ -222,8 +224,6 @@ footer { padding: 24px 20px; text-align: center; }
     <div class="admin-logo">Dripping</div>
     <div class="admin-badge">Admin</div>
   </div>
-
-  <!-- LIST PANEL - shown by default -->
   <div id="list-panel" class="admin-body">
     <div class="admin-section-title">
       <span>2026 Artists</span>
@@ -238,9 +238,15 @@ footer { padding: 24px 20px; text-align: center; }
     </div>
     <div class="artist-list" id="artist-list"></div>
   </div>
+</div>
 
-  <!-- EDIT PANEL - hidden by default, shown when artist clicked -->
-  <div id="edit-panel" class="admin-body" style="display:none">
+<!-- ══ EDIT VIEW ══ -->
+<div id="edit-view" class="view">
+  <div class="admin-header">
+    <div class="admin-logo">Dripping</div>
+    <div class="admin-badge">Admin</div>
+  </div>
+  <div class="admin-body">
       <button class="back-btn" onclick="showList()">← All artists</button>
       <div class="edit-artist-name" id="edit-name"></div>
       <div class="artist-share-link" id="artist-share-link"></div>
@@ -834,14 +840,14 @@ function updateLastUpdated() {
 }
 
 function showList() {
-  document.getElementById('list-panel').style.display = 'block';
-  document.getElementById('edit-panel').style.display = 'none';
+  document.getElementById('admin-view').classList.add('active');
+  document.getElementById('edit-view').classList.remove('active');
 }
 
 async function openArtist(slug, name) {
   currentArtistSlug = slug;
-  document.getElementById('list-panel').style.display = 'none';
-  document.getElementById('edit-panel').style.display = 'block';
+  document.getElementById('admin-view').classList.remove('active');
+  document.getElementById('edit-view').classList.add('active');
   document.getElementById('edit-name').textContent = name;
   const shareUrl = `https://dripping2026-artist-pages.vercel.app/?artist=${slug}`;
   document.getElementById('artist-share-link').innerHTML = `<a href="${shareUrl}" target="_blank">${shareUrl}</a><button class="copy-link-btn" onclick="copyLink('${shareUrl}', this)">Copy</button>`;
@@ -965,7 +971,7 @@ async function previewArtist() {
   await saveArtist();
   const d = artistData[currentArtistSlug];
   renderArtistView(currentArtistSlug, d.defaultLang || 'en');
-  document.getElementById('admin-view').classList.remove('active');
+  document.getElementById('edit-view').classList.remove('active');
   document.getElementById('artist-view').classList.add('active');
   document.getElementById('admin-back-btn').classList.add('visible');
 }
