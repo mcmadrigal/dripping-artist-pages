@@ -16,83 +16,11 @@
   --soft: #D9D2C8;
   --accent: #C8FF00;
   --rule: rgba(0,0,0,0.08);
-  --admin-bg: #1A1410;
-  --admin-surface: #251E18;
-  --admin-border: rgba(200,255,0,0.12);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 body { background: var(--cream); color: var(--ink); font-family: 'DM Mono', monospace; font-size: 13px; line-height: 1.6; min-height: 100vh; }
 .view { display: none; }
 .view.active { display: block; }
-
-/* ══ ADMIN ══ */
-#admin-view { min-height: 100vh; background: var(--admin-bg); color: var(--white); padding-bottom: 60px; }
-#admin-view.active { display: block; }
-#edit-view { min-height: 100vh; background: var(--admin-bg); color: var(--white); padding-bottom: 60px; display: none; }
-#edit-view.active { display: block; }
-.admin-header { background: var(--admin-surface); border-bottom: 1px solid var(--admin-border); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; }
-.admin-logo { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; color: var(--white); }
-.admin-badge { background: var(--accent); color: var(--black); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; padding: 4px 10px; }
-.admin-nav { display: flex; gap: 6px; }
-.admin-nav-btn { background: transparent; color: rgba(255,255,255,0.4); border: 1px solid var(--admin-border); font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; cursor: pointer; transition: all 0.15s; }
-.admin-nav-btn.active { background: var(--accent); color: var(--black); border-color: var(--accent); }
-.admin-body { padding: 24px 20px; max-width: 480px; margin: 0 auto; width: 100%; box-sizing: border-box; }
-.admin-body * { max-width: 100%; box-sizing: border-box; }
-.admin-section-title { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--admin-border); display: flex; justify-content: space-between; align-items: center; }
-.artist-list { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
-.last-updated-bar { display: flex; flex-direction: column; gap: 3px; margin-bottom: 14px; padding: 10px 14px; background: var(--admin-surface); border: 1px solid var(--admin-border); font-size: 10px; color: rgba(255,255,255,0.3); }
-.last-updated-bar span { display: block; }
-.last-updated-bar strong { color: rgba(255,255,255,0.5); }
-.artist-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: var(--admin-surface); border: 1px solid var(--admin-border); cursor: pointer; gap: 12px; transition: border-color 0.15s; }
-.artist-row:hover { border-color: rgba(200,255,0,0.3); }
-.artist-row.has-data { border-left: 2px solid var(--accent); }
-.ar-left { flex: 1; min-width: 0; }
-.ar-name { font-size: 13px; color: var(--white); display: block; margin-bottom: 3px; }
-.ar-link { font-size: 10px; color: rgba(200,255,0,0.4); font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
-.ar-pills { display: flex; gap: 3px; flex-shrink: 0; }
-.ar-pill { font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 6px; border: 1px solid; }
-.ar-pill.ok { color: var(--accent); border-color: rgba(200,255,0,0.3); }
-.ar-pill.miss { color: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.06); }
-.ar-chevron { color: rgba(255,255,255,0.2); font-size: 14px; margin-left: 4px; }
-.edit-panel { display: none !important; }
-.edit-panel.open { display: block !important; }
-.back-btn { display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); cursor: pointer; margin-bottom: 20px; background: none; border: none; padding: 0; }
-.back-btn:hover { color: var(--white); }
-.edit-artist-name { font-family: 'DM Sans', sans-serif; font-size: 36px; font-weight: 300; letter-spacing: -1px; color: var(--white); margin-bottom: 24px; line-height: 1; }
-.form-group { margin-bottom: 14px; }
-.form-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 6px; display: block; }
-.form-input, .form-select, .form-textarea { width: 100%; box-sizing: border-box; background: var(--admin-surface); border: 1px solid var(--admin-border); color: var(--white); font-family: 'DM Mono', monospace; font-size: 13px; padding: 10px 12px; outline: none; transition: border-color 0.15s; }
-.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: rgba(200,255,0,0.4); }
-.form-select option { background: var(--admin-bg); color: var(--white); }
-.form-textarea { resize: vertical; min-height: 60px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; min-width: 0; }
-.form-row .form-group { min-width: 0; overflow: hidden; }
-.cabin-field { display: none; }
-.cabin-field.visible { display: block; }
-.rain-field { display: none; }
-.rain-field.visible { display: block; }
-.form-divider { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.2); padding: 14px 0 8px; border-top: 1px solid var(--admin-border); margin-top: 6px; }
-.lang-select-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
-.lang-toggle { padding: 6px 14px; background: var(--admin-surface); border: 1px solid var(--admin-border); color: rgba(255,255,255,0.4); font-family: 'DM Mono', monospace; font-size: 11px; cursor: pointer; transition: all 0.15s; }
-.lang-toggle.selected { background: var(--accent); color: var(--black); border-color: var(--accent); }
-.lang-toggle.locked { cursor: default; opacity: 0.7; }
-.save-row { display: flex; gap: 10px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--admin-border); flex-wrap: wrap; }
-.btn-save { flex: 1; background: var(--accent); color: var(--black); border: none; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px; cursor: pointer; min-width: 100px; }
-.btn-save:hover { opacity: 0.9; }
-.btn-save:disabled { opacity: 0.5; cursor: not-allowed; }
-.btn-print { background: transparent; color: var(--white); border: 1px solid var(--admin-border); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 18px; cursor: pointer; }
-.btn-view { background: transparent; color: var(--accent); border: 1px solid rgba(200,255,0,0.3); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 18px; cursor: pointer; }
-.artist-share-link { margin-bottom: 20px; }
-.artist-share-link a { font-size: 11px; color: rgba(200,255,0,0.6); font-style: italic; word-break: break-all; text-decoration: none; }
-.artist-share-link a:hover { color: var(--accent); }
-.copy-link-btn { margin-left: 8px; background: transparent; border: 1px solid var(--admin-border); color: rgba(255,255,255,0.3); font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; padding: 3px 8px; cursor: pointer; vertical-align: middle; }
-.copy-link-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
-.copy-link-btn.copied { color: var(--accent); border-color: rgba(200,255,0,0.3); }
-.staff-preview { font-size: 11px; color: rgba(255,255,255,0.3); font-style: italic; margin-top: 4px; padding: 4px 8px; background: rgba(255,255,255,0.03); border-left: 1px solid var(--admin-border); }
-.lang-sep { color: rgba(255,255,255,0.15); font-size: 11px; }
-.rain-banner { background: rgba(200,255,0,0.08); border: 1px solid rgba(200,255,0,0.3); padding: 10px 14px; margin-bottom: 16px; font-size: 11px; color: var(--accent); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.rain-toggle-btn { background: var(--accent); color: var(--black); border: none; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; cursor: pointer; white-space: nowrap; }
-.rain-toggle-btn.active { background: #ff4444; color: white; }
 
 /* ══ ARTIST VIEW ══ */
 #artist-view { max-width: 430px; margin: 0 auto; padding-bottom: 40px; min-height: 100vh; }
@@ -102,9 +30,6 @@ body { background: var(--cream); color: var(--ink); font-family: 'DM Mono', mono
 .lang-btns { display: flex; align-items: center; gap: 6px; }
 .lang-btn { background: transparent; color: rgba(255,255,255,0.35); border: 1px solid rgba(255,255,255,0.12); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; padding: 5px 10px; cursor: pointer; transition: all 0.15s; }
 .lang-btn.active { background: var(--accent); color: var(--black); border-color: var(--accent); }
-.admin-back-btn { background: transparent; color: rgba(255,255,255,0.35); border: 1px solid rgba(255,255,255,0.12); font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 5px 10px; cursor: pointer; transition: all 0.15s; display: none; }
-.admin-back-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
-.admin-back-btn.visible { display: block; }
 .hero { background: var(--black); padding: 28px 20px 24px; border-bottom: 3px solid var(--accent); }
 .hero-eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
 .artist-name { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 52px; line-height: 0.92; letter-spacing: -2px; color: var(--white); margin-bottom: 24px; }
@@ -172,7 +97,7 @@ footer { padding: 24px 20px; text-align: center; }
 #print-view { display: none; }
 @media print {
   body { background: white; }
-  #admin-view, #artist-view { display: none !important; }
+  #artist-view { display: none !important; }
   #print-view { display: block !important; font-family: 'DM Mono', monospace; font-size: 9px; line-height: 1.5; color: #3A322C; padding: 20px 24px; max-width: 100%; }
   .p-header { display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 8px; border-bottom: 2px solid #2C2520; margin-bottom: 10px; }
   .p-logo { font-family: 'DM Sans', sans-serif; font-size: 20px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: #2C2520; }
@@ -220,316 +145,11 @@ footer { padding: 24px 20px; text-align: center; }
 </head>
 <body>
 
-<!-- ══ ADMIN VIEW ══ -->
-<div id="admin-view" class="view active">
-  <div class="admin-header">
-    <div class="admin-logo">Dripping</div>
-    <div class="admin-badge">Admin</div>
-  </div>
-  <div id="list-panel" class="admin-body">
-    <div class="admin-section-title">
-      <span>2026 Artists</span>
-    </div>
-    <div class="last-updated-bar" id="last-updated-bar">
-      <span id="lu-raph"></span>
-      <span id="lu-deploy"></span>
-    </div>
-    <div class="rain-banner" id="rain-banner">
-      <span id="rain-status-text">☁ Rain plan: <strong>OFF</strong></span>
-      <button class="rain-toggle-btn" id="rain-toggle-btn" onclick="toggleRainPlan()">Activate</button>
-    </div>
-    <div class="artist-list" id="artist-list"></div>
-  </div>
-</div>
-
-<!-- ══ EDIT VIEW ══ -->
-<div id="edit-view" class="view">
-  <div class="admin-header">
-    <div class="admin-logo">Dripping</div>
-    <div class="admin-badge">Admin</div>
-  </div>
-  <div class="admin-body">
-      <button class="back-btn" onclick="showList()">← All artists</button>
-      <div class="edit-artist-name" id="edit-name"></div>
-      <div class="artist-share-link" id="artist-share-link"></div>
-
-      <div class="form-divider">Performance</div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Set day</label>
-          <select class="form-select" id="f-setday">
-            <option value="">Day</option>
-            <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Set time</label>
-          <select class="form-select" id="f-settime">
-            <option value="">Time</option>
-            <option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option><option>1:30 PM</option>
-            <option>2:00 PM</option><option>2:30 PM</option><option>3:00 PM</option><option>3:30 PM</option>
-            <option>4:00 PM</option><option>4:30 PM</option><option>5:00 PM</option><option>5:30 PM</option>
-            <option>6:00 PM</option><option>6:30 PM</option><option>7:00 PM</option><option>7:30 PM</option>
-            <option>8:00 PM</option><option>8:30 PM</option><option>9:00 PM</option><option>9:30 PM</option>
-            <option>10:00 PM</option><option>10:30 PM</option><option>11:00 PM</option><option>11:30 PM</option>
-            <option>12:00 AM</option><option>12:30 AM</option><option>1:00 AM</option><option>1:20 AM</option><option>1:30 AM</option>
-            <option>2:00 AM</option><option>2:30 AM</option><option>2:40 AM</option><option>3:00 AM</option><option>3:30 AM</option>
-            <option>4:00 AM</option><option>4:30 AM</option><option>5:00 AM</option><option>5:15 AM</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Stage</label>
-        <select class="form-select" id="f-stage" onchange="stageChange()">
-          <option value="">Select stage</option>
-          <option>The Barn</option>
-          <option>The Inn</option>
-          <option>The Outside Inn</option>
-          <option>Lakeside</option>
-          <option>Open Air</option>
-          <option>Hammock Grove</option>
-          <option>Lakeside Amphitheater</option>
-          <option>Catapult Field</option>
-        </select>
-      </div>
-      <!-- Rain plan fields — only visible for Lakeside, The Outside Inn, Hammock Grove -->
-      <div class="form-group rain-field" id="rain-stage-field">
-        <label class="form-label">☁ Rain plan stage</label>
-        <select class="form-select" id="f-rain-stage">
-          <option value="">Select rain stage</option>
-          <option>The Barn</option>
-          <option>The Inn</option>
-          <option>The Outside Inn</option>
-          <option>Lakeside Amphitheater</option>
-          <option>Catapult Field</option>
-        </select>
-      </div>
-      <div class="form-group rain-field" id="rain-note-field">
-        <label class="form-label">☁ Rain plan note (shown to artist)</label>
-        <input class="form-input" id="f-rain-note" type="text" placeholder="e.g. Moved indoors to The Barn">
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Sound check day</label>
-          <select class="form-select" id="f-checkday">
-            <option value="">Day</option>
-            <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Sound check time</label>
-          <select class="form-select" id="f-checktime">
-            <option value="">Time</option>
-            <option>10:00 AM</option><option>10:30 AM</option><option>11:00 AM</option><option>11:30 AM</option>
-            <option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option><option>1:30 PM</option>
-            <option>2:00 PM</option><option>2:30 PM</option><option>3:00 PM</option><option>3:30 PM</option>
-            <option>4:00 PM</option><option>4:30 PM</option><option>5:00 PM</option><option>5:30 PM</option>
-            <option>6:00 PM</option><option>6:30 PM</option><option>7:00 PM</option><option>7:30 PM</option>
-            <option>8:00 PM</option><option>8:30 PM</option><option>9:00 PM</option><option>9:30 PM</option>
-            <option>10:00 PM</option><option>10:30 PM</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Sound check stage</label>
-        <select class="form-select" id="f-checkstage">
-          <option value="">Same as set stage</option>
-          <option>The Barn</option><option>The Inn</option><option>The Outside Inn</option>
-          <option>Lakeside</option><option>Open Air</option><option>Hammock Grove</option>
-          <option>Lakeside Amphitheater</option><option>Catapult Field</option>
-        </select>
-      </div>
-
-      <div class="form-divider">Staff</div>
-      <div class="form-group">
-        <label class="form-label">Ground transportation / Driver</label>
-        <select class="form-select" id="f-driver" onchange="previewStaff()">
-          <option value="">No driver</option>
-          <option value="carlos">Carlos Reyes · +1 (908) 555-0201</option>
-          <option value="diane">Diane Kim · +1 (908) 555-0234</option>
-          <option value="samuel">Samuel Obi · +1 (973) 555-0178</option>
-          <option value="priya">Priya Mehta · +1 (973) 555-0156</option>
-          <option value="tommy">Tommy Vega · +1 (201) 555-0293</option>
-          <option value="nia">Nia Blackwell · +1 (201) 555-0317</option>
-        </select>
-        <div class="staff-preview" id="driver-preview"></div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Photographer</label>
-        <select class="form-select" id="f-photographer" onchange="previewStaff()">
-          <option value="">No photographer assigned</option>
-          <option value="guario">Guario · +1 (781) 632-3066</option>
-          <option value="nikki">Nikki · +1 (305) 283-3960</option>
-          <option value="mar">Mar · +1 (707) 953-1847</option>
-          <option value="sam">Sam · +1 (347) 416-3197</option>
-          <option value="deirdre">Deirdre · +1 (917) 500-6418</option>
-        </select>
-        <div class="staff-preview" id="photographer-preview"></div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Stage manager (tech)</label>
-        <select class="form-select" id="f-stagemgr" onchange="previewStaff()">
-          <option value="">Select stage manager</option>
-          <option value="alex">Alex Rapp · +1 (347) 496-1740</option>
-          <option value="jade">Jade · +1 (617) 784-0765</option>
-          <option value="michael">Michael King · +1 (718) 213-8467</option>
-          <option value="ramses">Ramses · +1 (646) 243-0556</option>
-          <option value="rey">Rey · +1 (917) 287-4235</option>
-          <option value="sphente">Sphente · +1 (773) 370-7260</option>
-        </select>
-        <div class="staff-preview" id="stagemgr-preview"></div>
-      </div>
-
-      <div class="form-divider">Travel</div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Arrival day</label>
-          <select class="form-select" id="f-arr-day">
-            <option value="">Day</option>
-            <option>Wednesday · Jun 11</option><option>Thursday · Jun 12</option>
-            <option>Friday · Jun 13</option><option>Saturday · Jun 14</option><option>Sunday · Jun 15</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Arrival time</label>
-          <select class="form-select" id="f-arr-time">
-            <option value="">Time</option>
-            <option>6:00 AM</option><option>6:30 AM</option><option>7:00 AM</option><option>7:30 AM</option>
-            <option>8:00 AM</option><option>8:30 AM</option><option>9:00 AM</option><option>9:30 AM</option>
-            <option>10:00 AM</option><option>10:30 AM</option><option>11:00 AM</option><option>11:30 AM</option>
-            <option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option><option>1:30 PM</option>
-            <option>2:00 PM</option><option>2:30 PM</option><option>3:00 PM</option><option>3:30 PM</option>
-            <option>4:00 PM</option><option>4:30 PM</option><option>5:00 PM</option><option>5:30 PM</option>
-            <option>6:00 PM</option><option>6:30 PM</option><option>7:00 PM</option><option>7:30 PM</option>
-            <option>8:00 PM</option><option>8:30 PM</option><option>9:00 PM</option><option>9:30 PM</option>
-            <option>10:00 PM</option><option>10:30 PM</option><option>11:00 PM</option><option>11:30 PM</option>
-            <option>12:00 AM</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Arrival transport</label>
-        <select class="form-select" id="f-arr-transport">
-          <option value="">Select transport</option>
-          <option>Car pickup from Newark EWR</option>
-          <option>Car pickup from JFK</option>
-          <option>Car pickup from LaGuardia (LGA)</option>
-          <option>Car pickup from Penn Station NYC</option>
-          <option>Car pickup from hotel</option>
-          <option>Self-driving / own car</option>
-          <option>Shuttle from Nowadays — Thursday 1PM</option>
-          <option>Shuttle from Nowadays — Friday 1PM</option>
-          <option>Train to Newton NJ — pickup arranged</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Departure day</label>
-          <select class="form-select" id="f-dep-day">
-            <option value="">Day</option>
-            <option>Friday · Jun 13</option><option>Saturday · Jun 14</option>
-            <option>Sunday · Jun 15</option><option>Monday · Jun 16</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Departure time</label>
-          <select class="form-select" id="f-dep-time">
-            <option value="">Time</option>
-            <option>6:00 AM</option><option>6:30 AM</option><option>7:00 AM</option><option>7:30 AM</option>
-            <option>8:00 AM</option><option>8:30 AM</option><option>9:00 AM</option><option>9:30 AM</option>
-            <option>10:00 AM</option><option>10:30 AM</option><option>11:00 AM</option><option>11:30 AM</option>
-            <option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option><option>1:30 PM</option>
-            <option>2:00 PM</option><option>2:30 PM</option><option>3:00 PM</option><option>3:30 PM</option>
-            <option>4:00 PM</option><option>4:30 PM</option><option>5:00 PM</option><option>5:30 PM</option>
-            <option>6:00 PM</option><option>6:30 PM</option><option>7:00 PM</option><option>7:30 PM</option>
-            <option>8:00 PM</option><option>8:30 PM</option><option>9:00 PM</option><option>9:30 PM</option>
-            <option>10:00 PM</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Departure transport</label>
-        <select class="form-select" id="f-dep-transport">
-          <option value="">Select transport</option>
-          <option>Car to Newark EWR</option>
-          <option>Car to JFK</option>
-          <option>Car to LaGuardia (LGA)</option>
-          <option>Car to Penn Station NYC</option>
-          <option>Car to hotel</option>
-          <option>Self-driving / own car</option>
-          <option>Shuttle from Nowadays — Sunday 12:30PM</option>
-          <option>Train from Newton NJ — dropoff arranged</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Meal tokens</label>
-        <input class="form-input" id="f-tokens" type="text" placeholder="e.g. 6">
-      </div>
-
-      <div class="form-divider">Lodging</div>
-      <div class="form-group">
-        <label class="form-label">Lodging type</label>
-        <select class="form-select" id="f-lodging" onchange="lodgingChange()">
-          <option value="hotel">Hotel — Econo Lodge, 448 US-206, Newton NJ 07860</option>
-          <option value="cabin">Cabin on-site</option>
-          <option value="none">Not staying locally</option>
-        </select>
-      </div>
-      <div class="form-group cabin-field" id="cabin-field">
-        <label class="form-label">Cabin</label>
-        <select class="form-select" id="f-cabin">
-          <option value="">Select cabin</option>
-          <option>Catapult Cabin</option>
-          <option>Groovy Village</option>
-          <option>Jousting</option>
-          <option>Lakeside</option>
-          <option>Off Medic</option>
-          <option>Production Village</option>
-        </select>
-      </div>
-
-      <div class="form-divider">Language</div>
-      <div class="form-group">
-        <label class="form-label">Available languages (EN always included)</label>
-        <div class="lang-select-row">
-          <button class="lang-toggle selected locked" data-lang="en">EN</button>
-          <button class="lang-toggle" data-lang="pt" onclick="toggleLang(this)">PT</button>
-          <button class="lang-toggle" data-lang="ja" onclick="toggleLang(this)">JA</button>
-          <button class="lang-toggle" data-lang="es" onclick="toggleLang(this)">ES</button>
-          <button class="lang-toggle" data-lang="fr" onclick="toggleLang(this)">FR</button>
-          <button class="lang-toggle" data-lang="de" onclick="toggleLang(this)">DE</button>
-          <button class="lang-toggle" data-lang="ru" onclick="toggleLang(this)">RU</button>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Default language (artist lands here first)</label>
-        <select class="form-select" id="f-defaultlang">
-          <option value="en">EN — English</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Notes (internal only)</label>
-        <textarea class="form-textarea" id="f-notes" placeholder="Dietary needs, special requests, etc."></textarea>
-      </div>
-
-      <div class="save-confirm" id="save-confirm"></div>
-      <div class="save-row">
-        <button class="btn-save" id="btn-save" onclick="saveArtist()">Save & publish</button>
-        <button class="btn-print" onclick="printArtist()">⬇ Print</button>
-        <button class="btn-view" onclick="previewArtist()">View ↗</button>
-      </div>
-  </div>
-</div>
-
 <!-- ══ ARTIST VIEW ══ -->
 <div id="artist-view" class="view">
   <header class="site-header">
     <div class="logo">Dripping</div>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <button class="admin-back-btn" id="admin-back-btn" onclick="backToAdmin()">← Admin</button>
-      <div class="lang-btns" id="lang-btns"></div>
-    </div>
+    <div class="lang-btns" id="lang-btns"></div>
   </header>
   <div class="hero">
     <div class="hero-eyebrow" data-i18n="eyebrow">Artist / Crew Sheet · 2026</div>
@@ -574,7 +194,7 @@ footer { padding: 24px 20px; text-align: center; }
       <a class="map-btn" href="https://maps.google.com?q=251+White+Lake+Road+Sparta+NJ+07871" target="_blank">Maps ↗</a>
     </div>
   </div>
-  <div class="section">
+  <div class="section" id="shuttle-section">
     <div class="sec-header"><div class="sec-icon">🚌</div><div class="sec-title" data-i18n="shuttle">Shuttle schedule</div></div>
     <div class="shuttle-tabs">
       <button class="tab-btn active" onclick="switchTab('camp')" data-i18n="shuttleCampBtn">Camp → Hotel</button>
@@ -594,7 +214,7 @@ footer { padding: 24px 20px; text-align: center; }
   </div>
   <div class="section">
     <div class="sec-header"><div class="sec-icon">🍽</div><div class="sec-title" data-i18n="food">Food — dining tent unless noted</div></div>
-    <div class="wb-row"><div class="wb-dot"></div><div data-i18n="wristband">Yellow wristband = free drinks all weekend. Your meal tokens are valid at all food vendors.</div></div>
+    <div class="wb-row"><div data-i18n="wristband">Your drink tokens are valid at all Dripping bars. Not valid for coffee.</div></div>
     <div class="food-day-block" style="margin-top:14px"><div class="food-day-label" data-i18n="thursday">Thursday</div><div class="food-item"><span class="f-name">BéBép — Welcome dinner <span style="font-size:10px;color:var(--muted)">(V/VG/GF options)</span></span><span class="f-meal" data-i18n="dinner">Dinner</span><span class="f-hours">6 – 10 pm</span></div></div>
     <div class="food-day-block"><div class="food-day-label" data-i18n="friday">Friday</div>
       <div class="food-item"><span class="f-name">109 Montrose <span style="font-size:10px;color:var(--muted)">(V/VG/GF options)</span></span><span class="f-meal" data-i18n="coffee">Coffee</span><span class="f-hours">Morning – late</span></div>
@@ -623,6 +243,10 @@ footer { padding: 24px 20px; text-align: center; }
     </div>
     <div class="food-note" data-i18n="foodNote">Snacks, tea & coffee available all weekend backstage at The Inn.</div>
   </div>
+  <div class="section" id="info-link-section" style="display:none">
+    <div class="sec-header"><div class="sec-icon">📋</div><div class="sec-title" data-i18n="moreInfo">More info ↗</div></div>
+    <div id="av-info-link"></div>
+  </div>
   <footer>
     <div class="f-logo">Dripping</div>
     <div class="f-sub" id="av-footer-contact"></div>
@@ -640,8 +264,8 @@ footer { padding: 24px 20px; text-align: center; }
       <div class="p-sec"><div class="p-sec-title">Addresses</div><div id="pv-lodging"></div><div class="p-row"><span class="p-key">Venue</span><span class="p-val">Camp Sacajawea<span class="p-sub">251 White Lake Rd, Sparta NJ 07871</span></span></div></div>
       <div class="p-sec"><div class="p-sec-title">Food — dining tent unless noted</div>
         <div class="p-food-day-label">Thursday</div><div class="p-food-row"><span class="p-food-vendor">BéBép</span><span class="p-food-meal">Dinner</span><span class="p-food-hours">6–10pm</span></div>
-        <div class="p-food-day-label">Friday</div><div class="p-food-row"><span class="p-food-vendor">109 Montrose</span><span class="p-food-meal">Coffee</span><span class="p-food-hours">Morn–late</span></div><div class="p-food-row"><span class="p-food-vendor">Dila</span><span class="p-food-meal">Bfast</span><span class="p-food-hours">9am–1pm</span></div><div class="p-food-row"><span class="p-food-vendor">Kowloon Baby</span><span class="p-food-meal">Lunch</span><span class="p-food-hours">12–4pm</span></div><div class="p-food-row"><span class="p-food-vendor">Taqueria Ramirez</span><span class="p-food-meal">Dinner</span><span class="p-food-hours">6–10pm</span></div><div class="p-food-row"><span class="p-food-vendor">Dila</span><span class="p-food-meal">Dinner</span><span class="p-food-hours">6–10pm</span></div><div class="p-food-row"><span class="p-food-vendor">Bar — Vegan Onigiri</span><span class="p-food-meal"></span><span class="p-food-hours">Bar hrs</span></div>
-        <div class="p-food-day-label">Saturday</div><div class="p-food-row"><span class="p-food-vendor">109 Montrose</span><span class="p-food-meal">Coffee</span><span class="p-food-hours">Morn–late</span></div><div class="p-food-row"><span class="p-food-vendor">Kowloon Baby</span><span class="p-food-meal">Bfast</span><span class="p-food-hours">9am–1pm</span></div><div class="p-food-row"><span class="p-food-vendor">Kowloon Baby</span><span class="p-food-meal">Lunch</span><span class="p-food-hours">12–4pm</span></div><div class="p-food-row"><span class="p-food-vendor">Wadadli Jerk (lakeside)</span><span class="p-food-meal">Lunch</span><span class="p-food-hours">til sold out</span></div><div class="p-food-row"><span class="p-food-vendor">Taqueria Ramirez</span><span class="p-food-meal">Dinner</span><span class="p-food-hours">6–10pm</span></div><div class="p-food-row"><span class="p-food-vendor">Dila</span><span class="p-food-meal">Dinner</span><span class="p-food-hours">6–10pm</span></div>
+        <div class="p-food-day-label">Friday</div><div class="p-food-row"><span class="p-food-vendor">109 Montrose</span><span class="p-food-meal">Coffee</span><span class="p-food-hours">Morn–late</span></div><div class="p-food-row"><span class="p-food-vendor">Dila</span><span class="p-food-meal">Bfast</span><span class="p-food-hours">9am–1pm</span></div><div class="p-food-row"><span class="p-food-vendor">Taqueria Ramirez</span><span class="p-food-meal">Dinner</span><span class="p-food-hours">6–10pm</span></div><div class="p-food-row"><span class="p-food-vendor">Dila</span><span class="p-food-meal">Dinner</span><span class="p-food-hours">6–10pm</span></div><div class="p-food-row"><span class="p-food-vendor">Bar — Vegan Onigiri</span><span class="p-food-meal"></span><span class="p-food-hours">Bar hrs</span></div>
+        <div class="p-food-day-label">Saturday</div><div class="p-food-row"><span class="p-food-vendor">109 Montrose</span><span class="p-food-meal">Coffee</span><span class="p-food-hours">Morn–late</span></div><div class="p-food-row"><span class="p-food-vendor">Taqueria Ramirez</span><span class="p-food-meal">Dinner</span><span class="p-food-hours">6–10pm</span></div><div class="p-food-row"><span class="p-food-vendor">Dila</span><span class="p-food-meal">Dinner</span><span class="p-food-hours">6–10pm</span></div>
         <div class="p-food-day-label">Sunday</div><div class="p-food-row"><span class="p-food-vendor">Dila</span><span class="p-food-meal">Bfast</span><span class="p-food-hours">9am–1pm</span></div><div class="p-food-row"><span class="p-food-vendor">109 Montrose / Bagels</span><span class="p-food-meal">Coffee</span><span class="p-food-hours">Morning</span></div>
       </div>
     </div>
@@ -661,8 +285,8 @@ footer { padding: 24px 20px; text-align: center; }
 // ── STAFF ROSTER ──
 const INNKEEPER_PHONE = '+13479867562';
 const INNKEEPERS = {
-  maya:  { name: 'Maya Torres',   phone: INNKEEPER_PHONE, note: 'WhatsApp preferred' },
-  james: { name: 'James Okafor',  phone: INNKEEPER_PHONE, note: 'WhatsApp preferred' },
+  maya:  { name: 'Maya Torres',   phone: INNKEEPER_PHONE },
+  james: { name: 'James Okafor',  phone: INNKEEPER_PHONE },
 };
 const DRIVERS = {
   carlos:  { name: 'Carlos Reyes',   phone: '+1 (908) 555-0201' },
@@ -687,59 +311,22 @@ const PHOTOGRAPHERS = {
   sam:     { name: 'Sam',      phone: '+1 (347) 416-3197' },
   deirdre: { name: 'Deirdre',  phone: '+1 (917) 500-6418' },
 };
-const RAIN_STAGES = ['Lakeside', 'The Outside Inn', 'Hammock Grove'];
-const ARTISTS = [
-  {name:'Ash Fure',slug:'ash-fure'},{name:'Ayanna Heaven',slug:'ayanna-heaven'},
-  {name:'Badsista',slug:'badsista'},{name:'Bendik Giske',slug:'bendik-giske'},
-  {name:'Black Decelerant',slug:'black-decelerant'},
-  {name:'Breadwoman',slug:'breadwoman'},{name:'Buttechno / Pavel Milyakov',slug:'pavel-milyakov'},
-  {name:'C. Lavender',slug:'c-lavender'},{name:'Choke Hole',slug:'choke-hole'},
-  {name:'DJ Bobby Beethoven',slug:'dj-bobby-beethoven'},{name:'DJ Manny',slug:'dj-manny'},
-  {name:'DJ ojo',slug:'dj-ojo'},{name:'Doula',slug:'doula'},
-  {name:'Earthen Sea',slug:'earthen-sea'},{name:'Eden Aurelius',slug:'eden-aurelius'},
-  {name:'Elori Saxl & Henry Solomon',slug:'elori-saxl-henry-solomon'},
-  {name:'Everything Upful',slug:'everything-upful'},{name:'Fried Platano',slug:'fried-platano'},
-  {name:'FujiIIIIIIIIIIIta',slug:'fujiiiiiiiiiiiita'},{name:'gyrofield',slug:'gyrofield'},
-  {name:'Hesaitix',slug:'hesaitix'},{name:'Honey Pluton & Spike Einbinder',slug:'honey-pluton'},
-  {name:'In The Mela: Baalti & Sayoko',slug:'in-the-mela'},
-  {name:'Isabella Koen',slug:'isabella-koen'},{name:'João Lágrima de Ouro',slug:'joao-lagrima'},
-  {name:'Joselo',slug:'joselo'},{name:'Juliana Huxtable',slug:'juliana-huxtable'},
-  {name:'Ka Baird',slug:'ka-baird'},{name:'keiyaA',slug:'keiyaa'},
-  {name:'Kiernan Laveaux',slug:'kiernan-laveaux'},{name:'livwutang',slug:'livwutang'},
-  {name:'Mad Professor',slug:'mad-professor'},{name:'Max in the World & Kroba',slug:'max-in-the-world'},
-  {name:'Monica Mirabile & ADR',slug:'monica-mirabile'},{name:'MOTHERBOARD',slug:'motherboard'},
-  {name:'Multicast Dynamics',slug:'multicast-dynamics'},{name:'Sevyn Love',slug:'sevyn-love'},
-  {name:'Toki Fuko',slug:'toki-fuko'},{name:'Zi!',slug:'zi'},
-  {name:'Sonic Mobile: Upsammy',slug:'sonic-mobile-upsammy'},
-  {name:'Workshop: Alex Tatarsky',slug:'workshop-alex-tatarsky'},
-];
 
 // ── TRANSLATIONS ──
 const T = {
-  en:{eyebrow:'2026 Artist',setTime:'Set time',soundCheck:'Sound check',stageNote:'⚠ Please be at stage 20 minutes before your set.',contacts:'Your contacts',travel:'Travel',addresses:'Addresses',checkInNotice:'Check in at <strong>The Inn</strong> first — hotel keys, wristbands & orientation. Do not go to the hotel first.',arrival:'Arrival',parking:'Parking',parkingMain:'Staff lot',parkingSub:'Outside The Inn',departure:'Departure',wristband:'Yellow wristband = free drinks all weekend. Your meal tokens are valid at all food vendors.',venue:'Venue',hotel:'Hotel',lodging:'Lodging',cabin:'Cabin',maps:'Maps ↗',shuttle:'Shuttle schedule',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Departs from staff parking lot outside The Inn.',thursday:'Thursday',friday:'Friday',saturday:'Saturday',sunday:'Sunday',friSat:'Friday – Saturday',satSun:'Saturday – Sunday',breakfast:'Breakfast',lunch:'Lunch',dinner:'Dinner',coffee:'Coffee',barHours:'Bar hours',morning:'Morning',bagels:'Bagels & fruit at The Inn',food:'Food — dining tent unless noted',foodNote:'Snacks, tea & coffee available all weekend backstage at The Inn.',dawnNote:'✦ Final shuttle after dawn concert',lastShuttle:'✦ Last shuttle — hotel checkout at 11am',callBtn:'Call ↗',notStaying:'Not staying locally',rainAlert:'☁ Rain plan active — stage changed'},
-  pt:{eyebrow:'Ficha do Artista / Equipe · 2026',setTime:'Horário do set',soundCheck:'Passagem de som',stageNote:'⚠ Por favor, esteja no palco 20 minutos antes do seu set.',contacts:'Seus contatos',travel:'Viagem',addresses:'Endereços',checkInNotice:'Faça check-in no <strong>The Inn</strong> primeiro — chaves do hotel, pulseiras e orientações. Não vá ao hotel primeiro.',arrival:'Chegada',parking:'Estacionamento',parkingMain:'Área da equipe',parkingSub:'Em frente ao The Inn',departure:'Partida',wristband:'Pulseira amarela = bebidas grátis o fim de semana todo. Fichas de refeição válidas em todos os vendedores.',venue:'Local',hotel:'Hotel',lodging:'Hospedagem',cabin:'Cabana',maps:'Mapa ↗',shuttle:'Horários do transfer',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Parte do estacionamento da equipe em frente ao The Inn.',thursday:'Quinta-feira',friday:'Sexta-feira',saturday:'Sábado',sunday:'Domingo',friSat:'Sexta – Sábado',satSun:'Sábado – Domingo',breakfast:'Café da manhã',lunch:'Almoço',dinner:'Jantar',coffee:'Café',barHours:'Horário do bar',morning:'Manhã',bagels:'Bagels e frutas no The Inn',food:'Alimentação — tenda de refeições salvo indicação',foodNote:'Lanches, chá e café disponíveis nos bastidores do The Inn durante todo o fim de semana.',dawnNote:'✦ Último transfer após o concerto ao amanhecer',lastShuttle:'✦ Último transfer — checkout do hotel às 11h',callBtn:'Ligar ↗',notStaying:'Sem hospedagem local',rainAlert:'☁ Plano de chuva ativo — palco alterado'},
-  ja:{eyebrow:'アーティスト / クルーシート · 2026',setTime:'セット時間',soundCheck:'サウンドチェック',stageNote:'⚠ セット開始の20分前にはステージにいてください。',contacts:'担当スタッフ',travel:'移動',addresses:'住所',checkInNotice:'まず <strong>The Inn</strong> でチェックイン — ホテルの鍵・リストバンド・オリエンテーションを受け取ってください。ホテルに直接行かないでください。',arrival:'到着',parking:'駐車場',parkingMain:'スタッフ用駐車場',parkingSub:'The Inn 前',departure:'出発',wristband:'黄色のリストバンドで週末中のお飲み物が無料です。食事チケットは全フードベンダーでご利用いただけます。',venue:'会場',hotel:'ホテル',lodging:'宿泊',cabin:'キャビン',maps:'地図 ↗',shuttle:'シャトルスケジュール',shuttleCampBtn:'キャンプ → ホテル',shuttleHotelBtn:'ホテル → キャンプ',shuttleNote:'The Inn 前のスタッフ駐車場より出発。',thursday:'木曜日',friday:'金曜日',saturday:'土曜日',sunday:'日曜日',friSat:'金曜日 – 土曜日',satSun:'土曜日 – 日曜日',breakfast:'朝食',lunch:'昼食',dinner:'夕食',coffee:'コーヒー',barHours:'バー営業時間',morning:'朝',bagels:'ベーグル＆フルーツ（The Inn にて）',food:'食事 — 特記なき限り食事テントにて',foodNote:'スナック・お茶・コーヒーは週末中ずっと The Inn のバックステージでご用意しています。',dawnNote:'✦ 夜明けコンサート後の最終シャトル',lastShuttle:'✦ 最終シャトル — ホテルチェックアウトは11時',callBtn:'電話 ↗',notStaying:'現地宿泊なし',rainAlert:'☁ 雨天プラン発動 — ステージ変更'},
-  es:{eyebrow:'Ficha Artista / Equipo · 2026',setTime:'Hora del set',soundCheck:'Prueba de sonido',stageNote:'⚠ Por favor, esté en el escenario 20 minutos antes de su set.',contacts:'Tus contactos',travel:'Viaje',addresses:'Direcciones',checkInNotice:'Regístrate primero en <strong>The Inn</strong> — llaves del hotel, pulseras y orientación. No vayas directamente al hotel.',arrival:'Llegada',parking:'Estacionamiento',parkingMain:'Estacionamiento del personal',parkingSub:'Frente al The Inn',departure:'Salida',wristband:'Pulsera amarilla = bebidas gratis todo el fin de semana. Tus fichas de comida son válidas en todos los vendedores.',venue:'Lugar',hotel:'Hotel',lodging:'Alojamiento',cabin:'Cabaña',maps:'Mapa ↗',shuttle:'Horario del shuttle',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Sale desde el estacionamiento del personal frente a The Inn.',thursday:'Jueves',friday:'Viernes',saturday:'Sábado',sunday:'Domingo',friSat:'Viernes – Sábado',satSun:'Sábado – Domingo',breakfast:'Desayuno',lunch:'Almuerzo',dinner:'Cena',coffee:'Café',barHours:'Horario del bar',morning:'Mañana',bagels:'Bagels y fruta en The Inn',food:'Comida — carpa de comedor salvo indicación',foodNote:'Snacks, té y café disponibles todo el fin de semana en el backstage de The Inn.',dawnNote:'✦ Último shuttle tras el concierto del amanecer',lastShuttle:'✦ Último shuttle — checkout del hotel a las 11am',callBtn:'Llamar ↗',notStaying:'Sin alojamiento local',rainAlert:'☁ Plan de lluvia activo — escenario cambiado'},
-  fr:{eyebrow:'Fiche Artiste / Équipe · 2026',setTime:'Heure du set',soundCheck:'Balance',stageNote:'⚠ Merci d\'être sur scène 20 minutes avant votre set.',contacts:'Vos contacts',travel:'Transport',addresses:'Adresses',checkInNotice:'Enregistrez-vous d\'abord au <strong>The Inn</strong> — clés, bracelets & orientation. Ne pas aller directement à l\'hôtel.',arrival:'Arrivée',parking:'Parking',parkingMain:'Parking du personnel',parkingSub:'Devant The Inn',departure:'Départ',wristband:'Bracelet jaune = boissons gratuites tout le week-end. Vos jetons repas sont valables chez tous les vendeurs.',venue:'Lieu',hotel:'Hôtel',lodging:'Hébergement',cabin:'Chalet',maps:'Carte ↗',shuttle:'Navettes',shuttleCampBtn:'Camp → Hôtel',shuttleHotelBtn:'Hôtel → Camp',shuttleNote:'Départ depuis le parking du personnel devant The Inn.',thursday:'Jeudi',friday:'Vendredi',saturday:'Samedi',sunday:'Dimanche',friSat:'Vendredi – Samedi',satSun:'Samedi – Dimanche',breakfast:'Petit-déjeuner',lunch:'Déjeuner',dinner:'Dîner',coffee:'Café',barHours:'Heures du bar',morning:'Matin',bagels:'Bagels & fruits au The Inn',food:'Nourriture — tente repas sauf indication',foodNote:'Snacks, thé et café disponibles tout le week-end en backstage au The Inn.',dawnNote:'✦ Dernière navette après le concert de l\'aube',lastShuttle:'✦ Dernière navette — check-out hôtel à 11h',callBtn:'Appeler ↗',notStaying:'Pas d\'hébergement local',rainAlert:'☁ Plan pluie activé — scène modifiée'},
-  de:{eyebrow:'Künstler / Crew Sheet · 2026',setTime:'Set-Zeit',soundCheck:'Soundcheck',stageNote:'⚠ Bitte 20 Minuten vor Ihrem Set auf der Bühne sein.',contacts:'Ihre Kontakte',travel:'Reise',addresses:'Adressen',checkInNotice:'Zuerst im <strong>The Inn</strong> einchecken — Hotelschlüssel, Armbänder & Einweisung. Nicht direkt zum Hotel gehen.',arrival:'Ankunft',parking:'Parkplatz',parkingMain:'Personalparkplatz',parkingSub:'Vor dem The Inn',departure:'Abreise',wristband:'Gelbes Armband = freie Getränke das gesamte Wochenende. Essensmarken gelten bei allen Anbietern.',venue:'Veranstaltungsort',hotel:'Hotel',lodging:'Unterkunft',cabin:'Hütte',maps:'Karte ↗',shuttle:'Shuttle-Fahrplan',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Abfahrt vom Personalparkplatz vor The Inn.',thursday:'Donnerstag',friday:'Freitag',saturday:'Samstag',sunday:'Sonntag',friSat:'Freitag – Samstag',satSun:'Samstag – Sonntag',breakfast:'Frühstück',lunch:'Mittagessen',dinner:'Abendessen',coffee:'Kaffee',barHours:'Barzeit',morning:'Morgen',bagels:'Bagels & Obst im The Inn',food:'Essen — Essenszelt sofern nicht anders angegeben',foodNote:'Snacks, Tee und Kaffee sind das gesamte Wochenende backstage im The Inn verfügbar.',dawnNote:'✦ Letzter Shuttle nach dem Morgenkonzert',lastShuttle:'✦ Letzter Shuttle — Hotel-Checkout um 11 Uhr',callBtn:'Anrufen ↗',notStaying:'Keine lokale Unterkunft',rainAlert:'☁ Regenplan aktiv — Bühne geändert'},
-  ru:{eyebrow:'Лист артиста / Команды · 2026',setTime:'Время выступления',soundCheck:'Саундчек',stageNote:'⚠ Пожалуйста, будьте на сцене за 20 минут до выступления.',contacts:'Ваши контакты',travel:'Трансфер',addresses:'Адреса',checkInNotice:'Сначала зарегистрируйтесь в <strong>The Inn</strong> — ключи от номера, браслеты и инструктаж. Не езжайте сразу в отель.',arrival:'Прибытие',parking:'Парковка',parkingMain:'Парковка для персонала',parkingSub:'У The Inn',departure:'Отъезд',wristband:'Жёлтый браслет = бесплатные напитки на всё время фестиваля. Талоны на питание действительны у всех фудвендоров.',venue:'Площадка',hotel:'Отель',lodging:'Проживание',cabin:'Домик',maps:'Карта ↗',shuttle:'Расписание шаттла',shuttleCampBtn:'Кемп → Отель',shuttleHotelBtn:'Отель → Кемп',shuttleNote:'Отправление с парковки персонала у The Inn.',thursday:'Четверг',friday:'Пятница',saturday:'Суббота',sunday:'Воскресенье',friSat:'Пятница – Суббота',satSun:'Суббота – Воскресенье',breakfast:'Завтрак',lunch:'Обед',dinner:'Ужин',coffee:'Кофе',barHours:'Часы работы бара',morning:'Утро',bagels:'Бейглы и фрукты в The Inn',food:'Питание — палатка, если не указано иное',foodNote:'Снеки, чай и кофе доступны весь уикенд за кулисами в The Inn.',dawnNote:'✦ Последний шаттл после рассветного концерта',lastShuttle:'✦ Последний шаттл — выезд из отеля в 11:00',callBtn:'Позвонить ↗',notStaying:'Без местного проживания',rainAlert:'☁ Дождевой план активирован — сцена изменена'},
+  en:{eyebrow:'2026 Artist',setTime:'Set time',soundCheck:'Sound check',stageNote:'⚠ Please be at stage 20 minutes before your set.',contacts:'Your contacts',travel:'Travel',addresses:'Addresses',checkInNotice:'Check in at <strong>The Inn</strong> first — hotel keys, wristbands & orientation. Do not go to the hotel first.',arrival:'Arrival',parking:'Parking',parkingMain:'Staff lot',parkingSub:'Outside The Inn',departure:'Departure',wristband:'Your drink tokens are valid at all Dripping bars. Not valid for coffee.',venue:'Venue',hotel:'Hotel',lodging:'Lodging',cabin:'Cabin',maps:'Maps ↗',shuttle:'Shuttle schedule',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Departs from staff parking lot outside The Inn.',thursday:'Thursday',friday:'Friday',saturday:'Saturday',sunday:'Sunday',friSat:'Friday – Saturday',satSun:'Saturday – Sunday',breakfast:'Breakfast',lunch:'Lunch',dinner:'Dinner',coffee:'Coffee',barHours:'Bar hours',morning:'Morning',bagels:'Bagels & fruit at The Inn',food:'Food — dining tent unless noted',foodNote:'Snacks, tea & coffee available all weekend backstage at The Inn.',dawnNote:'✦ Final shuttle after dawn concert',lastShuttle:'✦ Last shuttle — hotel checkout at 11am',callBtn:'Call ↗',notStaying:'Not staying locally',rainAlert:'☁ Rain plan active — stage changed',meetingPoint:'Meeting point',parkingInfo:'Parking info',moreInfo:'More info ↗'},
+  pt:{eyebrow:'Ficha do Artista / Equipe · 2026',setTime:'Horário do set',soundCheck:'Passagem de som',stageNote:'⚠ Por favor, esteja no palco 20 minutos antes do seu set.',contacts:'Seus contatos',travel:'Viagem',addresses:'Endereços',checkInNotice:'Faça check-in no <strong>The Inn</strong> primeiro — chaves do hotel, pulseiras e orientações. Não vá ao hotel primeiro.',arrival:'Chegada',parking:'Estacionamento',parkingMain:'Área da equipe',parkingSub:'Em frente ao The Inn',departure:'Partida',wristband:'Seus tokens de bebida são válidos em todos os bares Dripping. Não válidos para café.',venue:'Local',hotel:'Hotel',lodging:'Hospedagem',cabin:'Cabana',maps:'Mapa ↗',shuttle:'Horários do transfer',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Parte do estacionamento da equipe em frente ao The Inn.',thursday:'Quinta-feira',friday:'Sexta-feira',saturday:'Sábado',sunday:'Domingo',friSat:'Sexta – Sábado',satSun:'Sábado – Domingo',breakfast:'Café da manhã',lunch:'Almoço',dinner:'Jantar',coffee:'Café',barHours:'Horário do bar',morning:'Manhã',bagels:'Bagels e frutas no The Inn',food:'Alimentação — tenda de refeições salvo indicação',foodNote:'Lanches, chá e café disponíveis nos bastidores do The Inn durante todo o fim de semana.',dawnNote:'✦ Último transfer após o concerto ao amanhecer',lastShuttle:'✦ Último transfer — checkout do hotel às 11h',callBtn:'Ligar ↗',notStaying:'Sem hospedagem local',rainAlert:'☁ Plano de chuva ativo — palco alterado'},
+  ja:{eyebrow:'アーティスト / クルーシート · 2026',setTime:'セット時間',soundCheck:'サウンドチェック',stageNote:'⚠ セット開始の20分前にはステージにいてください。',contacts:'担当スタッフ',travel:'移動',addresses:'住所',checkInNotice:'まず <strong>The Inn</strong> でチェックイン — ホテルの鍵・リストバンド・オリエンテーションを受け取ってください。ホテルに直接行かないでください。',arrival:'到着',parking:'駐車場',parkingMain:'スタッフ用駐車場',parkingSub:'The Inn 前',departure:'出発',wristband:'ドリンクトークンは全ての Dripping バーでご利用いただけます。コーヒーには使用できません。',venue:'会場',hotel:'ホテル',lodging:'宿泊',cabin:'キャビン',maps:'地図 ↗',shuttle:'シャトルスケジュール',shuttleCampBtn:'キャンプ → ホテル',shuttleHotelBtn:'ホテル → キャンプ',shuttleNote:'The Inn 前のスタッフ駐車場より出発。',thursday:'木曜日',friday:'金曜日',saturday:'土曜日',sunday:'日曜日',friSat:'金曜日 – 土曜日',satSun:'土曜日 – 日曜日',breakfast:'朝食',lunch:'昼食',dinner:'夕食',coffee:'コーヒー',barHours:'バー営業時間',morning:'朝',bagels:'ベーグル＆フルーツ（The Inn にて）',food:'食事 — 特記なき限り食事テントにて',foodNote:'スナック・お茶・コーヒーは週末中ずっと The Inn のバックステージでご用意しています。',dawnNote:'✦ 夜明けコンサート後の最終シャトル',lastShuttle:'✦ 最終シャトル — ホテルチェックアウトは11時',callBtn:'電話 ↗',notStaying:'現地宿泊なし',rainAlert:'☁ 雨天プラン発動 — ステージ変更'},
+  es:{eyebrow:'Ficha Artista / Equipo · 2026',setTime:'Hora del set',soundCheck:'Prueba de sonido',stageNote:'⚠ Por favor, esté en el escenario 20 minutos antes de su set.',contacts:'Tus contactos',travel:'Viaje',addresses:'Direcciones',checkInNotice:'Regístrate primero en <strong>The Inn</strong> — llaves del hotel, pulseras y orientación. No vayas directamente al hotel.',arrival:'Llegada',parking:'Estacionamiento',parkingMain:'Estacionamiento del personal',parkingSub:'Frente al The Inn',departure:'Salida',wristband:'Tus tokens de bebida son válidos en todos los bares Dripping. No válidos para café.',venue:'Lugar',hotel:'Hotel',lodging:'Alojamiento',cabin:'Cabaña',maps:'Mapa ↗',shuttle:'Horario del shuttle',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Sale desde el estacionamiento del personal frente a The Inn.',thursday:'Jueves',friday:'Viernes',saturday:'Sábado',sunday:'Domingo',friSat:'Viernes – Sábado',satSun:'Sábado – Domingo',breakfast:'Desayuno',lunch:'Almuerzo',dinner:'Cena',coffee:'Café',barHours:'Horario del bar',morning:'Mañana',bagels:'Bagels y fruta en The Inn',food:'Comida — carpa de comedor salvo indicación',foodNote:'Snacks, té y café disponibles todo el fin de semana en el backstage de The Inn.',dawnNote:'✦ Último shuttle tras el concierto del amanecer',lastShuttle:'✦ Último shuttle — checkout del hotel a las 11am',callBtn:'Llamar ↗',notStaying:'Sin alojamiento local',rainAlert:'☁ Plan de lluvia activo — escenario cambiado'},
+  fr:{eyebrow:'Fiche Artiste / Équipe · 2026',setTime:'Heure du set',soundCheck:'Balance',stageNote:'⚠ Merci d\'être sur scène 20 minutes avant votre set.',contacts:'Vos contacts',travel:'Transport',addresses:'Adresses',checkInNotice:'Enregistrez-vous d\'abord au <strong>The Inn</strong> — clés, bracelets & orientation. Ne pas aller directement à l\'hôtel.',arrival:'Arrivée',parking:'Parking',parkingMain:'Parking du personnel',parkingSub:'Devant The Inn',departure:'Départ',wristband:'Vos jetons de boisson sont valables dans tous les bars Dripping. Non valables pour le café.',venue:'Lieu',hotel:'Hôtel',lodging:'Hébergement',cabin:'Chalet',maps:'Carte ↗',shuttle:'Navettes',shuttleCampBtn:'Camp → Hôtel',shuttleHotelBtn:'Hôtel → Camp',shuttleNote:'Départ depuis le parking du personnel devant The Inn.',thursday:'Jeudi',friday:'Vendredi',saturday:'Samedi',sunday:'Dimanche',friSat:'Vendredi – Samedi',satSun:'Samedi – Dimanche',breakfast:'Petit-déjeuner',lunch:'Déjeuner',dinner:'Dîner',coffee:'Café',barHours:'Heures du bar',morning:'Matin',bagels:'Bagels & fruits au The Inn',food:'Nourriture — tente repas sauf indication',foodNote:'Snacks, thé et café disponibles tout le week-end en backstage au The Inn.',dawnNote:'✦ Dernière navette après le concert de l\'aube',lastShuttle:'✦ Dernière navette — check-out hôtel à 11h',callBtn:'Appeler ↗',notStaying:'Pas d\'hébergement local',rainAlert:'☁ Plan pluie activé — scène modifiée'},
+  de:{eyebrow:'Künstler / Crew Sheet · 2026',setTime:'Set-Zeit',soundCheck:'Soundcheck',stageNote:'⚠ Bitte 20 Minuten vor Ihrem Set auf der Bühne sein.',contacts:'Ihre Kontakte',travel:'Reise',addresses:'Adressen',checkInNotice:'Zuerst im <strong>The Inn</strong> einchecken — Hotelschlüssel, Armbänder & Einweisung. Nicht direkt zum Hotel gehen.',arrival:'Ankunft',parking:'Parkplatz',parkingMain:'Personalparkplatz',parkingSub:'Vor dem The Inn',departure:'Abreise',wristband:'Ihre Getränkemarken gelten an allen Dripping-Bars. Nicht gültig für Kaffee.',venue:'Veranstaltungsort',hotel:'Hotel',lodging:'Unterkunft',cabin:'Hütte',maps:'Karte ↗',shuttle:'Shuttle-Fahrplan',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Abfahrt vom Personalparkplatz vor The Inn.',thursday:'Donnerstag',friday:'Freitag',saturday:'Samstag',sunday:'Sonntag',friSat:'Freitag – Samstag',satSun:'Samstag – Sonntag',breakfast:'Frühstück',lunch:'Mittagessen',dinner:'Abendessen',coffee:'Kaffee',barHours:'Barzeit',morning:'Morgen',bagels:'Bagels & Obst im The Inn',food:'Essen — Essenszelt sofern nicht anders angegeben',foodNote:'Snacks, Tee und Kaffee sind das gesamte Wochenende backstage im The Inn verfügbar.',dawnNote:'✦ Letzter Shuttle nach dem Morgenkonzert',lastShuttle:'✦ Letzter Shuttle — Hotel-Checkout um 11 Uhr',callBtn:'Anrufen ↗',notStaying:'Keine lokale Unterkunft',rainAlert:'☁ Regenplan aktiv — Bühne geändert'},
+  ru:{eyebrow:'Лист артиста / Команды · 2026',setTime:'Время выступления',soundCheck:'Саундчек',stageNote:'⚠ Пожалуйста, будьте на сцене за 20 минут до выступления.',contacts:'Ваши контакты',travel:'Трансфер',addresses:'Адреса',checkInNotice:'Сначала зарегистрируйтесь в <strong>The Inn</strong> — ключи от номера, браслеты и инструктаж. Не езжайте сразу в отель.',arrival:'Прибытие',parking:'Парковка',parkingMain:'Парковка для персонала',parkingSub:'У The Inn',departure:'Отъезд',wristband:'Ваши токены на напитки действительны во всех барах Dripping. Для кофе не действительны.',venue:'Площадка',hotel:'Отель',lodging:'Проживание',cabin:'Домик',maps:'Карта ↗',shuttle:'Расписание шаттла',shuttleCampBtn:'Кемп → Отель',shuttleHotelBtn:'Отель → Кемп',shuttleNote:'Отправление с парковки персонала у The Inn.',thursday:'Четверг',friday:'Пятница',saturday:'Суббота',sunday:'Воскресенье',friSat:'Пятница – Суббота',satSun:'Суббота – Воскресенье',breakfast:'Завтрак',lunch:'Обед',dinner:'Ужин',coffee:'Кофе',barHours:'Часы работы бара',morning:'Утро',bagels:'Бейглы и фрукты в The Inn',food:'Питание — палатка, если не указано иное',foodNote:'Снеки, чай и кофе доступны весь уикенд за кулисами в The Inn.',dawnNote:'✦ Последний шаттл после рассветного концерта',lastShuttle:'✦ Последний шаттл — выезд из отеля в 11:00',callBtn:'Позвонить ↗',notStaying:'Без местного проживания',rainAlert:'☁ Дождевой план активирован — сцена изменена'},
 };
 
-// ── STORAGE ──
+// ── STATE ──
 let artistData = {};
-let currentArtistSlug = null;
 let currentLang = 'en';
-let activeLangs = ['en'];
 let rainPlanActive = false;
-
-async function saveData(slug, data) {
-  artistData[slug] = data;
-  await fetch('/api/save', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ slug, data }),
-  });
-}
 
 async function loadData(slug) {
   if (artistData[slug]) return artistData[slug];
@@ -753,243 +340,10 @@ async function loadData(slug) {
 
 async function loadAll() {
   try {
-    const res = await fetch('/api/load');
-    const json = await res.json();
-    if (json.data) artistData = { ...artistData, ...json.data };
-    // Load rain plan state
     const rainRes = await fetch('/api/load?slug=__rain_plan__');
     const rainJson = await rainRes.json();
     if (rainJson.data) rainPlanActive = rainJson.data.active || false;
   } catch (e) {}
-}
-
-// ── COMPLETENESS ──
-function getCompleteness(d) {
-  if (!d) return { score: 0, fields: {} };
-  const fields = {
-    set: !!(d.setday && d.settime && d.stage),
-    check: !!(d.checkday && d.checktime),
-    staff: !!(d.stagemgr),
-    travel: !!(d.arrDay && d.depDay),
-    lodging: !!(d.lodging),
-  };
-  const score = Object.values(fields).filter(Boolean).length;
-  return { score, fields };
-}
-
-// ── RAIN PLAN ──
-async function toggleRainPlan() {
-  rainPlanActive = !rainPlanActive;
-  await saveData('__rain_plan__', { active: rainPlanActive });
-  updateRainBanner();
-}
-
-function updateRainBanner() {
-  const btn = document.getElementById('rain-toggle-btn');
-  const text = document.getElementById('rain-status-text');
-  if (rainPlanActive) {
-    btn.textContent = 'Deactivate';
-    btn.classList.add('active');
-    text.innerHTML = '☁ Rain plan: <strong style="color:#ff8080">ACTIVE</strong>';
-  } else {
-    btn.textContent = 'Activate';
-    btn.classList.remove('active');
-    text.innerHTML = '☁ Rain plan: <strong>OFF</strong>';
-  }
-}
-
-// ── ADMIN: ARTIST LIST ──
-const DEPLOY_TIME = new Date().toLocaleString('en-US', {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
-
-function renderArtistList() {
-  const list = document.getElementById('artist-list');
-  const pill = (label, ok) => `<span class="ar-pill ${ok ? 'ok' : 'miss'}">${label}</span>`;
-  list.innerHTML = ARTISTS.map(a => {
-    const d = artistData[a.slug];
-    const { fields } = getCompleteness(d);
-    const hasAny = d && (d.setday || d.arrDay || d.stagemgr);
-    return `<div class="artist-row ${hasAny ? 'has-data' : ''}" onclick="openArtist('${a.slug}','${a.name.replace(/'/g,"\\'")}')">
-      <span class="ar-name">${a.name}</span>
-      <div class="ar-pills">
-        ${pill('Set', fields.set)}
-        ${pill('Check', fields.check)}
-        ${pill('Staff', fields.staff)}
-        ${pill('Travel', fields.travel)}
-        ${pill('Lodging', fields.lodging)}
-      </div>
-      <span class="ar-chevron">›</span>
-    </div>`;
-  }).join('');
-  updateRainBanner();
-  updateLastUpdated();
-}
-
-function updateLastUpdated() {
-  const luBar = document.getElementById('last-updated-bar');
-  const raphEl = document.getElementById('lu-raph');
-  const deployEl = document.getElementById('lu-deploy');
-  if (!luBar) return;
-  // Get most recent save timestamp across all artists
-  let lastSave = null;
-  ARTISTS.forEach(a => {
-    const d = artistData[a.slug];
-    if (d && d._savedAt) {
-      if (!lastSave || d._savedAt > lastSave) lastSave = d._savedAt;
-    }
-  });
-  raphEl.innerHTML = lastSave
-    ? `<strong>Last input by Raph:</strong> ${new Date(lastSave).toLocaleString('en-US', {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}`
-    : `<strong>Last input by Raph:</strong> No saves yet`;
-  deployEl.innerHTML = `<strong>Last deployed by M.C.:</strong> ${DEPLOY_TIME}`;
-}
-
-function showList() {
-  document.getElementById('admin-view').classList.add('active');
-  document.getElementById('edit-view').classList.remove('active');
-}
-
-async function openArtist(slug, name) {
-  currentArtistSlug = slug;
-  document.getElementById('admin-view').classList.remove('active');
-  document.getElementById('edit-view').classList.add('active');
-  document.getElementById('edit-name').textContent = name;
-  const shareUrl = `https://dripping2026-artist-pages.vercel.app/?artist=${slug}`;
-  document.getElementById('artist-share-link').innerHTML = `<a href="${shareUrl}" target="_blank">${shareUrl}</a><button class="copy-link-btn" onclick="copyLink('${shareUrl}', this)">Copy</button>`;
-  const d = await loadData(slug) || {};
-  document.getElementById('f-setday').value = d.setday || '';
-  document.getElementById('f-settime').value = d.settime || '';
-  document.getElementById('f-stage').value = d.stage || '';
-  document.getElementById('f-checkday').value = d.checkday || '';
-  document.getElementById('f-checktime').value = d.checktime || '';
-  document.getElementById('f-checkstage').value = d.checkstage || '';
-  document.getElementById('f-driver').value = d.driver || '';
-  document.getElementById('f-stagemgr').value = d.stagemgr || '';
-  document.getElementById('f-photographer').value = d.photographer || '';
-  document.getElementById('f-arr-day').value = d.arrDay || '';
-  document.getElementById('f-arr-time').value = d.arrTime || '';
-  document.getElementById('f-arr-transport').value = d.arrTransport || '';
-  document.getElementById('f-dep-day').value = d.depDay || '';
-  document.getElementById('f-dep-time').value = d.depTime || '';
-  document.getElementById('f-dep-transport').value = d.depTransport || '';
-  document.getElementById('f-tokens').value = d.tokens || '';
-  document.getElementById('f-lodging').value = d.lodging || 'hotel';
-  document.getElementById('f-cabin').value = d.cabin || '';
-  document.getElementById('f-rain-stage').value = d.rainStage || '';
-  document.getElementById('f-rain-note').value = d.rainNote || '';
-  lodgingChange();
-  stageChange();
-  activeLangs = d.langs || ['en'];
-  document.querySelectorAll('.lang-toggle').forEach(b => b.classList.toggle('selected', activeLangs.includes(b.dataset.lang)));
-  updateDefaultLangDropdown(d.defaultLang || 'en');
-  document.getElementById('save-confirm').textContent = '';
-  previewStaff();
-}
-
-function copyLink(url, btn) {
-  navigator.clipboard.writeText(url).then(() => {
-    btn.textContent = 'Copied!';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
-  });
-}
-
-function stageChange() {
-  const stage = document.getElementById('f-stage').value;
-  const showRain = RAIN_STAGES.includes(stage);
-  document.getElementById('rain-stage-field').classList.toggle('visible', showRain);
-  document.getElementById('rain-note-field').classList.toggle('visible', showRain);
-}
-
-function previewStaff() {
-  const dr = document.getElementById('f-driver').value;
-  const sm = document.getElementById('f-stagemgr').value;
-  const ph = document.getElementById('f-photographer').value;
-  document.getElementById('driver-preview').textContent = dr && DRIVERS[dr] ? `${DRIVERS[dr].name} · ${DRIVERS[dr].phone}` : '';
-  document.getElementById('stagemgr-preview').textContent = sm && STAGE_MANAGERS[sm] ? `${STAGE_MANAGERS[sm].name} · ${STAGE_MANAGERS[sm].phone}` : '';
-  document.getElementById('photographer-preview').textContent = ph && PHOTOGRAPHERS[ph] ? `${PHOTOGRAPHERS[ph].name} · ${PHOTOGRAPHERS[ph].phone}` : '';
-}
-
-function lodgingChange() {
-  const v = document.getElementById('f-lodging').value;
-  document.getElementById('cabin-field').classList.toggle('visible', v === 'cabin');
-}
-
-function toggleLang(btn) {
-  const lang = btn.dataset.lang;
-  if (lang === 'en') return;
-  btn.classList.toggle('selected');
-  activeLangs = Array.from(document.querySelectorAll('.lang-toggle.selected')).map(b => b.dataset.lang);
-  if (!activeLangs.includes('en')) activeLangs.unshift('en');
-  const currentDefault = document.getElementById('f-defaultlang').value;
-  updateDefaultLangDropdown(activeLangs.includes(currentDefault) ? currentDefault : 'en');
-}
-
-function updateDefaultLangDropdown(selected) {
-  const langNames = { en:'EN — English', pt:'PT — Portuguese', ja:'JA — Japanese', es:'ES — Spanish', fr:'FR — French', de:'DE — German', ru:'RU — Russian' };
-  const sel = document.getElementById('f-defaultlang');
-  sel.innerHTML = activeLangs.map(l => `<option value="${l}" ${l===selected?'selected':''}>${langNames[l]||l.toUpperCase()}</option>`).join('');
-}
-
-async function saveArtist() {
-  const btn = document.getElementById('btn-save');
-  const confirm = document.getElementById('save-confirm');
-  btn.disabled = true;
-  btn.textContent = 'Saving…';
-  confirm.textContent = '';
-  const d = {
-    name: document.getElementById('edit-name').textContent,
-    setday: document.getElementById('f-setday').value,
-    settime: document.getElementById('f-settime').value,
-    stage: document.getElementById('f-stage').value,
-    rainStage: document.getElementById('f-rain-stage').value,
-    rainNote: document.getElementById('f-rain-note').value,
-    checkday: document.getElementById('f-checkday').value,
-    checktime: document.getElementById('f-checktime').value,
-    checkstage: document.getElementById('f-checkstage').value,
-    driver: document.getElementById('f-driver').value,
-    stagemgr: document.getElementById('f-stagemgr').value,
-    photographer: document.getElementById('f-photographer').value,
-    arrDay: document.getElementById('f-arr-day').value,
-    arrTime: document.getElementById('f-arr-time').value,
-    arrTransport: document.getElementById('f-arr-transport').value,
-    depDay: document.getElementById('f-dep-day').value,
-    depTime: document.getElementById('f-dep-time').value,
-    depTransport: document.getElementById('f-dep-transport').value,
-    tokens: document.getElementById('f-tokens').value,
-    lodging: document.getElementById('f-lodging').value,
-    cabin: document.getElementById('f-cabin').value,
-    notes: document.getElementById('f-notes').value,
-    langs: activeLangs,
-    defaultLang: document.getElementById('f-defaultlang').value,
-    _savedAt: new Date().toISOString(),
-  };
-  await saveData(currentArtistSlug, d);
-  btn.disabled = false;
-  btn.textContent = 'Save & publish';
-  confirm.textContent = '✓ Saved & published';
-  setTimeout(() => confirm.textContent = '', 2500);
-  renderArtistList();
-}
-
-async function previewArtist() {
-  await saveArtist();
-  const d = artistData[currentArtistSlug];
-  renderArtistView(currentArtistSlug, d.defaultLang || 'en');
-  document.getElementById('edit-view').classList.remove('active');
-  document.getElementById('artist-view').classList.add('active');
-  document.getElementById('admin-back-btn').classList.add('visible');
-}
-
-function backToAdmin() {
-  document.getElementById('artist-view').classList.remove('active');
-  document.getElementById('admin-back-btn').classList.remove('visible');
-  document.getElementById('admin-view').classList.add('active');
-}
-
-async function printArtist() {
-  await saveArtist();
-  renderPrintView(currentArtistSlug);
-  setTimeout(() => window.print(), 300);
 }
 
 // ── ARTIST VIEW ──
@@ -1008,15 +362,11 @@ function renderArtistView(slug, lang) {
   const mid = Math.ceil(parts.length / 2);
   document.getElementById('av-name').innerHTML = parts.slice(0,mid).join(' ') + '<br>' + parts.slice(mid).join(' ');
 
-  // Apply rain plan if active and this artist has a rain stage
   const effectiveStage = (rainPlanActive && d.rainStage) ? d.rainStage : (d.stage || '');
   const checkStage = d.checkstage || d.stage || '';
-  const setStr = [d.setday, d.settime, effectiveStage].filter(Boolean).join(' · ');
-  const checkStr = [d.checkday, d.checktime, checkStage].filter(Boolean).join(' · ');
-  document.getElementById('av-settime').textContent = setStr;
-  document.getElementById('av-checktime').textContent = checkStr;
+  document.getElementById('av-settime').textContent = [d.setday, d.settime, effectiveStage].filter(Boolean).join(' · ');
+  document.getElementById('av-checktime').textContent = [d.checkday, d.checktime, checkStage].filter(Boolean).join(' · ');
 
-  // Rain alert
   const rainAlert = document.getElementById('av-rain-alert');
   if (rainPlanActive && d.rainStage) {
     rainAlert.classList.add('visible');
@@ -1025,24 +375,39 @@ function renderArtistView(slug, lang) {
     rainAlert.classList.remove('visible');
   }
 
-  const ik = { name: 'Artist Care', phone: INNKEEPER_PHONE };
+  const ik = (d.innkeeper && INNKEEPERS[d.innkeeper]) || { name: 'Artist Care', phone: INNKEEPER_PHONE };
   const dr = d.driver && DRIVERS[d.driver];
   const sm = d.stagemgr && STAGE_MANAGERS[d.stagemgr];
   const ph = d.photographer && PHOTOGRAPHERS[d.photographer];
-  let contactsHtml = '';
-  contactsHtml += contactCard('Artist care · innkeeper', ik.name, INNKEEPER_PHONE, t.callBtn||'Call ↗', 'WhatsApp preferred');
+  let contactsHtml = contactCard('Artist care · innkeeper', ik.name, ik.phone, t.callBtn||'Call ↗', 'WhatsApp preferred');
   if (dr) contactsHtml += contactCard('Driver', dr.name, dr.phone, t.callBtn||'Call ↗');
   if (sm) contactsHtml += contactCard('Stage manager (tech)', sm.name, sm.phone, t.callBtn||'Call ↗');
-  if (ph) contactsHtml += contactCard('Photographer', ph.name, ph.phone, t.callBtn||'Call ↗');
+  if (ph) contactsHtml += contactCard('Photographer', ph.name, ph.phone, t.callBtn||'Call ↗', d.photographerMeetingPlace ? `Meet at: ${d.photographerMeetingPlace}` : null);
   document.getElementById('av-contacts').innerHTML = contactsHtml;
 
   let travelHtml = '';
   if (d.arrDay) travelHtml += `<div class="travel-item"><div class="t-label">${t.arrival}</div><div class="t-main">${d.arrDay} · ${d.arrTime}</div><div class="t-sub">${d.arrTransport}</div></div>`;
-  // Only show parking if self-driving
   const isSelfDriving = d.arrTransport && d.arrTransport.toLowerCase().includes('self-driving');
-  if (isSelfDriving) travelHtml += `<div class="travel-item"><div class="t-label">${t.parking||'Parking'}</div><div class="t-main">Main Parking Lot</div><div class="t-sub">Follow signs from camp entrance</div></div>`;
+  if (isSelfDriving) {
+    const parkingText = d.parkingInfo || 'Follow signs from camp entrance';
+    travelHtml += `<div class="travel-item"><div class="t-label">${t.parkingInfo||'Parking info'}</div><div class="t-main">Main Parking Lot</div><div class="t-sub">${parkingText}</div></div>`;
+  }
   if (d.depDay) travelHtml += `<div class="travel-item"><div class="t-label">${t.departure}</div><div class="t-main">${d.depDay} · ${d.depTime}</div><div class="t-sub">${d.depTransport}</div></div>`;
   document.getElementById('av-travel').innerHTML = travelHtml;
+
+  // Shuttle: hotel guests only
+  const shuttleSection = document.getElementById('shuttle-section');
+  if (shuttleSection) shuttleSection.style.display = (d.lodging === 'cabin') ? 'none' : '';
+
+  // Info link
+  const infoLinkSection = document.getElementById('info-link-section');
+  const infoLinkEl = document.getElementById('av-info-link');
+  if (d.infoLink) {
+    infoLinkEl.innerHTML = `<a href="${d.infoLink}" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--black);color:var(--accent);text-decoration:none;font-size:12px;padding:12px 16px;border-left:3px solid var(--accent)">${t.moreInfo||'More info ↗'}</a>`;
+    infoLinkSection.style.display = '';
+  } else {
+    infoLinkSection.style.display = 'none';
+  }
 
   let lodgingHtml = '';
   if (d.lodging === 'hotel') {
@@ -1053,13 +418,11 @@ function renderArtistView(slug, lang) {
     lodgingHtml = `<div class="travel-item"><div class="t-label">${t.lodging||'Lodging'}</div><div class="t-main">${t.notStaying||'Not staying locally'}</div></div>`;
   }
   document.getElementById('av-lodging').innerHTML = lodgingHtml;
-
-  const footerContact = ik ? `Questions? <a href="tel:${INNKEEPER_PHONE}">${ik.name} · ${INNKEEPER_PHONE}</a>` : '';
-  document.getElementById('av-footer-contact').innerHTML = footerContact;
+  document.getElementById('av-footer-contact').innerHTML = `Questions? <a href="tel:${INNKEEPER_PHONE}">Artist Care · ${INNKEEPER_PHONE}</a>`;
 
   const langs = (d.langs || ['en']).filter(l => T[l]);
   document.getElementById('lang-btns').innerHTML = langs.map((l,i) =>
-    `${i>0?'<span class="lang-sep">|</span>':''}<button class="lang-btn ${l===lang?'active':''}" onclick="switchLang('${slug}','${l}')">${l.toUpperCase()}</button>`
+    `${i>0?'<span style="color:rgba(255,255,255,0.15);font-size:11px">|</span>':''}<button class="lang-btn ${l===lang?'active':''}" onclick="switchLang('${slug}','${l}')">${l.toUpperCase()}</button>`
   ).join('');
 }
 
@@ -1080,7 +443,6 @@ function switchTab(dir) {
 function renderPrintView(slug) {
   const d = artistData[slug];
   if (!d) return;
-  const ik = { name: 'Artist Care', phone: INNKEEPER_PHONE };
   const dr = d.driver && DRIVERS[d.driver];
   const sm = d.stagemgr && STAGE_MANAGERS[d.stagemgr];
   document.getElementById('pv-name').textContent = d.name;
@@ -1088,8 +450,7 @@ function renderPrintView(slug) {
   const checkStage = d.checkstage || d.stage || '';
   document.getElementById('pv-settime').textContent = [d.setday, d.settime, stage].filter(Boolean).join(' · ');
   document.getElementById('pv-checktime').textContent = [d.checkday, d.checktime, checkStage].filter(Boolean).join(' · ');
-  let c = '';
-  if (ik) c += `<div class="p-row"><span class="p-key">Artist care</span><span class="p-val">${ik.name}<span class="p-sub">${INNKEEPER_PHONE} · WhatsApp</span></span></div>`;
+  let c = `<div class="p-row"><span class="p-key">Artist care</span><span class="p-val">Artist Care<span class="p-sub">${INNKEEPER_PHONE} · WhatsApp</span></span></div>`;
   if (dr) c += `<div class="p-row"><span class="p-key">Driver</span><span class="p-val">${dr.name}<span class="p-sub">${dr.phone}</span></span></div>`;
   if (sm) c += `<div class="p-row"><span class="p-key">Stage mgr</span><span class="p-val">${sm.name}<span class="p-sub">${sm.phone}</span></span></div>`;
   document.getElementById('pv-contacts').innerHTML = c;
@@ -1104,42 +465,22 @@ function renderPrintView(slug) {
   else if (d.lodging === 'cabin') lo = `<div class="p-row"><span class="p-key">Cabin</span><span class="p-val">${d.cabin}<span class="p-sub">On-site at Camp Sacajawea</span></span></div>`;
   else lo = `<div class="p-row"><span class="p-key">Lodging</span><span class="p-val">Not staying locally</span></div>`;
   document.getElementById('pv-lodging').innerHTML = lo;
-  document.getElementById('pv-footer').textContent = ik ? `Questions: ${ik.name} · ${INNKEEPER_PHONE}` : 'drippingmusicandarts@gmail.com';
+  document.getElementById('pv-footer').textContent = `Questions: Artist Care · ${INNKEEPER_PHONE}`;
 }
 
 // ── INIT ──
 async function init() {
-  // Render list immediately with whatever we have, then reload
-  renderArtistList();
-
-  await loadAll();
-
-  // Seed Bendik in background if not already in DB
-  if (!artistData['bendik-giske']) {
-    saveData('bendik-giske', {
-      name: 'Bendik Giske', setday: 'Friday', settime: '7:30 PM', stage: 'Hammock Grove',
-      checkday: 'Friday', checktime: '5:30 PM', checkstage: 'Hammock Grove',
-      rainStage: 'The Barn', rainNote: 'Rain plan: moved to The Barn',
-      arrDay: '', arrTime: '', arrTransport: '',
-      depDay: '', depTime: '', depTransport: '',
-      tokens: '', lodging: 'hotel', langs: ['en'], defaultLang: 'en',
-      notes: 'Norwegian artist. No travel form submitted yet.',
-    }); // no await — runs in background
-  }
-
-  renderArtistList();
-
   const urlParams = new URLSearchParams(window.location.search);
   const slugParam = urlParams.get('artist');
-  const adminParam = urlParams.get('admin');
 
-  if (slugParam && !adminParam) {
-    const d = await loadData(slugParam);
-    if (d) {
-      renderArtistView(slugParam, d.defaultLang || 'en');
-      document.getElementById('admin-view').classList.remove('active');
-      document.getElementById('artist-view').classList.add('active');
-    }
+  if (!slugParam) return;
+
+  await loadAll();
+  const d = await loadData(slugParam);
+  if (d) {
+    renderArtistView(slugParam, d.defaultLang || 'en');
+    renderPrintView(slugParam);
+    document.getElementById('artist-view').classList.add('active');
   }
 }
 
