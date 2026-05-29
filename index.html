@@ -88,6 +88,10 @@ body { background: var(--cream); color: var(--ink); font-family: 'DM Mono', mono
 .f-meal { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-right: 8px; }
 .f-hours { color: var(--muted); font-style: italic; font-size: 12px; white-space: nowrap; }
 .food-note { margin-top: 14px; padding: 12px 14px; background: var(--white); border: 1px solid var(--rule); font-size: 12px; color: var(--muted); font-style: italic; }
+.token-note { font-size: 12px; color: rgba(255,255,255,0.6); font-style: italic; line-height: 1.7; margin-top: 6px; }
+.meal-token-card { margin-top: 14px; background: var(--black); border-left: 3px solid var(--accent); padding: 14px 16px; }
+.meal-token-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+#av-meal-tokens-text { font-size: 13px; color: var(--white); line-height: 1.6; }
 footer { padding: 24px 20px; text-align: center; }
 .f-logo { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); margin-bottom: 6px; }
 .f-sub { font-size: 11px; color: var(--muted); font-style: italic; }
@@ -148,7 +152,7 @@ footer { padding: 24px 20px; text-align: center; }
 <!-- ══ ARTIST VIEW ══ -->
 <div id="artist-view" class="view">
   <header class="site-header">
-    <div class="logo">Dripping</div>
+    <div class="logo"><svg height="20" viewBox="0 0 421 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Dripping"><path d="M4.17233e-06 49.536V-6.19888e-06H20.376C35.64 -6.19888e-06 44.784 9.216 44.784 24.552C44.784 39.96 35.64 49.536 20.376 49.536H4.17233e-06ZM19.728 40.104C28.944 40.104 32.976 33.984 32.976 24.552C32.976 15.192 28.944 9.43199 19.728 9.43199H11.592V40.104H19.728ZM48.438 49.536V13.968H59.094V20.952C60.822 16.488 64.782 13.104 70.182 13.104C70.83 13.104 71.262 13.104 71.982 13.176V23.688C71.19 23.616 70.542 23.544 69.534 23.544C63.918 23.544 59.526 26.64 59.526 32.832V49.536H48.438ZM74.3327 49.536V13.968H85.6367V49.536H74.3327ZM74.3327 9.93599V-6.19888e-06H85.5647V9.93599H74.3327ZM90.9461 62.856V13.968H102.034V18.432C104.122 15.264 107.722 13.104 112.834 13.104C121.978 13.104 128.962 20.232 128.962 31.752C128.962 43.272 121.978 50.4 112.834 50.4C107.146 50.4 104.05 47.952 102.25 45.576V62.856H90.9461ZM109.522 42.336C114.778 42.336 117.37 37.728 117.37 31.752C117.37 25.776 114.778 21.168 109.522 21.168C104.338 21.168 101.602 25.848 101.602 31.752C101.602 37.656 104.338 42.336 109.522 42.336ZM132.591 62.856V13.968H143.679V18.432C145.767 15.264 149.367 13.104 154.479 13.104C163.623 13.104 170.607 20.232 170.607 31.752C170.607 43.272 163.623 50.4 154.479 50.4C148.791 50.4 145.695 47.952 143.895 45.576V62.856H132.591ZM151.167 42.336C156.423 42.336 159.015 37.728 159.015 31.752C159.015 25.776 156.423 21.168 151.167 21.168C145.983 21.168 143.247 25.848 143.247 31.752C143.247 37.656 145.983 42.336 151.167 42.336ZM174.236 49.536V13.968H185.54V49.536H174.236ZM174.236 9.93599V-6.19888e-06H185.468V9.93599H174.236ZM190.849 49.536V13.968H201.793V18.288H201.865C203.737 15.624 207.337 13.104 212.593 13.104C220.009 13.104 225.193 17.424 225.193 27.216V49.536H213.889V30.24C213.889 25.632 213.241 21.888 208.633 21.888C204.457 21.888 202.153 25.416 202.153 30.312V49.536H190.849ZM246.877 63.72C236.437 63.72 230.245 59.04 229.381 51.12L240.469 50.112C241.045 54.144 243.421 56.088 247.309 56.088C251.341 56.088 253.933 54.072 253.933 48.888V43.056C252.061 45.648 248.893 47.952 243.997 47.952C235.429 47.952 228.589 41.616 228.589 30.6C228.589 19.296 235.429 13.104 243.997 13.104C249.469 13.104 252.565 15.84 254.149 18.216V13.968H265.021V48.816C265.021 59.256 257.461 63.72 246.877 63.72ZM247.237 39.672C252.061 39.672 254.365 35.28 254.365 30.456C254.365 25.704 252.061 21.312 247.237 21.312C242.557 21.312 240.181 25.2 240.181 30.456C240.181 35.784 242.557 39.672 247.237 39.672ZM283.682 49.536V43.74C288.42 39.968 292.56 36.495 296.102 33.321C299.69 30.147 302.496 27.088 304.52 24.144C306.544 21.2 307.556 18.21 307.556 15.174C307.556 12.644 306.843 10.666 305.417 9.23999C303.991 7.76799 302.059 7.03199 299.621 7.03199C296.815 7.03199 294.653 7.92899 293.135 9.72299C291.617 11.471 290.858 13.564 290.858 16.002H283.751C283.797 12.598 284.51 9.746 285.89 7.44599C287.27 5.14599 289.133 3.39799 291.479 2.20199C293.871 1.00599 296.585 0.407995 299.621 0.407995C304.543 0.407995 308.338 1.74199 311.006 4.40999C313.674 7.03199 315.008 10.551 315.008 14.967C315.008 17.773 314.387 20.487 313.145 23.109C311.949 25.685 310.362 28.146 308.384 30.492C306.406 32.838 304.198 35.069 301.76 37.185C299.368 39.301 296.953 41.325 294.515 43.257H316.319V49.536H283.682ZM334.025 50.364C330.299 50.364 327.033 49.352 324.227 47.328C321.467 45.304 319.328 42.429 317.81 38.703C316.292 34.931 315.533 30.492 315.533 25.386C315.533 20.234 316.292 15.795 317.81 12.069C319.328 8.34299 321.467 5.46799 324.227 3.44399C327.033 1.41999 330.299 0.407995 334.025 0.407995C337.797 0.407995 341.063 1.41999 343.823 3.44399C346.583 5.46799 348.722 8.34299 350.24 12.069C351.758 15.795 352.517 20.234 352.517 25.386C352.517 30.492 351.758 34.931 350.24 38.703C348.722 42.429 346.583 45.304 343.823 47.328C341.063 49.352 337.797 50.364 334.025 50.364ZM322.985 25.386C322.985 27.962 323.215 30.308 323.675 32.424C324.135 34.54 324.779 36.38 325.607 37.944L337.682 8.06699C336.532 7.51499 335.313 7.23899 334.025 7.23899C330.805 7.23899 328.16 8.87199 326.09 12.138C324.02 15.358 322.985 19.774 322.985 25.386ZM334.025 43.602C336.187 43.602 338.096 42.866 339.752 41.394C341.408 39.922 342.696 37.829 343.616 35.115C344.582 32.355 345.065 29.112 345.065 25.386C345.065 22.81 344.835 20.464 344.375 18.348C343.915 16.232 343.271 14.415 342.443 12.897L330.368 42.774C331.518 43.326 332.737 43.602 334.025 43.602ZM352.628 49.536V43.74C357.366 39.968 361.506 36.495 365.048 33.321C368.636 30.147 371.442 27.088 373.466 24.144C375.49 21.2 376.502 18.21 376.502 15.174C376.502 12.644 375.789 10.666 374.363 9.23999C372.937 7.76799 371.005 7.03199 368.567 7.03199C365.761 7.03199 363.599 7.92899 362.081 9.72299C360.563 11.471 359.804 13.564 359.804 16.002H352.697C352.743 12.598 353.456 9.746 354.836 7.44599C356.216 5.14599 358.079 3.39799 360.425 2.20199C362.817 1.00599 365.531 0.407995 368.567 0.407995C373.489 0.407995 377.284 1.74199 379.952 4.40999C382.62 7.03199 383.954 10.551 383.954 14.967C383.954 17.773 383.333 20.487 382.091 23.109C380.895 25.685 379.308 28.146 377.33 30.492C375.352 32.838 373.144 35.069 370.706 37.185C368.314 39.301 365.899 41.325 363.461 43.257H385.265V49.536H352.628ZM403.937 50.364C400.533 50.364 397.658 49.743 395.312 48.501C392.966 47.213 391.057 45.488 389.585 43.326C388.159 41.164 387.101 38.703 386.411 35.943C385.767 33.137 385.445 30.193 385.445 27.111C385.445 21.775 386.181 17.106 387.653 13.104C389.171 9.102 391.333 5.99699 394.139 3.78899C396.945 1.53499 400.326 0.407995 404.282 0.407995C407.548 0.407995 410.285 1.00599 412.493 2.20199C414.747 3.35199 416.495 4.96199 417.737 7.03199C419.025 9.05599 419.807 11.379 420.083 14.001H413.252C412.792 11.839 411.757 10.137 410.147 8.89499C408.537 7.65299 406.559 7.03199 404.213 7.03199C401.131 7.03199 398.463 8.50399 396.209 11.448C393.955 14.346 392.69 18.9 392.414 25.11H392.828C393.794 23.362 395.312 21.821 397.382 20.487C399.498 19.153 402.005 18.486 404.903 18.486C407.709 18.486 410.262 19.153 412.562 20.487C414.862 21.775 416.679 23.592 418.013 25.938C419.393 28.284 420.083 30.998 420.083 34.08C420.083 36.978 419.416 39.669 418.082 42.153C416.794 44.637 414.931 46.638 412.493 48.156C410.101 49.628 407.249 50.364 403.937 50.364ZM403.454 43.74C406.26 43.74 408.514 42.866 410.216 41.118C411.964 39.37 412.838 37.139 412.838 34.425C412.838 31.711 411.964 29.48 410.216 27.732C408.514 25.938 406.26 25.041 403.454 25.041C400.648 25.041 398.348 25.915 396.554 27.663C394.806 29.411 393.932 31.642 393.932 34.356C393.932 37.024 394.806 39.255 396.554 41.049C398.348 42.843 400.648 43.74 403.454 43.74Z" fill="#FAF7F2"/></svg></div>
     <div class="lang-btns" id="lang-btns"></div>
   </header>
   <div class="hero">
@@ -162,11 +166,25 @@ footer { padding: 24px 20px; text-align: center; }
           <div class="set-value" id="av-settime"></div>
         </div>
       </div>
+      <div class="set-row" id="av-settime2-row" style="display:none">
+        <div class="set-icon">🎵</div>
+        <div class="set-info">
+          <div class="set-label" data-i18n="setTime">Set time</div>
+          <div class="set-value" id="av-settime2"></div>
+        </div>
+      </div>
       <div class="set-row">
         <div class="set-icon">🔊</div>
         <div class="set-info">
           <div class="set-label" data-i18n="soundCheck">Sound check</div>
           <div class="set-value" id="av-checktime"></div>
+        </div>
+      </div>
+      <div class="set-row" id="av-portrait-row" style="display:none">
+        <div class="set-icon">📸</div>
+        <div class="set-info">
+          <div class="set-label" data-i18n="portrait">Portrait</div>
+          <div class="set-value" id="av-portrait"></div>
         </div>
       </div>
     </div>
@@ -179,7 +197,7 @@ footer { padding: 24px 20px; text-align: center; }
   </div>
   <div class="section">
     <div class="sec-header"><div class="sec-icon">✈</div><div class="sec-title" data-i18n="travel">Travel</div></div>
-    <div class="notice" data-i18n="checkInNotice">Check in at <strong>The Inn</strong> first — hotel keys, wristbands & orientation. Do not go to the hotel first.</div>
+    <div class="notice" id="av-checkin-notice" data-i18n="checkInNotice">Check in at <strong>The Inn</strong> first — collect your hotel key, wristband & orientation. Do not go to the hotel first.</div>
     <div id="av-travel"></div>
   </div>
   <div class="section">
@@ -214,7 +232,11 @@ footer { padding: 24px 20px; text-align: center; }
   </div>
   <div class="section">
     <div class="sec-header"><div class="sec-icon">🍽</div><div class="sec-title" data-i18n="food">Food — dining tent unless noted</div></div>
-    <div class="wb-row"><div data-i18n="wristband">Your drink tokens are valid at all Dripping bars. Not valid for coffee.</div></div>
+    <div class="meal-token-card">
+      <div class="meal-token-label" data-i18n="tokensLabel">Your tokens &amp; wristband</div>
+      <div class="token-note" data-i18n="wristband">Your orange wristband gets you free coffee at 109 Montrose and free tea at Sacred Software (no token needed). Drink tokens are valid at all Dripping bars.</div>
+      <div id="av-meal-tokens" style="display:none; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.1)"><div id="av-meal-tokens-text"></div></div>
+    </div>
     <div class="food-day-block" style="margin-top:14px"><div class="food-day-label" data-i18n="thursday">Thursday</div><div class="food-item"><span class="f-name">BéBép — Welcome dinner <span style="font-size:10px;color:var(--muted)">(V/VG/GF options)</span></span><span class="f-meal" data-i18n="dinner">Dinner</span><span class="f-hours">6 – 10 pm</span></div></div>
     <div class="food-day-block"><div class="food-day-label" data-i18n="friday">Friday</div>
       <div class="food-item"><span class="f-name">109 Montrose <span style="font-size:10px;color:var(--muted)">(V/VG/GF options)</span></span><span class="f-meal" data-i18n="coffee">Coffee</span><span class="f-hours">Morning – late</span></div>
@@ -285,42 +307,51 @@ footer { padding: 24px 20px; text-align: center; }
 // ── STAFF ROSTER ──
 const INNKEEPER_PHONE = '+13479867562';
 const INNKEEPERS = {
-  maya:  { name: 'Maya Torres',   phone: INNKEEPER_PHONE },
-  james: { name: 'James Okafor',  phone: INNKEEPER_PHONE },
+  innkeeper: { name: 'Artist Care', phone: INNKEEPER_PHONE },
+  maya:      { name: 'Artist Care', phone: INNKEEPER_PHONE },
+  james:     { name: 'Artist Care', phone: INNKEEPER_PHONE },
 };
 const DRIVERS = {
-  carlos:  { name: 'Carlos Reyes',   phone: '+1 (908) 555-0201' },
-  diane:   { name: 'Diane Kim',      phone: '+1 (908) 555-0234' },
-  samuel:  { name: 'Samuel Obi',     phone: '+1 (973) 555-0178' },
-  priya:   { name: 'Priya Mehta',    phone: '+1 (973) 555-0156' },
-  tommy:   { name: 'Tommy Vega',     phone: '+1 (201) 555-0293' },
-  nia:     { name: 'Nia Blackwell',  phone: '+1 (201) 555-0317' },
+  francesca: { name: 'Francesca (Forza)', phone: '+1 (860) 207-7465' },
+  calvin:    { name: 'Calvin Griffin',    phone: '+1 (917) 239-0592' },
+  gabi:      { name: 'Gabi Sheerer',      phone: '+1 (954) 673-5761' },
+  gunnar:    { name: 'Gunnar Kauth',      phone: '+1 (651) 485-8841' },
+  mike:      { name: 'Mike Sheffield',    phone: '+1 (908) 370-4401' },
+  robin:     { name: 'Robin Edgerton',    phone: '+1 (646) 369-5996' },
+  willa:     { name: 'Willa',             phone: '+1 (360) 252-0649' },
+  zach:      { name: 'Zach Steinman',     phone: '+1 (415) 225-2947' },
+  rachel:    { name: 'Rachel Hahn',       phone: '' },
+  'henry-k': { name: 'Henry Knauth',      phone: '' },
+  lilly:     { name: 'Lilly Mulligan',    phone: '' },
 };
 const STAGE_MANAGERS = {
-  alex:    { name: 'Alex Rapp',     phone: '+1 (347) 496-1740' },
-  jade:    { name: 'Jade',          phone: '+1 (617) 784-0765' },
-  michael: { name: 'Michael King',  phone: '+1 (718) 213-8467' },
-  ramses:  { name: 'Ramses',        phone: '+1 (646) 243-0556' },
-  rey:     { name: 'Rey',           phone: '+1 (917) 287-4235' },
-  sphente: { name: 'Sphente',       phone: '+1 (773) 370-7260' },
+  jules:   { name: 'Jules',        phone: '+1 (978) 761-7032' },
+  michael: { name: 'Michael King', phone: '+1 (718) 213-8467' },
+  rey:     { name: 'Rey',          phone: '+1 (917) 287-4235' },
+  jade:    { name: 'Jade',         phone: '+1 (617) 784-0765' },
+  devoye:  { name: 'Devoye',       phone: '+1 (914) 434-4742' },
+  anika:   { name: 'Anika',        phone: '+1 (508) 733-2125' },
+  alex:    { name: 'Alex Rapp',    phone: '+1 (227) 249-4630' },
+  sphente: { name: 'Sphente',      phone: '+1 (773) 370-7260' },
 };
 const PHOTOGRAPHERS = {
   guario:  { name: 'Guario',   phone: '+1 (781) 632-3066' },
   nikki:   { name: 'Nikki',    phone: '+1 (305) 283-3960' },
-  mar:     { name: 'Mar',      phone: '+1 (707) 953-1847' },
+  mariah:  { name: 'Mariah',   phone: '+1 (707) 953-1847' },
+  mar:     { name: 'Mariah',   phone: '+1 (707) 953-1847' },
   sam:     { name: 'Sam',      phone: '+1 (347) 416-3197' },
   deirdre: { name: 'Deirdre',  phone: '+1 (917) 500-6418' },
 };
 
 // ── TRANSLATIONS ──
 const T = {
-  en:{eyebrow:'2026 Artist',setTime:'Set time',soundCheck:'Sound check',stageNote:'⚠ Please be at stage 20 minutes before your set.',contacts:'Your contacts',travel:'Travel',addresses:'Addresses',checkInNotice:'Check in at <strong>The Inn</strong> first — hotel keys, wristbands & orientation. Do not go to the hotel first.',arrival:'Arrival',parking:'Parking',parkingMain:'Staff lot',parkingSub:'Outside The Inn',departure:'Departure',wristband:'Your drink tokens are valid at all Dripping bars. Not valid for coffee.',venue:'Venue',hotel:'Hotel',lodging:'Lodging',cabin:'Cabin',maps:'Maps ↗',shuttle:'Shuttle schedule',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Departs from staff parking lot outside The Inn.',thursday:'Thursday',friday:'Friday',saturday:'Saturday',sunday:'Sunday',friSat:'Friday – Saturday',satSun:'Saturday – Sunday',breakfast:'Breakfast',lunch:'Lunch',dinner:'Dinner',coffee:'Coffee',barHours:'Bar hours',morning:'Morning',bagels:'Bagels & fruit at The Inn',food:'Food — dining tent unless noted',foodNote:'Snacks, tea & coffee available all weekend backstage at The Inn.',dawnNote:'✦ Final shuttle after dawn concert',lastShuttle:'✦ Last shuttle — hotel checkout at 11am',callBtn:'Call ↗',notStaying:'Not staying locally',rainAlert:'☁ Rain plan active — stage changed',meetingPoint:'Meeting point',parkingInfo:'Parking info',moreInfo:'More info ↗'},
-  pt:{eyebrow:'Ficha do Artista / Equipe · 2026',setTime:'Horário do set',soundCheck:'Passagem de som',stageNote:'⚠ Por favor, esteja no palco 20 minutos antes do seu set.',contacts:'Seus contatos',travel:'Viagem',addresses:'Endereços',checkInNotice:'Faça check-in no <strong>The Inn</strong> primeiro — chaves do hotel, pulseiras e orientações. Não vá ao hotel primeiro.',arrival:'Chegada',parking:'Estacionamento',parkingMain:'Área da equipe',parkingSub:'Em frente ao The Inn',departure:'Partida',wristband:'Seus tokens de bebida são válidos em todos os bares Dripping. Não válidos para café.',venue:'Local',hotel:'Hotel',lodging:'Hospedagem',cabin:'Cabana',maps:'Mapa ↗',shuttle:'Horários do transfer',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Parte do estacionamento da equipe em frente ao The Inn.',thursday:'Quinta-feira',friday:'Sexta-feira',saturday:'Sábado',sunday:'Domingo',friSat:'Sexta – Sábado',satSun:'Sábado – Domingo',breakfast:'Café da manhã',lunch:'Almoço',dinner:'Jantar',coffee:'Café',barHours:'Horário do bar',morning:'Manhã',bagels:'Bagels e frutas no The Inn',food:'Alimentação — tenda de refeições salvo indicação',foodNote:'Lanches, chá e café disponíveis nos bastidores do The Inn durante todo o fim de semana.',dawnNote:'✦ Último transfer após o concerto ao amanhecer',lastShuttle:'✦ Último transfer — checkout do hotel às 11h',callBtn:'Ligar ↗',notStaying:'Sem hospedagem local',rainAlert:'☁ Plano de chuva ativo — palco alterado'},
-  ja:{eyebrow:'アーティスト / クルーシート · 2026',setTime:'セット時間',soundCheck:'サウンドチェック',stageNote:'⚠ セット開始の20分前にはステージにいてください。',contacts:'担当スタッフ',travel:'移動',addresses:'住所',checkInNotice:'まず <strong>The Inn</strong> でチェックイン — ホテルの鍵・リストバンド・オリエンテーションを受け取ってください。ホテルに直接行かないでください。',arrival:'到着',parking:'駐車場',parkingMain:'スタッフ用駐車場',parkingSub:'The Inn 前',departure:'出発',wristband:'ドリンクトークンは全ての Dripping バーでご利用いただけます。コーヒーには使用できません。',venue:'会場',hotel:'ホテル',lodging:'宿泊',cabin:'キャビン',maps:'地図 ↗',shuttle:'シャトルスケジュール',shuttleCampBtn:'キャンプ → ホテル',shuttleHotelBtn:'ホテル → キャンプ',shuttleNote:'The Inn 前のスタッフ駐車場より出発。',thursday:'木曜日',friday:'金曜日',saturday:'土曜日',sunday:'日曜日',friSat:'金曜日 – 土曜日',satSun:'土曜日 – 日曜日',breakfast:'朝食',lunch:'昼食',dinner:'夕食',coffee:'コーヒー',barHours:'バー営業時間',morning:'朝',bagels:'ベーグル＆フルーツ（The Inn にて）',food:'食事 — 特記なき限り食事テントにて',foodNote:'スナック・お茶・コーヒーは週末中ずっと The Inn のバックステージでご用意しています。',dawnNote:'✦ 夜明けコンサート後の最終シャトル',lastShuttle:'✦ 最終シャトル — ホテルチェックアウトは11時',callBtn:'電話 ↗',notStaying:'現地宿泊なし',rainAlert:'☁ 雨天プラン発動 — ステージ変更'},
-  es:{eyebrow:'Ficha Artista / Equipo · 2026',setTime:'Hora del set',soundCheck:'Prueba de sonido',stageNote:'⚠ Por favor, esté en el escenario 20 minutos antes de su set.',contacts:'Tus contactos',travel:'Viaje',addresses:'Direcciones',checkInNotice:'Regístrate primero en <strong>The Inn</strong> — llaves del hotel, pulseras y orientación. No vayas directamente al hotel.',arrival:'Llegada',parking:'Estacionamiento',parkingMain:'Estacionamiento del personal',parkingSub:'Frente al The Inn',departure:'Salida',wristband:'Tus tokens de bebida son válidos en todos los bares Dripping. No válidos para café.',venue:'Lugar',hotel:'Hotel',lodging:'Alojamiento',cabin:'Cabaña',maps:'Mapa ↗',shuttle:'Horario del shuttle',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Sale desde el estacionamiento del personal frente a The Inn.',thursday:'Jueves',friday:'Viernes',saturday:'Sábado',sunday:'Domingo',friSat:'Viernes – Sábado',satSun:'Sábado – Domingo',breakfast:'Desayuno',lunch:'Almuerzo',dinner:'Cena',coffee:'Café',barHours:'Horario del bar',morning:'Mañana',bagels:'Bagels y fruta en The Inn',food:'Comida — carpa de comedor salvo indicación',foodNote:'Snacks, té y café disponibles todo el fin de semana en el backstage de The Inn.',dawnNote:'✦ Último shuttle tras el concierto del amanecer',lastShuttle:'✦ Último shuttle — checkout del hotel a las 11am',callBtn:'Llamar ↗',notStaying:'Sin alojamiento local',rainAlert:'☁ Plan de lluvia activo — escenario cambiado'},
-  fr:{eyebrow:'Fiche Artiste / Équipe · 2026',setTime:'Heure du set',soundCheck:'Balance',stageNote:'⚠ Merci d\'être sur scène 20 minutes avant votre set.',contacts:'Vos contacts',travel:'Transport',addresses:'Adresses',checkInNotice:'Enregistrez-vous d\'abord au <strong>The Inn</strong> — clés, bracelets & orientation. Ne pas aller directement à l\'hôtel.',arrival:'Arrivée',parking:'Parking',parkingMain:'Parking du personnel',parkingSub:'Devant The Inn',departure:'Départ',wristband:'Vos jetons de boisson sont valables dans tous les bars Dripping. Non valables pour le café.',venue:'Lieu',hotel:'Hôtel',lodging:'Hébergement',cabin:'Chalet',maps:'Carte ↗',shuttle:'Navettes',shuttleCampBtn:'Camp → Hôtel',shuttleHotelBtn:'Hôtel → Camp',shuttleNote:'Départ depuis le parking du personnel devant The Inn.',thursday:'Jeudi',friday:'Vendredi',saturday:'Samedi',sunday:'Dimanche',friSat:'Vendredi – Samedi',satSun:'Samedi – Dimanche',breakfast:'Petit-déjeuner',lunch:'Déjeuner',dinner:'Dîner',coffee:'Café',barHours:'Heures du bar',morning:'Matin',bagels:'Bagels & fruits au The Inn',food:'Nourriture — tente repas sauf indication',foodNote:'Snacks, thé et café disponibles tout le week-end en backstage au The Inn.',dawnNote:'✦ Dernière navette après le concert de l\'aube',lastShuttle:'✦ Dernière navette — check-out hôtel à 11h',callBtn:'Appeler ↗',notStaying:'Pas d\'hébergement local',rainAlert:'☁ Plan pluie activé — scène modifiée'},
-  de:{eyebrow:'Künstler / Crew Sheet · 2026',setTime:'Set-Zeit',soundCheck:'Soundcheck',stageNote:'⚠ Bitte 20 Minuten vor Ihrem Set auf der Bühne sein.',contacts:'Ihre Kontakte',travel:'Reise',addresses:'Adressen',checkInNotice:'Zuerst im <strong>The Inn</strong> einchecken — Hotelschlüssel, Armbänder & Einweisung. Nicht direkt zum Hotel gehen.',arrival:'Ankunft',parking:'Parkplatz',parkingMain:'Personalparkplatz',parkingSub:'Vor dem The Inn',departure:'Abreise',wristband:'Ihre Getränkemarken gelten an allen Dripping-Bars. Nicht gültig für Kaffee.',venue:'Veranstaltungsort',hotel:'Hotel',lodging:'Unterkunft',cabin:'Hütte',maps:'Karte ↗',shuttle:'Shuttle-Fahrplan',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Abfahrt vom Personalparkplatz vor The Inn.',thursday:'Donnerstag',friday:'Freitag',saturday:'Samstag',sunday:'Sonntag',friSat:'Freitag – Samstag',satSun:'Samstag – Sonntag',breakfast:'Frühstück',lunch:'Mittagessen',dinner:'Abendessen',coffee:'Kaffee',barHours:'Barzeit',morning:'Morgen',bagels:'Bagels & Obst im The Inn',food:'Essen — Essenszelt sofern nicht anders angegeben',foodNote:'Snacks, Tee und Kaffee sind das gesamte Wochenende backstage im The Inn verfügbar.',dawnNote:'✦ Letzter Shuttle nach dem Morgenkonzert',lastShuttle:'✦ Letzter Shuttle — Hotel-Checkout um 11 Uhr',callBtn:'Anrufen ↗',notStaying:'Keine lokale Unterkunft',rainAlert:'☁ Regenplan aktiv — Bühne geändert'},
-  ru:{eyebrow:'Лист артиста / Команды · 2026',setTime:'Время выступления',soundCheck:'Саундчек',stageNote:'⚠ Пожалуйста, будьте на сцене за 20 минут до выступления.',contacts:'Ваши контакты',travel:'Трансфер',addresses:'Адреса',checkInNotice:'Сначала зарегистрируйтесь в <strong>The Inn</strong> — ключи от номера, браслеты и инструктаж. Не езжайте сразу в отель.',arrival:'Прибытие',parking:'Парковка',parkingMain:'Парковка для персонала',parkingSub:'У The Inn',departure:'Отъезд',wristband:'Ваши токены на напитки действительны во всех барах Dripping. Для кофе не действительны.',venue:'Площадка',hotel:'Отель',lodging:'Проживание',cabin:'Домик',maps:'Карта ↗',shuttle:'Расписание шаттла',shuttleCampBtn:'Кемп → Отель',shuttleHotelBtn:'Отель → Кемп',shuttleNote:'Отправление с парковки персонала у The Inn.',thursday:'Четверг',friday:'Пятница',saturday:'Суббота',sunday:'Воскресенье',friSat:'Пятница – Суббота',satSun:'Суббота – Воскресенье',breakfast:'Завтрак',lunch:'Обед',dinner:'Ужин',coffee:'Кофе',barHours:'Часы работы бара',morning:'Утро',bagels:'Бейглы и фрукты в The Inn',food:'Питание — палатка, если не указано иное',foodNote:'Снеки, чай и кофе доступны весь уикенд за кулисами в The Inn.',dawnNote:'✦ Последний шаттл после рассветного концерта',lastShuttle:'✦ Последний шаттл — выезд из отеля в 11:00',callBtn:'Позвонить ↗',notStaying:'Без местного проживания',rainAlert:'☁ Дождевой план активирован — сцена изменена'},
+  en:{eyebrow:'2026 Artist',setTime:'Set time',soundCheck:'Sound check',portrait:'Portrait',stageNote:'⚠ Please be at stage 20 minutes before your set.',contacts:'Your contacts',travel:'Travel',addresses:'Addresses',checkInNotice:'Check in at backstage of <strong>The Inn</strong> first — collect your hotel key, {tokens}, wristband & orientation. Do not go to the hotel first.',checkInNoticeCabin:'Check in at backstage of <strong>The Inn</strong> first — collect your {tokens}, wristband & orientation.',drinkTokens:'drink tokens',mealAndDrinkTokens:'meal & drink tokens',arrival:'Arrival',parking:'Parking',parkingMain:'Staff lot',parkingSub:'Outside The Inn',departure:'Departure',tokensLabel:'Your tokens & wristband',wristband:'Your orange wristband gets you free coffee at 109 Montrose and free tea at Sacred Software (no token needed). Drink tokens are valid at all Dripping bars.',photographerIntro:'Dripping has arranged a portrait photographer for you during the festival.',venue:'Venue',hotel:'Hotel',lodging:'Lodging',cabin:'Cabin',maps:'Maps ↗',shuttle:'Shuttle schedule',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Departs from the car park outside The Inn. Can be accessed through the Backstage area.',thursday:'Thursday',friday:'Friday',saturday:'Saturday',sunday:'Sunday',friSat:'Friday – Saturday',satSun:'Saturday – Sunday',breakfast:'Breakfast',lunch:'Lunch',dinner:'Dinner',coffee:'Coffee',barHours:'Bar hours',morning:'Morning',bagels:'Bagels & fruit at The Inn',food:'Food — dining tent unless noted',foodNote:'Snacks, tea & coffee available all weekend backstage at The Inn.',dawnNote:'✦ Final shuttle after dawn concert',lastShuttle:'✦ Last shuttle — hotel checkout at 11am',callBtn:'Contact ↗',notStaying:'Not staying locally',rainAlert:'☁ Rain plan active — stage changed',meetingPoint:'Meeting point',parkingInfo:'Parking info',moreInfo:'More info ↗'},
+  pt:{eyebrow:'Ficha do Artista / Equipe · 2026',setTime:'Horário do set',soundCheck:'Passagem de som',portrait:'Retrato',stageNote:'⚠ Por favor, esteja no palco 20 minutos antes do seu set.',contacts:'Seus contatos',travel:'Viagem',addresses:'Endereços',checkInNotice:'Faça check-in no backstage do <strong>The Inn</strong> primeiro — pegue sua chave de hotel, {tokens}, pulseira e orientações. Não vá ao hotel primeiro.',checkInNoticeCabin:'Faça check-in no backstage do <strong>The Inn</strong> primeiro — pegue {tokens}, pulseira e orientações.',drinkTokens:'fichas de bebida',mealAndDrinkTokens:'fichas de refeição e bebida',arrival:'Chegada',parking:'Estacionamento',parkingMain:'Área da equipe',parkingSub:'Em frente ao The Inn',departure:'Partida',wristband:'Sua pulseira laranja dá café grátis no 109 Montrose e chá grátis no Sacred Software (sem token). Fichas de bebida válidas em todos os bares Dripping.',photographerIntro:'O Dripping organizou um fotógrafo de retratos para você durante o festival.',venue:'Local',hotel:'Hotel',lodging:'Hospedagem',cabin:'Cabana',maps:'Mapa ↗',shuttle:'Horários do transfer',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Parte do estacionamento em frente ao The Inn. Pode ser acessado pela área de bastidores.',thursday:'Quinta-feira',friday:'Sexta-feira',saturday:'Sábado',sunday:'Domingo',friSat:'Sexta – Sábado',satSun:'Sábado – Domingo',breakfast:'Café da manhã',lunch:'Almoço',dinner:'Jantar',coffee:'Café',barHours:'Horário do bar',morning:'Manhã',bagels:'Bagels e frutas no The Inn',food:'Alimentação — tenda de refeições salvo indicação',foodNote:'Lanches, chá e café disponíveis nos bastidores do The Inn durante todo o fim de semana.',dawnNote:'✦ Último transfer após o concerto ao amanhecer',lastShuttle:'✦ Último transfer — checkout do hotel às 11h',callBtn:'Contact ↗',notStaying:'Sem hospedagem local',rainAlert:'☁ Plano de chuva ativo — palco alterado'},
+  ja:{eyebrow:'アーティスト / クルーシート · 2026',setTime:'セット時間',soundCheck:'サウンドチェック',portrait:'ポートレート',stageNote:'⚠ セット開始の20分前にはステージにいてください。',contacts:'担当スタッフ',travel:'移動',addresses:'住所',checkInNotice:'まず <strong>The Inn</strong> のバックステージでチェックイン — ホテルの鍵・{tokens}・リストバンド・オリエンテーションを受け取ってください。ホテルに直接行かないでください。',checkInNoticeCabin:'まず <strong>The Inn</strong> のバックステージでチェックイン — {tokens}・リストバンド・オリエンテーションを受け取ってください。',drinkTokens:'ドリンクトークン',mealAndDrinkTokens:'ミール＆ドリンクトークン',arrival:'到着',parking:'駐車場',parkingMain:'スタッフ用駐車場',parkingSub:'The Inn 前',departure:'出発',wristband:'オレンジのリストバンドで 109 Montrose のコーヒーと Sacred Software のお茶が無料です（トークン不要）。ドリンクトークンは全ての Dripping バーでご利用いただけます。',photographerIntro:'Dripping がフェスティバル期間中にポートレート写真家を手配しました。',venue:'会場',hotel:'ホテル',lodging:'宿泊',cabin:'キャビン',maps:'地図 ↗',shuttle:'シャトルスケジュール',shuttleCampBtn:'キャンプ → ホテル',shuttleHotelBtn:'ホテル → キャンプ',shuttleNote:'The Inn 前の駐車場より出発。バックステージエリアからアクセスできます。',thursday:'木曜日',friday:'金曜日',saturday:'土曜日',sunday:'日曜日',friSat:'金曜日 – 土曜日',satSun:'土曜日 – 日曜日',breakfast:'朝食',lunch:'昼食',dinner:'夕食',coffee:'コーヒー',barHours:'バー営業時間',morning:'朝',bagels:'ベーグル＆フルーツ（The Inn にて）',food:'食事 — 特記なき限り食事テントにて',foodNote:'スナック・お茶・コーヒーは週末中ずっと The Inn のバックステージでご用意しています。',dawnNote:'✦ 夜明けコンサート後の最終シャトル',lastShuttle:'✦ 最終シャトル — ホテルチェックアウトは11時',callBtn:'Contact ↗',notStaying:'現地宿泊なし',rainAlert:'☁ 雨天プラン発動 — ステージ変更'},
+  es:{eyebrow:'Ficha Artista / Equipo · 2026',setTime:'Hora del set',soundCheck:'Prueba de sonido',portrait:'Retrato',stageNote:'⚠ Por favor, esté en el escenario 20 minutos antes de su set.',contacts:'Tus contactos',travel:'Viaje',addresses:'Direcciones',checkInNotice:'Regístrate primero en el backstage de <strong>The Inn</strong> — recoge tu llave de hotel, {tokens}, pulsera y orientación. No vayas directamente al hotel.',checkInNoticeCabin:'Regístrate primero en el backstage de <strong>The Inn</strong> — recoge {tokens}, pulsera y orientación.',drinkTokens:'tokens de bebida',mealAndDrinkTokens:'tokens de comida y bebida',arrival:'Llegada',parking:'Estacionamiento',parkingMain:'Estacionamiento del personal',parkingSub:'Frente al The Inn',departure:'Salida',wristband:'Tu pulsera naranja te da café gratis en 109 Montrose y té gratis en Sacred Software (sin token). Los tokens de bebida son válidos en todos los bares Dripping.',photographerIntro:'Dripping ha organizado un fotógrafo de retratos para ti durante el festival.',venue:'Lugar',hotel:'Hotel',lodging:'Alojamiento',cabin:'Cabaña',maps:'Mapa ↗',shuttle:'Horario del shuttle',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Sale del aparcamiento frente al The Inn. Se puede acceder por el área de backstage.',thursday:'Jueves',friday:'Viernes',saturday:'Sábado',sunday:'Domingo',friSat:'Viernes – Sábado',satSun:'Sábado – Domingo',breakfast:'Desayuno',lunch:'Almuerzo',dinner:'Cena',coffee:'Café',barHours:'Horario del bar',morning:'Mañana',bagels:'Bagels y fruta en The Inn',food:'Comida — carpa de comedor salvo indicación',foodNote:'Snacks, té y café disponibles todo el fin de semana en el backstage de The Inn.',dawnNote:'✦ Último shuttle tras el concierto del amanecer',lastShuttle:'✦ Último shuttle — checkout del hotel a las 11am',callBtn:'Contact ↗',notStaying:'Sin alojamiento local',rainAlert:'☁ Plan de lluvia activo — escenario cambiado'},
+  fr:{eyebrow:'Fiche Artiste / Équipe · 2026',setTime:'Heure du set',soundCheck:'Balance',portrait:'Portrait',stageNote:'⚠ Merci d\'être sur scène 20 minutes avant votre set.',contacts:'Vos contacts',travel:'Transport',addresses:'Adresses',checkInNotice:'Enregistrez-vous d\'abord au backstage de <strong>The Inn</strong> — récupérez votre clé d\'hôtel, {tokens}, bracelet et orientation. Ne pas aller directement à l\'hôtel.',checkInNoticeCabin:'Enregistrez-vous d\'abord au backstage de <strong>The Inn</strong> — récupérez {tokens}, bracelet et orientation.',drinkTokens:'jetons de boisson',mealAndDrinkTokens:'jetons de repas et boisson',arrival:'Arrivée',parking:'Parking',parkingMain:'Parking du personnel',parkingSub:'Devant The Inn',departure:'Départ',wristband:'Votre bracelet orange vous donne droit au café gratuit chez 109 Montrose et au thé gratuit chez Sacred Software (sans jeton). Les jetons de boisson sont valables dans tous les bars Dripping.',photographerIntro:'Dripping a organisé un photographe de portraits pour vous pendant le festival.',venue:'Lieu',hotel:'Hôtel',lodging:'Hébergement',cabin:'Chalet',maps:'Carte ↗',shuttle:'Navettes',shuttleCampBtn:'Camp → Hôtel',shuttleHotelBtn:'Hôtel → Camp',shuttleNote:'Départ du parking devant The Inn. Accessible par la zone backstage.',thursday:'Jeudi',friday:'Vendredi',saturday:'Samedi',sunday:'Dimanche',friSat:'Vendredi – Samedi',satSun:'Samedi – Dimanche',breakfast:'Petit-déjeuner',lunch:'Déjeuner',dinner:'Dîner',coffee:'Café',barHours:'Heures du bar',morning:'Matin',bagels:'Bagels & fruits au The Inn',food:'Nourriture — tente repas sauf indication',foodNote:'Snacks, thé et café disponibles tout le week-end en backstage au The Inn.',dawnNote:'✦ Dernière navette après le concert de l\'aube',lastShuttle:'✦ Dernière navette — check-out hôtel à 11h',callBtn:'Contact ↗',notStaying:'Pas d\'hébergement local',rainAlert:'☁ Plan pluie activé — scène modifiée'},
+  de:{eyebrow:'Künstler / Crew Sheet · 2026',setTime:'Set-Zeit',soundCheck:'Soundcheck',portrait:'Porträt',stageNote:'⚠ Bitte 20 Minuten vor Ihrem Set auf der Bühne sein.',contacts:'Ihre Kontakte',travel:'Reise',addresses:'Adressen',checkInNotice:'Zuerst am Backstage des <strong>The Inn</strong> einchecken — Hotelschlüssel, {tokens}, Armband & Einweisung abholen. Nicht direkt zum Hotel gehen.',checkInNoticeCabin:'Zuerst am Backstage des <strong>The Inn</strong> einchecken — {tokens}, Armband & Einweisung abholen.',drinkTokens:'Getränkemarken',mealAndDrinkTokens:'Essen- & Getränkemarken',arrival:'Ankunft',parking:'Parkplatz',parkingMain:'Personalparkplatz',parkingSub:'Vor dem The Inn',departure:'Abreise',wristband:'Ihr oranges Armband gibt Ihnen kostenlosen Kaffee bei 109 Montrose und kostenlosen Tee bei Sacred Software (kein Token nötig). Getränkemarken gelten an allen Dripping-Bars.',photographerIntro:'Dripping hat einen Porträtfotografen für Sie während des Festivals arrangiert.',venue:'Veranstaltungsort',hotel:'Hotel',lodging:'Unterkunft',cabin:'Hütte',maps:'Karte ↗',shuttle:'Shuttle-Fahrplan',shuttleCampBtn:'Camp → Hotel',shuttleHotelBtn:'Hotel → Camp',shuttleNote:'Abfahrt vom Parkplatz vor The Inn. Zugang über den Backstage-Bereich.',thursday:'Donnerstag',friday:'Freitag',saturday:'Samstag',sunday:'Sonntag',friSat:'Freitag – Samstag',satSun:'Samstag – Sonntag',breakfast:'Frühstück',lunch:'Mittagessen',dinner:'Abendessen',coffee:'Kaffee',barHours:'Barzeit',morning:'Morgen',bagels:'Bagels & Obst im The Inn',food:'Essen — Essenszelt sofern nicht anders angegeben',foodNote:'Snacks, Tee und Kaffee sind das gesamte Wochenende backstage im The Inn verfügbar.',dawnNote:'✦ Letzter Shuttle nach dem Morgenkonzert',lastShuttle:'✦ Letzter Shuttle — Hotel-Checkout um 11 Uhr',callBtn:'Contact ↗',notStaying:'Keine lokale Unterkunft',rainAlert:'☁ Regenplan aktiv — Bühne geändert'},
+  ru:{eyebrow:'Лист артиста / Команды · 2026',setTime:'Время выступления',soundCheck:'Саундчек',portrait:'Портрет',stageNote:'⚠ Пожалуйста, будьте на сцене за 20 минут до выступления.',contacts:'Ваши контакты',travel:'Трансфер',addresses:'Адреса',checkInNotice:'Сначала зарегистрируйтесь на бэкстейдже <strong>The Inn</strong> — получите ключ от номера, {tokens}, браслет и инструктаж. Не езжайте сразу в отель.',checkInNoticeCabin:'Сначала зарегистрируйтесь на бэкстейдже <strong>The Inn</strong> — получите {tokens}, браслет и инструктаж.',drinkTokens:'токены на напитки',mealAndDrinkTokens:'токены на еду и напитки',arrival:'Прибытие',parking:'Парковка',parkingMain:'Парковка для персонала',parkingSub:'У The Inn',departure:'Отъезд',wristband:'Оранжевый браслет даёт бесплатный кофе в 109 Montrose и бесплатный чай в Sacred Software (без токена). Токены на напитки действительны во всех барах Dripping.',photographerIntro:'Dripping организовал для вас портретного фотографа на время фестиваля.',venue:'Площадка',hotel:'Отель',lodging:'Проживание',cabin:'Домик',maps:'Карта ↗',shuttle:'Расписание шаттла',shuttleCampBtn:'Кемп → Отель',shuttleHotelBtn:'Отель → Кемп',shuttleNote:'Отправляется с парковки у The Inn. Доступ через зону бэкстейдж.',thursday:'Четверг',friday:'Пятница',saturday:'Суббота',sunday:'Воскресенье',friSat:'Пятница – Суббота',satSun:'Суббота – Воскресенье',breakfast:'Завтрак',lunch:'Обед',dinner:'Ужин',coffee:'Кофе',barHours:'Часы работы бара',morning:'Утро',bagels:'Бейглы и фрукты в The Inn',food:'Питание — палатка, если не указано иное',foodNote:'Снеки, чай и кофе доступны весь уикенд за кулисами в The Inn.',dawnNote:'✦ Последний шаттл после рассветного концерта',lastShuttle:'✦ Последний шаттл — выезд из отеля в 11:00',callBtn:'Contact ↗',notStaying:'Без местного проживания',rainAlert:'☁ Дождевой план активирован — сцена изменена'},
 };
 
 // ── STATE ──
@@ -333,7 +364,11 @@ async function loadData(slug) {
   try {
     const res = await fetch(`/api/load?slug=${slug}`);
     const json = await res.json();
-    if (json.data) { artistData[slug] = json.data; return json.data; }
+    if (json.data) {
+      const d = json.data;
+      ['stage','rainStage','checkstage','stage2'].forEach(k => { if (d[k]) d[k] = d[k].replace(/lakeside amphitheate[r|re]*/gi, 'Lakeside').replace(/the lake amphitheate[r|re]*/gi, 'Lakeside'); });
+      artistData[slug] = d; return d;
+    }
   } catch (e) {}
   return null;
 }
@@ -364,7 +399,35 @@ function renderArtistView(slug, lang) {
 
   const effectiveStage = (rainPlanActive && d.rainStage) ? d.rainStage : (d.stage || '');
   const checkStage = d.checkstage || d.stage || '';
-  document.getElementById('av-settime').textContent = [d.setday, d.settime, effectiveStage].filter(Boolean).join(' · ');
+
+  // Show set times in chronological order (by day, then time).
+  const DAY_ORDER = { thursday: 0, friday: 1, saturday: 2, sunday: 3 };
+  const setSortKey = (day, time) => {
+    const d0 = DAY_ORDER[(day || '').trim().toLowerCase()] ?? 9;
+    const m = (time || '').match(/(\d+):(\d+)\s*(AM|PM)?/i);
+    let mins = 9999;
+    if (m) {
+      let h = parseInt(m[1], 10);
+      const mn = parseInt(m[2], 10);
+      const ap = (m[3] || '').toUpperCase();
+      if (ap === 'PM' && h !== 12) h += 12;
+      if (ap === 'AM' && h === 12) h = 0;
+      mins = h * 60 + mn;
+    }
+    return d0 * 10000 + mins;
+  };
+  const sets = [{ day: d.setday, time: d.settime, stage: effectiveStage }];
+  if (d.setday2 && d.settime2) sets.push({ day: d.setday2, time: d.settime2, stage: d.stage2 });
+  sets.sort((a, b) => setSortKey(a.day, a.time) - setSortKey(b.day, b.time));
+
+  document.getElementById('av-settime').textContent = [sets[0].day, sets[0].time, sets[0].stage].filter(Boolean).join(' · ');
+  const set2Row = document.getElementById('av-settime2-row');
+  if (sets[1]) {
+    document.getElementById('av-settime2').textContent = [sets[1].day, sets[1].time, sets[1].stage].filter(Boolean).join(' · ');
+    set2Row.style.display = '';
+  } else {
+    set2Row.style.display = 'none';
+  }
   document.getElementById('av-checktime').textContent = [d.checkday, d.checktime, checkStage].filter(Boolean).join(' · ');
 
   const rainAlert = document.getElementById('av-rain-alert');
@@ -378,11 +441,18 @@ function renderArtistView(slug, lang) {
   const ik = (d.innkeeper && INNKEEPERS[d.innkeeper]) || { name: 'Artist Care', phone: INNKEEPER_PHONE };
   const dr = d.driver && DRIVERS[d.driver];
   const sm = d.stagemgr && STAGE_MANAGERS[d.stagemgr];
-  const ph = d.photographer && PHOTOGRAPHERS[d.photographer];
-  let contactsHtml = contactCard('Artist care · innkeeper', ik.name, ik.phone, t.callBtn||'Call ↗', 'WhatsApp preferred');
-  if (dr) contactsHtml += contactCard('Driver', dr.name, dr.phone, t.callBtn||'Call ↗');
-  if (sm) contactsHtml += contactCard('Stage manager (tech)', sm.name, sm.phone, t.callBtn||'Call ↗');
-  if (ph) contactsHtml += contactCard('Photographer', ph.name, ph.phone, t.callBtn||'Call ↗', d.photographerMeetingPlace ? `Meet at: ${d.photographerMeetingPlace}` : null);
+  const ph = d.photographerName
+    ? { name: d.photographerName, phone: d.photographerPhone || '' }
+    : (d.photographer && (PHOTOGRAPHERS[d.photographer] || PHOTOGRAPHERS[d.photographer.toLowerCase()] || { name: d.photographer, phone: '' }));
+  const btn = t.callBtn || 'Contact ↗';
+  let contactsHtml = contactCardDual('Artist care · innkeeper', ik.name, ik.phone, 'WhatsApp ↗', `https://wa.me/${ik.phone.replace(/[^+\d]/g,'')}`, btn);
+  if (dr) contactsHtml += contactCard('Driver', dr.name, dr.phone, btn);
+  if (sm) contactsHtml += contactCard('Stage manager (tech)', sm.name, sm.phone, btn);
+  if (ph) {
+    if (t.photographerIntro) contactsHtml += `<div style="font-size:12px;color:var(--muted);font-style:italic;padding:10px 0 4px;">${t.photographerIntro}</div>`;
+    const photoNote = [d.photographerMeetingDay || null, d.photographerMeetingPlace ? `Meet at: ${d.photographerMeetingPlace}` : null, d.photographerTime || null].filter(Boolean).join(' · ');
+    contactsHtml += contactCard('Photographer', ph.name, ph.phone, btn, photoNote || null);
+  }
   document.getElementById('av-contacts').innerHTML = contactsHtml;
 
   let travelHtml = '';
@@ -396,8 +466,44 @@ function renderArtistView(slug, lang) {
   document.getElementById('av-travel').innerHTML = travelHtml;
 
   // Shuttle: hotel guests only
+  // Check-in notice — conditional on lodging + meal tokens
+  const noticeEl = document.getElementById('av-checkin-notice');
+  if (noticeEl) {
+    const tokenPhrase = d.mealTokens ? (t.mealAndDrinkTokens || 'meal & drink tokens') : (t.drinkTokens || 'drink tokens');
+    const noticeTpl = d.lodging === 'hotel' ? (t.checkInNotice || '') : (t.checkInNoticeCabin || t.checkInNotice || '');
+    noticeEl.innerHTML = noticeTpl.replace('{tokens}', tokenPhrase);
+  }
+
+  // Shuttle — hotel guests only
   const shuttleSection = document.getElementById('shuttle-section');
-  if (shuttleSection) shuttleSection.style.display = (d.lodging === 'cabin') ? 'none' : '';
+  if (shuttleSection) shuttleSection.style.display = (d.lodging === 'hotel') ? '' : 'none';
+
+  // Portrait row in hero
+  const portraitRow = document.getElementById('av-portrait-row');
+  const portraitVal = document.getElementById('av-portrait');
+  if (ph && (d.photographerMeetingDay || d.photographerTime || d.photographerMeetingPlace)) {
+    const parts = [d.photographerMeetingDay, d.photographerTime, d.photographerMeetingPlace].filter(Boolean);
+    portraitVal.textContent = parts.join(' · ');
+    portraitRow.style.display = '';
+  } else if (portraitRow) {
+    portraitRow.style.display = 'none';
+  }
+
+  // Meal tokens
+  const mealTokensEl = document.getElementById('av-meal-tokens');
+  const mealTokensText = document.getElementById('av-meal-tokens-text');
+  if (mealTokensEl && d.mealTokens) {
+    const mt = String(d.mealTokens);
+    const wm = mt.match(/(\d+)\s*welcome/i);
+    const rm = mt.match(/(\d+)\s*regular/i);
+    const parts = [];
+    if (wm) parts.push(`${wm[1]} BéBép — Welcome Dinner`);
+    if (rm) { const n = parseInt(rm[1]); parts.push(`${n} regular meal token${n !== 1 ? 's' : ''}`); }
+    mealTokensText.textContent = 'Meal tokens: ' + (parts.length ? parts.join(', ') : mt);
+    mealTokensEl.style.display = '';
+  } else if (mealTokensEl) {
+    mealTokensEl.style.display = 'none';
+  }
 
   // Info link
   const infoLinkSection = document.getElementById('info-link-section');
@@ -411,7 +517,8 @@ function renderArtistView(slug, lang) {
 
   let lodgingHtml = '';
   if (d.lodging === 'hotel') {
-    lodgingHtml = `<div class="address-card"><div><div class="addr-type">${t.hotel}</div><div class="addr-name">Econo Lodge</div><div class="addr-street">448 US-206<br>Newton, NJ 07860</div></div><a class="map-btn" href="https://maps.google.com?q=448+US-206+Newton+NJ+07860" target="_blank">${t.maps||'Maps ↗'}</a></div>`;
+    const roomDisplay = d.hotelRoom ? `<br><span style="font-size:11px;color:var(--muted);font-style:italic">Room ${d.hotelRoom}</span>` : '';
+    lodgingHtml = `<div class="address-card"><div><div class="addr-type">${t.hotel}</div><div class="addr-name">Econo Lodge${roomDisplay}</div><div class="addr-street">448 US-206<br>Newton, NJ 07860</div></div><a class="map-btn" href="https://maps.google.com?q=448+US-206+Newton+NJ+07860" target="_blank">${t.maps||'Maps ↗'}</a></div>`;
   } else if (d.lodging === 'cabin') {
     lodgingHtml = `<div class="address-card"><div><div class="addr-type">${t.cabin||'Cabin'}</div><div class="addr-name">${d.cabin||'On-site cabin'}</div><div class="addr-street">Camp Sacajawea</div></div></div>`;
   } else {
@@ -428,6 +535,9 @@ function renderArtistView(slug, lang) {
 
 function contactCard(role, name, phone, callLabel, note) {
   return `<div class="contact-card"><div class="contact-left"><div class="c-role">${role}</div><div class="c-name">${name}</div><div class="c-phone">${phone}${note ? ' · ' + note : ''}</div></div><a class="call-btn" href="tel:${phone.replace(/[^+\d]/g,'')}">${callLabel}</a></div>`;
+}
+function contactCardDual(role, name, phone, primaryLabel, primaryHref, secondaryLabel) {
+  return `<div class="contact-card"><div class="contact-left"><div class="c-role">${role}</div><div class="c-name">${name}</div><div class="c-phone">${phone}</div></div><div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0"><a class="call-btn" href="${primaryHref}" target="_blank" style="background:var(--accent);color:var(--black)">${primaryLabel}</a><a class="call-btn" href="tel:${phone.replace(/[^+\d]/g,'')}">${secondaryLabel}</a></div></div>`;
 }
 
 function switchLang(slug, lang) { renderArtistView(slug, lang); }
@@ -458,10 +568,10 @@ function renderPrintView(slug) {
   if (d.arrDay) tv += `<div class="p-row"><span class="p-key">Arrival</span><span class="p-val">${d.arrDay} · ${d.arrTime}<span class="p-sub">${d.arrTransport}</span></span></div>`;
   tv += `<div class="p-row"><span class="p-key">Parking</span><span class="p-val">Staff lot, outside The Inn</span></div>`;
   if (d.depDay) tv += `<div class="p-row"><span class="p-key">Departure</span><span class="p-val">${d.depDay} · ${d.depTime}<span class="p-sub">${d.depTransport}</span></span></div>`;
-  if (d.tokens) tv += `<div class="p-wb"><div class="p-wb-dot"></div><div>Yellow wristband = free drinks. ${d.tokens} meal tokens valid at all vendors.</div></div>`;
+  tv += `<div class="p-wb"><div class="p-wb-dot"></div><div>Orange wristband = free coffee at 109 Montrose. Drink tokens valid at all Dripping bars.</div></div>`;
   document.getElementById('pv-travel').innerHTML = tv;
   let lo = '';
-  if (d.lodging === 'hotel') lo = `<div class="p-row"><span class="p-key">Hotel</span><span class="p-val">Econo Lodge<span class="p-sub">448 US-206, Newton NJ 07860</span></span></div>`;
+  if (d.lodging === 'hotel') lo = `<div class="p-row"><span class="p-key">Hotel</span><span class="p-val">Econo Lodge${d.hotelRoom ? ' · Room ' + d.hotelRoom : ''}<span class="p-sub">448 US-206, Newton NJ 07860</span></span></div>`;
   else if (d.lodging === 'cabin') lo = `<div class="p-row"><span class="p-key">Cabin</span><span class="p-val">${d.cabin}<span class="p-sub">On-site at Camp Sacajawea</span></span></div>`;
   else lo = `<div class="p-row"><span class="p-key">Lodging</span><span class="p-val">Not staying locally</span></div>`;
   document.getElementById('pv-lodging').innerHTML = lo;

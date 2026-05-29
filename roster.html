@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dripping 2026 — Artist Roster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F0EBE1;
+  --white: #FAF7F2;
+  --black: #2C2520;
+  --ink: #3A322C;
+  --muted: #8C847D;
+  --soft: #D9D2C8;
+  --accent: #C8FF00;
+  --rule: rgba(0,0,0,0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--cream); color: var(--ink); font-family: 'DM Mono', monospace; font-size: 13px; line-height: 1.6; }
+
+.site-header { background: var(--black); padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; }
+.header-right { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+
+.container { max-width: 900px; margin: 0 auto; padding: 32px 24px 64px; }
+
+.page-title { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
+
+.day-group { margin-bottom: 40px; }
+.day-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); background: var(--accent); display: inline-block; padding: 4px 10px; margin-bottom: 12px; }
+
+.artist-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: stretch;
+  transition: border-color 0.15s;
+}
+.artist-card:hover { border-color: var(--black); }
+.card-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: inherit;
+}
+.card-top { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--rule);
+  flex-shrink: 0;
+}
+.action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+  transition: background 0.12s, color 0.12s;
+}
+.action-btn:last-child { border-bottom: none; }
+.action-btn:hover { background: var(--cream); color: var(--ink); }
+.action-btn.print:hover { background: var(--black); color: var(--accent); }
+
+.card-name { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 400; color: var(--ink); flex-shrink: 0; }
+.card-set { font-size: 12px; color: var(--muted); }
+.card-set strong { color: var(--ink); font-weight: 400; }
+.card-meta { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.card-tag { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; background: var(--cream); border: 1px solid var(--soft); padding: 2px 8px; color: var(--muted); white-space: nowrap; }
+.card-tag.hotel { background: #EAF2E8; border-color: #B8D9B3; color: #3A6B35; }
+.card-tag.cabin { background: #F2EDE0; border-color: #D4C9A8; color: #6B5D35; }
+.card-tag.blank { background: rgba(255,100,100,0.08); border-color: rgba(255,100,100,0.25); color: #c06060; }
+
+.sheet-link { font-size: 11px; letter-spacing: 0.06em; color: var(--accent); text-decoration: none; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.15); }
+.sheet-link:hover { background: rgba(255,255,255,0.08); }
+
+.no-set { opacity: 0.45; }
+.card-notes { font-size: 11px; color: var(--muted); font-style: italic; margin-top: 5px; padding-top: 5px; border-top: 1px solid var(--rule); width: 100%; line-height: 1.5; }
+
+.loading { padding: 48px 0; text-align: center; color: var(--muted); font-style: italic; }
+.stats { font-size: 11px; color: var(--muted); margin-bottom: 24px; font-style: italic; }
+
+.search-bar { width: 100%; background: var(--white); border: 1px solid var(--rule); font-family: 'DM Mono', monospace; font-size: 13px; padding: 10px 14px; color: var(--ink); margin-bottom: 24px; outline: none; }
+.search-bar:focus { border-color: var(--black); }
+.search-bar::placeholder { color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <svg height="18" viewBox="0 0 421 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Dripping"><path d="M4.17233e-06 49.536V-6.19888e-06H20.376C35.64 -6.19888e-06 44.784 9.216 44.784 24.552C44.784 39.96 35.64 49.536 20.376 49.536H4.17233e-06ZM19.728 40.104C28.944 40.104 32.976 33.984 32.976 24.552C32.976 15.192 28.944 9.43199 19.728 9.43199H11.592V40.104H19.728ZM48.438 49.536V13.968H59.094V20.952C60.822 16.488 64.782 13.104 70.182 13.104C70.83 13.104 71.262 13.104 71.982 13.176V23.688C71.19 23.616 70.542 23.544 69.534 23.544C63.918 23.544 59.526 26.64 59.526 32.832V49.536H48.438ZM74.3327 49.536V13.968H85.6367V49.536H74.3327ZM74.3327 9.93599V-6.19888e-06H85.5647V9.93599H74.3327ZM90.9461 62.856V13.968H102.034V18.432C104.122 15.264 107.722 13.104 112.834 13.104C121.978 13.104 128.962 20.232 128.962 31.752C128.962 43.272 121.978 50.4 112.834 50.4C107.146 50.4 104.05 47.952 102.25 45.576V62.856H90.9461ZM109.522 42.336C114.778 42.336 117.37 37.728 117.37 31.752C117.37 25.776 114.778 21.168 109.522 21.168C104.338 21.168 101.602 25.848 101.602 31.752C101.602 37.656 104.338 42.336 109.522 42.336ZM132.591 62.856V13.968H143.679V18.432C145.767 15.264 149.367 13.104 154.479 13.104C163.623 13.104 170.607 20.232 170.607 31.752C170.607 43.272 163.623 50.4 154.479 50.4C148.791 50.4 145.695 47.952 143.895 45.576V62.856H132.591ZM151.167 42.336C156.423 42.336 159.015 37.728 159.015 31.752C159.015 25.776 156.423 21.168 151.167 21.168C145.983 21.168 143.247 25.848 143.247 31.752C143.247 37.656 145.983 42.336 151.167 42.336ZM174.236 49.536V13.968H185.54V49.536H174.236ZM174.236 9.93599V-6.19888e-06H185.468V9.93599H174.236ZM190.849 49.536V13.968H201.793V18.288H201.865C203.737 15.624 207.337 13.104 212.593 13.104C220.009 13.104 225.193 17.424 225.193 27.216V49.536H213.889V30.24C213.889 25.632 213.241 21.888 208.633 21.888C204.457 21.888 202.153 25.416 202.153 30.312V49.536H190.849ZM246.877 63.72C236.437 63.72 230.245 59.04 229.381 51.12L240.469 50.112C241.045 54.144 243.421 56.088 247.309 56.088C251.341 56.088 253.933 54.072 253.933 48.888V43.056C252.061 45.648 248.893 47.952 243.997 47.952C235.429 47.952 228.589 41.616 228.589 30.6C228.589 19.296 235.429 13.104 243.997 13.104C249.469 13.104 252.565 15.84 254.149 18.216V13.968H265.021V48.816C265.021 59.256 257.461 63.72 246.877 63.72ZM247.237 39.672C252.061 39.672 254.365 35.28 254.365 30.456C254.365 25.704 252.061 21.312 247.237 21.312C242.557 21.312 240.181 25.2 240.181 30.456C240.181 35.784 242.557 39.672 247.237 39.672ZM283.682 49.536V43.74C288.42 39.968 292.56 36.495 296.102 33.321C299.69 30.147 302.496 27.088 304.52 24.144C306.544 21.2 307.556 18.21 307.556 15.174C307.556 12.644 306.843 10.666 305.417 9.23999C303.991 7.76799 302.059 7.03199 299.621 7.03199C296.815 7.03199 294.653 7.92899 293.135 9.72299C291.617 11.471 290.858 13.564 290.858 16.002H283.751C283.797 12.598 284.51 9.746 285.89 7.44599C287.27 5.14599 289.133 3.39799 291.479 2.20199C293.871 1.00599 296.585 0.407995 299.621 0.407995C304.543 0.407995 308.338 1.74199 311.006 4.40999C313.674 7.03199 315.008 10.551 315.008 14.967C315.008 17.773 314.387 20.487 313.145 23.109C311.949 25.685 310.362 28.146 308.384 30.492C306.406 32.838 304.198 35.069 301.76 37.185C299.368 39.301 296.953 41.325 294.515 43.257H316.319V49.536H283.682ZM334.025 50.364C330.299 50.364 327.033 49.352 324.227 47.328C321.467 45.304 319.328 42.429 317.81 38.703C316.292 34.931 315.533 30.492 315.533 25.386C315.533 20.234 316.292 15.795 317.81 12.069C319.328 8.34299 321.467 5.46799 324.227 3.44399C327.033 1.41999 330.299 0.407995 334.025 0.407995C337.797 0.407995 341.063 1.41999 343.823 3.44399C346.583 5.46799 348.722 8.34299 350.24 12.069C351.758 15.795 352.517 20.234 352.517 25.386C352.517 30.492 351.758 34.931 350.24 38.703C348.722 42.429 346.583 45.304 343.823 47.328C341.063 49.352 337.797 50.364 334.025 50.364ZM322.985 25.386C322.985 27.962 323.215 30.308 323.675 32.424C324.135 34.54 324.779 36.38 325.607 37.944L337.682 8.06699C336.532 7.51499 335.313 7.23899 334.025 7.23899C330.805 7.23899 328.16 8.87199 326.09 12.138C324.02 15.358 322.985 19.774 322.985 25.386ZM334.025 43.602C336.187 43.602 338.096 42.866 339.752 41.394C341.408 39.922 342.696 37.829 343.616 35.115C344.582 32.355 345.065 29.112 345.065 25.386C345.065 22.81 344.835 20.464 344.375 18.348C343.915 16.232 343.271 14.415 342.443 12.897L330.368 42.774C331.518 43.326 332.737 43.602 334.025 43.602ZM352.628 49.536V43.74C357.366 39.968 361.506 36.495 365.048 33.321C368.636 30.147 371.442 27.088 373.466 24.144C375.49 21.2 376.502 18.21 376.502 15.174C376.502 12.644 375.789 10.666 374.363 9.23999C372.937 7.76799 371.005 7.03199 368.567 7.03199C365.761 7.03199 363.599 7.92899 362.081 9.72299C360.563 11.471 359.804 13.564 359.804 16.002H352.697C352.743 12.598 353.456 9.746 354.836 7.44599C356.216 5.14599 358.079 3.39799 360.425 2.20199C362.817 1.00599 365.531 0.407995 368.567 0.407995C373.489 0.407995 377.284 1.74199 379.952 4.40999C382.62 7.03199 383.954 10.551 383.954 14.967C383.954 17.773 383.333 20.487 382.091 23.109C380.895 25.685 379.308 28.146 377.33 30.492C375.352 32.838 373.144 35.069 370.706 37.185C368.314 39.301 365.899 41.325 363.461 43.257H385.265V49.536H352.628ZM403.937 50.364C400.533 50.364 397.658 49.743 395.312 48.501C392.966 47.213 391.057 45.488 389.585 43.326C388.159 41.164 387.101 38.703 386.411 35.943C385.767 33.137 385.445 30.193 385.445 27.111C385.445 21.775 386.181 17.106 387.653 13.104C389.171 9.102 391.333 5.99699 394.139 3.78899C396.945 1.53499 400.326 0.407995 404.282 0.407995C407.548 0.407995 410.285 1.00599 412.493 2.20199C414.747 3.35199 416.495 4.96199 417.737 7.03199C419.025 9.05599 419.807 11.379 420.083 14.001H413.252C412.792 11.839 411.757 10.137 410.147 8.89499C408.537 7.65299 406.559 7.03199 404.213 7.03199C401.131 7.03199 398.463 8.50399 396.209 11.448C393.955 14.346 392.69 18.9 392.414 25.11H392.828C393.794 23.362 395.312 21.821 397.382 20.487C399.498 19.153 402.005 18.486 404.903 18.486C407.709 18.486 410.262 19.153 412.562 20.487C414.862 21.775 416.679 23.592 418.013 25.938C419.393 28.284 420.083 30.998 420.083 34.08C420.083 36.978 419.416 39.669 418.082 42.153C416.794 44.637 414.931 46.638 412.493 48.156C410.101 49.628 407.249 50.364 403.937 50.364ZM403.454 43.74C406.26 43.74 408.514 42.866 410.216 41.118C411.964 39.37 412.838 37.139 412.838 34.425C412.838 31.711 411.964 29.48 410.216 27.732C408.514 25.938 406.26 25.041 403.454 25.041C400.648 25.041 398.348 25.915 396.554 27.663C394.806 29.411 393.932 31.642 393.932 34.356C393.932 37.024 394.806 39.255 396.554 41.049C398.348 42.843 400.648 43.74 403.454 43.74Z" fill="#FAF7F2"/></svg>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1rAc-cyfNI4EgyzOcKaWIL6yDjcWkT1IXUD5czLqULzU/edit" target="_blank">Edit sheet ↗</a>
+    <div class="header-right">Artist Care · Admin</div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="page-title">Artist Roster · Dripping 2026</div>
+  <input class="search-bar" type="text" placeholder="Search artists…" id="search" oninput="filterCards()">
+  <div class="stats" id="stats"></div>
+  <div id="roster"><div class="loading">Loading artists…</div></div>
+</div>
+
+<script>
+const DAY_ORDER = { 'Thursday': 0, 'Friday': 1, 'Saturday': 2, 'Sunday': 3, '' : 4 };
+
+function parseTime(t) {
+  if (!t) return 9999;
+  const m = t.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if (!m) return 9999;
+  let h = parseInt(m[1]), mn = parseInt(m[2]);
+  if (m[3].toUpperCase() === 'PM' && h !== 12) h += 12;
+  if (m[3].toUpperCase() === 'AM' && h === 12) h = 0;
+  return h * 60 + mn;
+}
+
+function lodgingTag(d) {
+  if (d.lodging === 'hotel') return `<span class="card-tag hotel">Hotel${d.hotelRoom ? ' · ' + d.hotelRoom : ''}</span>`;
+  if (d.lodging === 'cabin') return `<span class="card-tag cabin">Cabin${d.cabin ? ' · ' + d.cabin : ''}</span>`;
+  return '';
+}
+
+let allArtists = [];
+
+function filterCards() {
+  const q = document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.artist-card').forEach(card => {
+    card.style.display = card.dataset.name.toLowerCase().includes(q) ? '' : 'none';
+  });
+  document.querySelectorAll('.day-group').forEach(group => {
+    const visible = [...group.querySelectorAll('.artist-card')].some(c => c.style.display !== 'none');
+    group.style.display = visible ? '' : 'none';
+  });
+}
+
+async function load() {
+  const res = await fetch('/api/load');
+  const json = await res.json();
+  const data = json.data || {};
+
+  allArtists = Object.entries(data)
+    .filter(([slug]) => slug !== '__rain_plan__')
+    .map(([slug, d]) => {
+      ['stage','rainStage','checkstage','stage2'].forEach(k => { if (d[k]) d[k] = d[k].replace(/lakeside amphitheate[r|re]*/gi, 'Lakeside').replace(/the lake amphitheate[r|re]*/gi, 'Lakeside'); });
+      return { slug, ...d };
+    })
+    .sort((a, b) => {
+      const da = DAY_ORDER[a.setday] ?? 4, db = DAY_ORDER[b.setday] ?? 4;
+      if (da !== db) return da - db;
+      return parseTime(a.settime) - parseTime(b.settime);
+    });
+
+  const total = allArtists.length;
+  const ready = allArtists.filter(a => a.setday && a.settime).length;
+  document.getElementById('stats').textContent = `${total} artists · ${ready} with set times · ${total - ready} pending`;
+
+  const groups = {};
+  allArtists.forEach(a => {
+    const day = a.setday || 'No set time yet';
+    if (!groups[day]) groups[day] = [];
+    groups[day].push(a);
+  });
+
+  const dayOrder = ['Thursday', 'Friday', 'Saturday', 'Sunday', 'No set time yet'];
+  const html = dayOrder
+    .filter(d => groups[d])
+    .map(day => {
+      const cards = groups[day].map(a => {
+        const hasSet = a.setday && a.settime;
+        const set1 = hasSet ? `${a.settime} · ${a.stage || '—'}` : '';
+        const set2 = a.setday2 && a.settime2 ? `${a.settime2} · ${a.stage2 || '—'}` : '';
+        const setInfo = hasSet
+          ? [set1, set2].filter(Boolean).join('<span style="color:var(--rule);margin:0 6px">|</span>')
+          : '<em style="color:var(--muted)">Set time TBC</em>';
+        const tags = [
+          lodgingTag(a),
+          a.photographer ? `<span class="card-tag">📸 ${a.photographer}</span>` : '',
+          a.stagemgr ? `<span class="card-tag">SM: ${a.stagemgr}</span>` : '',
+        ].filter(Boolean).join('');
+
+        const notes = a.artistCareNotes || '';
+        return `<div class="artist-card${hasSet ? '' : ' no-set'}" data-name="${a.name}">
+          <a class="card-main" href="/?artist=${a.slug}" target="_blank">
+            <div class="card-top">
+              <div class="card-name">${a.name}</div>
+              <div class="card-set">${setInfo}</div>
+            </div>
+            ${tags ? `<div class="card-meta">${tags}</div>` : ''}
+            ${notes ? `<div class="card-notes">${notes}</div>` : ''}
+          </a>
+          <div class="card-actions">
+            <a class="action-btn" href="/?artist=${a.slug}" target="_blank">Page ↗</a>
+            <a class="action-btn print" href="/print.html?artist=${a.slug}" target="_blank">Print ⬇</a>
+          </div>
+        </div>`;
+      }).join('');
+      return `<div class="day-group"><div class="day-label">${day}</div>${cards}</div>`;
+    }).join('');
+
+  document.getElementById('roster').innerHTML = html;
+}
+
+load();
+</script>
+</body>
+</html>

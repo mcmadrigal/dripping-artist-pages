@@ -25,21 +25,30 @@ export default async function handler(req, res) {
         : ['en'];
       if (!langs.includes('en')) langs.unshift('en');
 
+      const normStage = s => (s || '').replace(/lakeside amphitheate[r|re]*/gi, 'Lakeside').replace(/the lake amphitheate[r|re]*/gi, 'Lakeside');
+
       const data = {
         name:         row.name         || '',
         setday:       row.setday        || '',
         settime:      row.settime       || '',
-        stage:        row.stage         || '',
-        rainStage:    row.rain_stage    || '',
+        stage:        normStage(row.stage),
+        setday2:      row.setday2       || '',
+        settime2:     row.settime2      || '',
+        stage2:       normStage(row.stage2),
+        rainStage:    normStage(row.rain_stage),
         rainNote:     row.rain_note     || '',
         checkday:     row.checkday      || '',
         checktime:    row.checktime     || '',
-        checkstage:   row.checkstage    || '',
+        checkstage:   normStage(row.checkstage),
         innkeeper:              row.innkeeper                   || '',
         driver:                 row.driver                      || '',
         stagemgr:               row.stagemgr                   || '',
         photographer:           row.photographer               || '',
+        photographerName:       row.photographer_name          || '',
+        photographerPhone:      row.photographer_phone         || '',
         photographerMeetingPlace: row.photographer_meeting_place || '',
+        photographerMeetingDay:   row.portrait_day              || '',
+        photographerTime:       row.photographer_time          || '',
         arrDay:                 row.arr_day                    || '',
         arrTime:                row.arr_time                   || '',
         arrTransport:           row.arr_transport              || '',
@@ -48,12 +57,15 @@ export default async function handler(req, res) {
         depTime:                row.dep_time                   || '',
         depTransport:           row.dep_transport              || '',
         tokens:                 row.tokens                     || '',
+        mealTokens:             row.meal_tokens                || '',
         lodging:                row.lodging                    || 'hotel',
+        hotelRoom:              row.hotel_room                 || '',
         cabin:                  row.cabin                      || '',
         infoLink:               row.info_link                  || '',
         langs,
         defaultLang:  row.default_lang  || 'en',
         notes:        row.notes         || '',
+        artistCareNotes: row.artist_care_notes || row['Artist care notes'] || '',
         _savedAt:     new Date().toISOString(),
       };
 
