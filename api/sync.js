@@ -25,7 +25,7 @@ export default async function handler(req, res) {
         : ['en'];
       if (!langs.includes('en')) langs.unshift('en');
 
-      const normStage = s => (s || '').replace(/lakeside amphitheate[r|re]*/gi, 'Lakeside').replace(/the lake amphitheate[r|re]*/gi, 'Lakeside');
+      const normStage = s => (s || '').replace(/\b(?:the\s+)?(?:lakeside(?:\s+amphitheat(?:re|er))?|lake\s+amphitheat(?:re|er))\b/gi, 'Lakeside Amphitheater');
 
       const data = {
         name:         row.name         || '',
