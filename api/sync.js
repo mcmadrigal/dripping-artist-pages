@@ -65,6 +65,7 @@ export default async function handler(req, res) {
         langs,
         defaultLang:  row.default_lang  || 'en',
         notes:        row.notes         || '',
+        notesOnPerformance: row.notes_on_performance || '',
         artistCareNotes: row.artist_care_notes || row['Artist care notes'] || '',
         _savedAt:     new Date().toISOString(),
       };
