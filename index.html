@@ -307,6 +307,12 @@ footer { padding: 24px 20px; text-align: center; }
 <script>
 // ── STAFF ROSTER ──
 const INNKEEPER_PHONE = '+13479867562';
+const FESTIVAL_DATES = { thursday: 'Jun 11', friday: 'Jun 12', saturday: 'Jun 13', sunday: 'Jun 14' };
+const dayWithDate = (day) => {
+  if (!day) return day;
+  const key = String(day).trim().toLowerCase();
+  return FESTIVAL_DATES[key] ? `${day}, ${FESTIVAL_DATES[key]}` : day;
+};
 const INNKEEPERS = {
   innkeeper: { name: 'Artist Care', phone: INNKEEPER_PHONE },
   maya:      { name: 'Artist Care', phone: INNKEEPER_PHONE },
@@ -421,15 +427,15 @@ function renderArtistView(slug, lang) {
   if (d.setday2 && d.settime2) sets.push({ day: d.setday2, time: d.settime2, stage: d.stage2 });
   sets.sort((a, b) => setSortKey(a.day, a.time) - setSortKey(b.day, b.time));
 
-  document.getElementById('av-settime').textContent = [sets[0].day, sets[0].time, sets[0].stage].filter(Boolean).join(' · ');
+  document.getElementById('av-settime').textContent = [dayWithDate(sets[0].day), sets[0].time, sets[0].stage].filter(Boolean).join(' · ');
   const set2Row = document.getElementById('av-settime2-row');
   if (sets[1]) {
-    document.getElementById('av-settime2').textContent = [sets[1].day, sets[1].time, sets[1].stage].filter(Boolean).join(' · ');
+    document.getElementById('av-settime2').textContent = [dayWithDate(sets[1].day), sets[1].time, sets[1].stage].filter(Boolean).join(' · ');
     set2Row.style.display = '';
   } else {
     set2Row.style.display = 'none';
   }
-  document.getElementById('av-checktime').textContent = [d.checkday, d.checktime, checkStage].filter(Boolean).join(' · ');
+  document.getElementById('av-checktime').textContent = [dayWithDate(d.checkday), d.checktime, checkStage].filter(Boolean).join(' · ');
 
   const perfNotesEl = document.getElementById('av-perf-notes');
   if (perfNotesEl) {
