@@ -624,7 +624,7 @@ async function init() {
     const wm = mt.match(/(\d+)\s*welcome/i), rm = mt.match(/(\d+)\s*regular/i);
     const parts = [];
     if (wm) parts.push(`${wm[1]} Bé Bếp — Welcome Dinner`);
-    if (rm) { const n = parseInt(rm[1]); parts.push(`${n} regular meal token${n!==1?'s':''}`); }
+    if (rm) { const n = parseInt(rm[1]); parts.push(`${n} ${wm ? 'regular ' : ''}meal token${n!==1?'s':''}`); }
     const el = document.getElementById('pv-meal-tokens');
     el.textContent = 'Meal tokens: ' + (parts.length ? parts.join(', ') : mt);
     el.style.display = '';

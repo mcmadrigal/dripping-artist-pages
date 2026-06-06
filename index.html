@@ -566,7 +566,7 @@ function renderArtistView(slug, lang) {
     const rm = mt.match(/(\d+)\s*regular/i);
     const parts = [];
     if (wm) parts.push(`${wm[1]} Bé Bếp — Welcome Dinner`);
-    if (rm) { const n = parseInt(rm[1]); parts.push(`${n} regular meal token${n !== 1 ? 's' : ''}`); }
+    if (rm) { const n = parseInt(rm[1]); parts.push(`${n} ${wm ? 'regular ' : ''}meal token${n !== 1 ? 's' : ''}`); }
     mealTokensText.textContent = 'Meal tokens: ' + (parts.length ? parts.join(', ') : mt);
     mealTokensEl.style.display = '';
   } else if (mealTokensEl) {
