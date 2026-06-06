@@ -246,19 +246,21 @@ body { background: #ddd; font-family: 'DM Mono', monospace; font-size: 10px; lin
       <div class="p-sec">
         <div class="p-sec-title">Food — dining tent unless noted</div>
         <div class="p-food-day">Thursday</div>
-        <div class="p-food-row"><span class="p-food-vendor">BéBép — Welcome Dinner</span><span class="p-food-meal">Dinner</span><span class="p-food-hrs">6–10 pm</span></div>
+        <div class="p-food-row"><span class="p-food-vendor">Bé Bếp — Welcome Dinner</span><span class="p-food-meal">Dinner</span><span class="p-food-hrs">6–10 pm</span></div>
         <div class="p-food-day">Friday</div>
         <div class="p-food-row"><span class="p-food-vendor">109 Montrose</span><span class="p-food-meal">Coffee</span><span class="p-food-hrs">Morning–late</span></div>
-        <div class="p-food-row"><span class="p-food-vendor">Dila</span><span class="p-food-meal">Bfast</span><span class="p-food-hrs">9 am–1 pm</span></div>
-        <div class="p-food-row"><span class="p-food-vendor">Wadadli Jerk (lakeside)</span><span class="p-food-meal">Lunch</span><span class="p-food-hrs">1–6 pm</span></div>
-        <div class="p-food-row"><span class="p-food-vendor">Dila · Hen House</span><span class="p-food-meal">Dinner</span><span class="p-food-hrs">6–10 pm</span></div>
+        <div class="p-food-row"><span class="p-food-vendor">Dila · Frutas Dripping</span><span class="p-food-meal">Bfast</span><span class="p-food-hrs">9 am–1 pm</span></div>
+        <div class="p-food-row"><span class="p-food-vendor">Wadadli Jerk · Taqueria Ramirez</span><span class="p-food-meal">Lunch</span><span class="p-food-hrs">1–6 pm</span></div>
+        <div class="p-food-row"><span class="p-food-vendor">Dila · Birria La Flor</span><span class="p-food-meal">Dinner</span><span class="p-food-hrs">6–10 pm</span></div>
+        <div class="p-food-row"><span class="p-food-vendor">Archive Chives x Movers</span><span class="p-food-meal">Late</span><span class="p-food-hrs">8:30 pm–3 am</span></div>
         <div class="p-food-day">Saturday</div>
         <div class="p-food-row"><span class="p-food-vendor">109 Montrose</span><span class="p-food-meal">Coffee</span><span class="p-food-hrs">Morning–late</span></div>
-        <div class="p-food-row"><span class="p-food-vendor">Taqueria Ramirez</span><span class="p-food-meal">Bfast</span><span class="p-food-hrs">9 am–1 pm</span></div>
-        <div class="p-food-row"><span class="p-food-vendor">Wadadli Jerk (open air)</span><span class="p-food-meal">Lunch</span><span class="p-food-hrs">12 pm–sold out</span></div>
-        <div class="p-food-row"><span class="p-food-vendor">Dila · Hen House</span><span class="p-food-meal">Dinner</span><span class="p-food-hrs">6–10 pm</span></div>
+        <div class="p-food-row"><span class="p-food-vendor">Taqueria Ramirez · Frutas Dripping</span><span class="p-food-meal">Bfast</span><span class="p-food-hrs">9 am–1 pm</span></div>
+        <div class="p-food-row"><span class="p-food-vendor">Wadadli Jerk · Taqueria Ramirez</span><span class="p-food-meal">Lunch</span><span class="p-food-hrs">1–6 pm</span></div>
+        <div class="p-food-row"><span class="p-food-vendor">Dila · Wadadli Jerk</span><span class="p-food-meal">Dinner</span><span class="p-food-hrs">6–10 pm</span></div>
+        <div class="p-food-row"><span class="p-food-vendor">Archive Chives x Movers</span><span class="p-food-meal">Late</span><span class="p-food-hrs">8:30 pm–3 am</span></div>
         <div class="p-food-day">Sunday</div>
-        <div class="p-food-row"><span class="p-food-vendor">Dila</span><span class="p-food-meal">Bfast</span><span class="p-food-hrs">9 am–1 pm</span></div>
+        <div class="p-food-row"><span class="p-food-vendor">Dila · Frutas Dripping</span><span class="p-food-meal">Bfast</span><span class="p-food-hrs">9 am–1 pm</span></div>
         <div class="p-food-row"><span class="p-food-vendor">109 Montrose · bagels at The Inn</span><span class="p-food-meal">Coffee</span><span class="p-food-hrs">Morning</span></div>
         <div style="font-size:8px;color:var(--muted);font-style:italic;margin-top:5px">Snacks, tea &amp; coffee all weekend backstage at The Inn</div>
       </div>
@@ -324,12 +326,15 @@ const DRIVERS = {
   gabi:{name:'Gabi Sheerer',phone:'+1 (954) 673-5761'},gunnar:{name:'Gunnar Kauth',phone:'+1 (651) 485-8841'},
   mike:{name:'Mike Sheffield',phone:'+1 (908) 370-4401'},robin:{name:'Robin Edgerton',phone:'+1 (646) 369-5996'},
   willa:{name:'Willa',phone:'+1 (360) 252-0649'},zach:{name:'Zach Steinman',phone:'+1 (415) 225-2947'},
-  rachel:{name:'Rachel Hahn',phone:''},lilly:{name:'Lilly Mulligan',phone:''},
+  rachel:{name:'Rachel Hahn',phone:'+1 (617) 599-8947'},lilly:{name:'Lilly Mulligan',phone:'+1 (914) 471-3187'},
+  mooje:{name:"Mooje O'Brain",phone:'+1 (631) 897-6051'},
 };
 const PHOTOGRAPHERS = {
-  guario:{name:'Guario',phone:'+1 (781) 632-3066'},nikki:{name:'Nikki',phone:'+1 (305) 283-3960'},
-  mariah:{name:'Mariah',phone:'+1 (707) 953-1847'},mar:{name:'Mariah',phone:'+1 (707) 953-1847'},
-  sam:{name:'Sam',phone:'+1 (347) 416-3197'},deirdre:{name:'Deirdre',phone:'+1 (917) 500-6418'},
+  guario:{name:'Guario',phone:'+1 (781) 632-3066'},'guario rodriguez':{name:'Guario',phone:'+1 (781) 632-3066'},
+  nikki:{name:'Nikki',phone:'+1 (305) 283-3960'},'nikki cardona':{name:'Nikki',phone:'+1 (305) 283-3960'},
+  mariah:{name:'Mariah',phone:'+1 (707) 953-1847'},mar:{name:'Mariah',phone:'+1 (707) 953-1847'},'mariah tiffany':{name:'Mariah',phone:'+1 (707) 953-1847'},
+  sam:{name:'Sam',phone:'+1 (347) 416-3197'},'sam clarke':{name:'Sam',phone:'+1 (347) 416-3197'},
+  deirdre:{name:'Deirdre',phone:'+1 (917) 500-6418'},'deirdre lewis':{name:'Deirdre',phone:'+1 (917) 500-6418'},
 };
 
 function row(key, val, sub) {
@@ -348,6 +353,14 @@ async function init() {
   const { data: d } = await res.json();
   if (!d) { document.getElementById('pv-name').textContent = 'Artist not found'; return; }
   ['stage','rainStage','checkstage','stage2'].forEach(k => { if (d[k]) d[k] = d[k].replace(/lakeside amphitheate[r|re]*/gi, 'Lakeside').replace(/the lake amphitheate[r|re]*/gi, 'Lakeside'); });
+  // Nowadays is a bus, not a shuttle (Camp ↔ Hotel shuttle is unaffected).
+  // Also reorders "12:30 Shuttle to Nowadays — Sunday" → "Bus to Nowadays — Sunday 12:30PM"
+  ['arrTransport','depTransport'].forEach(k => {
+    if (!d[k]) return;
+    d[k] = d[k]
+      .replace(/^(\d{1,2}:\d{2})\s+(?:shuttle|bus)\s+to\s+nowadays\s*[—-]\s*(.+)$/i, 'Bus to Nowadays — $2 $1PM')
+      .replace(/\bshuttle(\s+(?:from|to)\s+nowadays)/gi, 'Bus$1');
+  });
 
   document.title = `${d.name} — Dripping 2026 Artist Sheet`;
   document.getElementById('bar-label').textContent = `${d.name} · Artist Care Sheet`;
@@ -374,16 +387,21 @@ async function init() {
   if (d.setday2 && d.settime2) sets.push({ day: d.setday2, time: d.settime2, stage: d.stage2 });
   sets.sort((a, b) => setSortKey(a.day, a.time) - setSortKey(b.day, b.time));
 
-  document.getElementById('pv-settime').textContent = [sets[0].day, sets[0].time, sets[0].stage].filter(Boolean).join(' · ') || '—';
-  if (sets[1]) {
-    document.getElementById('pv-settime2').textContent = [sets[1].day, sets[1].time, sets[1].stage].filter(Boolean).join(' · ');
-    document.getElementById('pv-settime2-wrap').style.display = '';
+  // Chronologically interleave set / sound check / portrait events in the hero
+  const heroEvents = [];
+  if (d.setday && d.settime) heroEvents.push({ label: 'Set time', day: d.setday, time: d.settime, stage: d.stage });
+  if (d.setday2 && d.settime2) heroEvents.push({ label: 'Set time', day: d.setday2, time: d.settime2, stage: d.stage2 });
+  if (d.checkday && d.checktime) heroEvents.push({ label: 'Sound check', day: d.checkday, time: d.checktime, stage: d.checkstage });
+  if (d.photographerMeetingDay || d.photographerTime || d.photographerMeetingPlace) {
+    heroEvents.push({ label: 'Portrait session', day: d.photographerMeetingDay, time: d.photographerTime, stage: d.photographerMeetingPlace });
   }
-  document.getElementById('pv-checktime').textContent = [d.checkday, d.checktime, d.checkstage].filter(Boolean).join(' · ') || '—';
-  const photoTime = [d.photographerMeetingDay, d.photographerTime, d.photographerMeetingPlace].filter(Boolean).join(' · ');
-  if (photoTime) {
-    document.getElementById('pv-portrait').textContent = photoTime;
-    document.getElementById('pv-portrait-wrap').style.display = '';
+  heroEvents.sort((a, b) => setSortKey(a.day, a.time) - setSortKey(b.day, b.time));
+  const heroEl = document.querySelector('.p-hero');
+  if (heroEl) {
+    const eventHtml = heroEvents.map(e =>
+      `<div class="p-hero-item"><div class="p-h-label">${e.label}</div><div class="p-h-value">${[e.day, e.time, e.stage].filter(Boolean).join(' · ') || '—'}</div></div>`
+    ).join('');
+    heroEl.innerHTML = eventHtml + '<div class="p-hero-item"><div class="p-h-label">Note</div><div class="p-h-value">Be at stage 20 min before set</div></div>';
   }
 
   // Check-in notice — conditional on lodging
@@ -417,8 +435,22 @@ async function init() {
 
   // Travel
   let travel = '';
-  if (d.arrDay) travel += row('Arrival', d.arrDay + (d.arrTime ? ' · ' + d.arrTime : ''), d.arrTransport);
-  if (d.depDay) travel += row('Departure', d.depDay + (d.depTime ? ' · ' + d.depTime : ''), d.depTransport);
+  const withDriver = (transport) => {
+    if (!dr || !dr.name || !transport) return transport;
+    return /\b(driver|personal|pickup|pick.up)\b/i.test(transport) ? `${transport} · ${dr.name}` : transport;
+  };
+  const isNowadaysBus = (s) => /\bbus\s+(?:from|to)\s+nowadays\b/i.test(s || '');
+  const travelRow = (label, day, time, transport) => {
+    const isBus = isNowadaysBus(transport);
+    const subText = isBus
+      ? withDriver(transport) + '<br><em style="font-style:italic">⚠ Arrive 30 min prior to be seated for prompt departure</em>'
+      : withDriver(transport);
+    // For Nowadays bus, the time lives inside the bus label — drop it from the upper line
+    const upperTime = isBus ? '' : time;
+    return row(label, [day, upperTime].filter(Boolean).join(' · '), subText);
+  };
+  if (d.arrDay) travel += travelRow('Arrival', d.arrDay, d.arrTime, d.arrTransport);
+  if (d.depDay) travel += travelRow('Departure', d.depDay, d.depTime, d.depTransport);
   if (d.parkingInfo) travel += row('Parking', d.parkingInfo);
   document.getElementById('pv-travel').innerHTML = travel || '<div style="color:var(--muted);font-style:italic;font-size:7.5px;padding:4px 0">Travel info TBC</div>';
 
@@ -432,12 +464,166 @@ async function init() {
   // Shuttle — hotel only
   if (d.lodging === 'hotel') document.getElementById('pv-shuttle-sec').style.display = '';
 
+  // ── Breadwoman special case: split accommodation + per-person departure ──
+  if (slug === 'breadwoman') {
+    document.getElementById('pv-lodging').innerHTML =
+      row('Hotel · Anna', 'Hilton Garden Inn Rockaway', '375 Mt Hope Ave, Rockaway NJ 07866') +
+      row('Airbnb · Katja & Steven', 'Team accommodation', '20 Point Pleasant Road, Hopatcong NJ 07843');
+    let bwTravel = '';
+    if (d.arrDay) bwTravel += row('Arrival', d.arrDay + (d.arrTime ? ' · ' + d.arrTime : ''), withDriver(d.arrTransport));
+    bwTravel += row('Departure · Steven', 'Sunday · Jun 14 · 12:30 PM', 'Bus from Camp to Nowadays');
+    bwTravel += row('Departure · Anna & Katja', 'Sunday · Jun 14 · 2:00 PM', 'Rental car to airport');
+    if (d.parkingInfo) bwTravel += row('Parking', d.parkingInfo);
+    document.getElementById('pv-travel').innerHTML = bwTravel;
+    const shuttleSec = document.getElementById('pv-shuttle-sec');
+    if (shuttleSec) shuttleSec.style.display = 'none';
+  }
+
+  // ── Pavel / Buttechno: same artist, two performances on different stages ──
+  if (slug === 'pavel-milyakov') {
+    const ev = [
+      { label: 'Pavel set',             day: 'Thursday', time: '10:30 PM', stage: 'Open Air' },
+      { label: 'Pavel sound check',     day: 'Thursday', time: '4:00 PM',  stage: 'Open Air' },
+      { label: 'Buttechno set',         day: 'Saturday', time: '2:00 AM',  stage: 'The Barn' },
+      { label: 'Buttechno sound check', day: 'Friday',   time: '12:00 PM', stage: 'The Barn' },
+    ];
+    if (d.photographerMeetingDay || d.photographerTime || d.photographerMeetingPlace) {
+      ev.push({ label: 'Portrait session', day: d.photographerMeetingDay, time: d.photographerTime, stage: d.photographerMeetingPlace });
+    }
+    ev.sort((a, b) => setSortKey(a.day, a.time) - setSortKey(b.day, b.time));
+    const pvHero = document.querySelector('.p-hero');
+    if (pvHero) {
+      pvHero.innerHTML = ev.map(e =>
+        `<div class="p-hero-item"><div class="p-h-label">${e.label}</div><div class="p-h-value">${[e.day, e.time, e.stage].filter(Boolean).join(' · ')}</div></div>`
+      ).join('') + '<div class="p-hero-item"><div class="p-h-label">Note</div><div class="p-h-value">Be at stage 20 min before set</div></div>';
+    }
+    let pvContacts = row('Artist care', 'Artist Care', INNKEEPER_PHONE + ' · WhatsApp');
+    if (dr) pvContacts += row('Driver', dr.name, dr.phone || '');
+    const smPavel = STAGE_MANAGERS['rey'];
+    const smButt = STAGE_MANAGERS['anika'];
+    if (smPavel) pvContacts += row('Stage mgr · Pavel', smPavel.name, smPavel.phone);
+    if (smButt) pvContacts += row('Stage mgr · Buttechno', smButt.name, smButt.phone);
+    const phPv = d.photographerName
+      ? { name: d.photographerName, phone: d.photographerPhone || '' }
+      : lookupLower(PHOTOGRAPHERS, d.photographer) || (d.photographer ? { name: d.photographer, phone: '' } : null);
+    if (phPv) {
+      const phSub = [phPv.phone, d.photographerMeetingDay, d.photographerTime, d.photographerMeetingPlace].filter(Boolean).join(' · ');
+      pvContacts += row('Photographer', phPv.name, phSub || '');
+    }
+    document.getElementById('pv-contacts').innerHTML = pvContacts;
+  }
+
+  // ── Ayanna Heaven: own Saturday set + Friday Artist Talk ──
+  if (slug === 'ayanna-heaven') {
+    const ev = [
+      { label: 'Your set',                  day: 'Saturday', time: '3:00 PM',  stage: 'Open Air' },
+      { label: 'Sound check',               day: 'Saturday', time: '2:30 PM',  stage: 'Open Air' },
+      { label: 'Artist Talk',               day: 'Friday',   time: '2:00 PM',  stage: 'Lakeside Amphitheater', note: 'with Gavsborg & Mad Professor' },
+      { label: 'Artist Talk line check',    day: 'Friday',   time: '1:30 PM',  stage: 'Lakeside Amphitheater' },
+    ];
+    if (d.photographerMeetingDay || d.photographerTime || d.photographerMeetingPlace) {
+      ev.push({ label: 'Portrait session', day: d.photographerMeetingDay, time: d.photographerTime, stage: d.photographerMeetingPlace });
+    }
+    ev.sort((a, b) => setSortKey(a.day, a.time) - setSortKey(b.day, b.time));
+    const ahHero = document.querySelector('.p-hero');
+    if (ahHero) {
+      ahHero.innerHTML = ev.map(e => {
+        const noteHtml = e.note ? `<br><span style="font-size:7px;color:var(--muted);font-style:italic">${e.note}</span>` : '';
+        return `<div class="p-hero-item"><div class="p-h-label">${e.label}</div><div class="p-h-value">${[e.day, e.time, e.stage].filter(Boolean).join(' · ')}${noteHtml}</div></div>`;
+      }).join('') + '<div class="p-hero-item"><div class="p-h-label">Note</div><div class="p-h-value">Be at stage 20 min before set</div></div>';
+    }
+    let ahContacts = row('Artist care', 'Artist Care', INNKEEPER_PHONE + ' · WhatsApp');
+    if (dr) ahContacts += row('Driver', dr.name, dr.phone || '');
+    const smSet = STAGE_MANAGERS['rey'];
+    const smTalk = STAGE_MANAGERS['rey'];
+    if (smSet) ahContacts += row('Stage mgr · Sat set', smSet.name, smSet.phone);
+    if (smTalk) ahContacts += row('Stage mgr · Fri Artist Talk', smTalk.name, smTalk.phone);
+    const phAh = d.photographerName
+      ? { name: d.photographerName, phone: d.photographerPhone || '' }
+      : lookupLower(PHOTOGRAPHERS, d.photographer) || (d.photographer ? { name: d.photographer, phone: '' } : null);
+    if (phAh) {
+      const phSub = [phAh.phone, d.photographerMeetingDay, d.photographerTime, d.photographerMeetingPlace].filter(Boolean).join(' · ');
+      ahContacts += row('Photographer', phAh.name, phSub || '');
+    }
+    document.getElementById('pv-contacts').innerHTML = ahContacts;
+  }
+
+  // ── Mad Professor: own Saturday set + Friday Artist Talk ──
+  if (slug === 'mad-professor') {
+    const ev = [
+      { label: 'Your set',                  day: 'Saturday', time: '12:30 AM', stage: 'The Inn' },
+      { label: 'Sound check',               day: 'Friday',   time: '4:30 PM',  stage: 'The Inn' },
+      { label: 'Artist Talk',               day: 'Friday',   time: '2:00 PM',  stage: 'Lakeside Amphitheater', note: 'with Gavsborg & Ayanna Heaven' },
+      { label: 'Artist Talk line check',    day: 'Friday',   time: '1:30 PM',  stage: 'Lakeside Amphitheater' },
+    ];
+    if (d.photographerMeetingDay || d.photographerTime || d.photographerMeetingPlace) {
+      ev.push({ label: 'Portrait session', day: d.photographerMeetingDay, time: d.photographerTime, stage: d.photographerMeetingPlace });
+    }
+    ev.sort((a, b) => setSortKey(a.day, a.time) - setSortKey(b.day, b.time));
+    const mpHero = document.querySelector('.p-hero');
+    if (mpHero) {
+      mpHero.innerHTML = ev.map(e => {
+        const noteHtml = e.note ? `<br><span style="font-size:7px;color:var(--muted);font-style:italic">${e.note}</span>` : '';
+        return `<div class="p-hero-item"><div class="p-h-label">${e.label}</div><div class="p-h-value">${[e.day, e.time, e.stage].filter(Boolean).join(' · ')}${noteHtml}</div></div>`;
+      }).join('') + '<div class="p-hero-item"><div class="p-h-label">Note</div><div class="p-h-value">Be at stage 20 min before set</div></div>';
+    }
+    let mpContacts = row('Artist care', 'Artist Care', INNKEEPER_PHONE + ' · WhatsApp');
+    if (dr) mpContacts += row('Driver', dr.name, dr.phone || '');
+    const smSet = STAGE_MANAGERS['jules'];
+    const smTalk = STAGE_MANAGERS['rey'];
+    if (smSet) mpContacts += row('Stage mgr · Sat set', smSet.name, smSet.phone);
+    if (smTalk) mpContacts += row('Stage mgr · Fri Artist Talk', smTalk.name, smTalk.phone);
+    const phMp = d.photographerName
+      ? { name: d.photographerName, phone: d.photographerPhone || '' }
+      : lookupLower(PHOTOGRAPHERS, d.photographer) || (d.photographer ? { name: d.photographer, phone: '' } : null);
+    if (phMp) {
+      const phSub = [phMp.phone, d.photographerMeetingDay, d.photographerTime, d.photographerMeetingPlace].filter(Boolean).join(' · ');
+      mpContacts += row('Photographer', phMp.name, phSub || '');
+    }
+    document.getElementById('pv-contacts').innerHTML = mpContacts;
+  }
+
+  // ── Everything Upful: Saturday performance (Jade) + Friday Artist Talk (Rey) ──
+  if (slug === 'everything-upful') {
+    const ev = [
+      { label: 'Performance',              day: 'Saturday', time: '4:00 PM',  stage: 'Open Air' },
+      { label: 'Performance sound check',  day: 'Saturday', time: '1:30 PM',  stage: 'Open Air' },
+      { label: 'Artist Talk',              day: 'Friday',   time: '2:00 PM',  stage: 'Lakeside Amphitheater', note: 'with Mad Professor & Ayanna Heaven' },
+      { label: 'Artist Talk line check',   day: 'Friday',   time: '1:30 PM',  stage: 'Lakeside Amphitheater' },
+    ];
+    if (d.photographerMeetingDay || d.photographerTime || d.photographerMeetingPlace) {
+      ev.push({ label: 'Portrait session', day: d.photographerMeetingDay, time: d.photographerTime, stage: d.photographerMeetingPlace });
+    }
+    ev.sort((a, b) => setSortKey(a.day, a.time) - setSortKey(b.day, b.time));
+    const euHero = document.querySelector('.p-hero');
+    if (euHero) {
+      euHero.innerHTML = ev.map(e => {
+        const noteHtml = e.note ? `<br><span style="font-size:7px;color:var(--muted);font-style:italic">${e.note}</span>` : '';
+        return `<div class="p-hero-item"><div class="p-h-label">${e.label}</div><div class="p-h-value">${[e.day, e.time, e.stage].filter(Boolean).join(' · ')}${noteHtml}</div></div>`;
+      }).join('') + '<div class="p-hero-item"><div class="p-h-label">Note</div><div class="p-h-value">Be at stage 20 min before set</div></div>';
+    }
+    let euContacts = row('Artist care', 'Artist Care', INNKEEPER_PHONE + ' · WhatsApp');
+    if (dr) euContacts += row('Driver', dr.name, dr.phone || '');
+    const smSet = STAGE_MANAGERS['jade'];
+    const smTalk = STAGE_MANAGERS['rey'];
+    if (smSet) euContacts += row('Stage mgr · Sat performance', smSet.name, smSet.phone);
+    if (smTalk) euContacts += row('Stage mgr · Fri Artist Talk', smTalk.name, smTalk.phone);
+    const phEu = d.photographerName
+      ? { name: d.photographerName, phone: d.photographerPhone || '' }
+      : lookupLower(PHOTOGRAPHERS, d.photographer) || (d.photographer ? { name: d.photographer, phone: '' } : null);
+    if (phEu) {
+      const phSub = [phEu.phone, d.photographerMeetingDay, d.photographerTime, d.photographerMeetingPlace].filter(Boolean).join(' · ');
+      euContacts += row('Photographer', phEu.name, phSub || '');
+    }
+    document.getElementById('pv-contacts').innerHTML = euContacts;
+  }
+
   // Meal tokens
   if (d.mealTokens) {
     const mt = String(d.mealTokens);
     const wm = mt.match(/(\d+)\s*welcome/i), rm = mt.match(/(\d+)\s*regular/i);
     const parts = [];
-    if (wm) parts.push(`${wm[1]} BéBép — Welcome Dinner`);
+    if (wm) parts.push(`${wm[1]} Bé Bếp — Welcome Dinner`);
     if (rm) { const n = parseInt(rm[1]); parts.push(`${n} regular meal token${n!==1?'s':''}`); }
     const el = document.getElementById('pv-meal-tokens');
     el.textContent = 'Meal tokens: ' + (parts.length ? parts.join(', ') : mt);
